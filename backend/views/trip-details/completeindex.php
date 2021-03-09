@@ -59,6 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 },  
                                 'rating' => function ($url, $model, $key) {
                                   if ($model->rating=="") {
+                                    $url = Url::base(true).'/trip-rating/'.$model->id;
                                    return Html::button('<span class="fa fa-star"></span> Rating', ['value' => $url, 'style'=>'margin-right:4px;','class' => 'btn btn-warning btn-xs view view gridbtncustom rating', 'data-toggle'=>'tooltip', 'title' =>'Coming Soon' ]); 
                                   }
                                 },
