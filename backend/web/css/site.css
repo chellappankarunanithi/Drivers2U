@@ -1,0 +1,247 @@
+html,
+body {
+    height: 100%;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding: 70px 15px 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view td {
+    white-space: nowrap;
+}
+
+.grid-view .filters input,
+.grid-view .filters select {
+    min-width: 50px;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+/* align the logout "link" (button in form) of the navbar */
+.nav > li > form {
+    padding: 8px;
+}
+
+.nav > li > form > button:hover {
+    text-decoration: none;
+}
+
+
+/* Mandatory field representation in form */
+form div.required label.control-label:after {
+  content:" * ";
+  color:red;
+}
+
+
+/* Form Border */
+.box-header{
+     color: #fff;
+       background-color: rgb(96, 92, 168);
+   
+}
+
+.box.box-primary {
+    border-top-color: rgb(165, 162, 162);
+}
+
+
+/*Pagination Right alignment*/
+.pagination{
+    float: right;
+}
+
+/* Action font style in grid */
+.action-column{
+    color: #3C8DBC;
+}
+
+.action-column:hover, .action-column:active, .action-column:focus {
+    outline: none;
+    text-decoration: none;
+    color: #72afd2;
+}
+
+
+.actionPartnername{
+    color: #3C8DBC;
+}
+
+.actionPartnername:hover, .actionPartnername:active, .actionPartnername:focus {
+    outline: none;
+    text-decoration: none;
+    color: #72afd2;
+}
+
+.colorheadercls{
+        color: #3c8dbc;
+}
+
+.gridbtncustom{margin-right: 3px;}
+/* End */
+
+
+
+.no-pad{
+	padding:0px;
+}
+.box-header-bg{
+ 
+    color: #000;
+    background-color: transparent;
+ 
+}
+
+
+
+/* CHECKBOX */
+
+/* The container */
+.container-checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark-check {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  border: 1px solid #666;
+}
+
+/* On mouse-over, add a grey background color */
+.container-checkbox:hover input ~ .checkmark-check {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-checkbox input:checked ~ .checkmark-check {
+  background-color: #5fbeaa;
+  border: 1px solid #ddd;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark-check:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container-checkbox input:checked ~ .checkmark-check:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-checkbox .checkmark-check:after {
+     left: 5px;
+    top: 0px;
+    width: 7px;
+    height: 13px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+ .checkbox label{padding-left:0;}
+

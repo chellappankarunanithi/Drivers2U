@@ -1,0 +1,8 @@
+.vcenter {
+	    display: inline-block;
+	    vertical-align: middle;
+	    float: none;
+	}
+  .input-group[class*=col-]{float:left}
+  .input-group-btn{padding:0}
+  .dropdown-menu{min-width:705px}

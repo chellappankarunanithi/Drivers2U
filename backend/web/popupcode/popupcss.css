@@ -1,0 +1,30 @@
+#mask {
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:9000;
+  background-color:#000;
+  display:none;
+}  
+#boxes .window {
+  position:absolute;
+  left:0;
+  top:0; 
+  display:none;
+  z-index:9999;
+  padding:20px;
+  border: 5px solid #049D75;
+}
+#boxes .dialog { 
+  padding:10px;
+  background-color:#ffffff;
+}
+.div_class
+{
+	cursor: pointer;
+}
+#review_table
+	{
+		height:250px;
+		overflow:scroll;
+	}
