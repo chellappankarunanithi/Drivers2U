@@ -123,14 +123,18 @@ use kartik\select2\Select2;
             'template' => "<div class='checkbox checkbox-custom' style='margin-top:10px; margin-left:20px;'>{input}<label>Active</label></div>{error}",
             ])->checkbox([],false)->label('Status'); ?>  
      
-        <?= Html::submitButton($model->isNewRecord ? 'Save' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success pull-right' : 'btn btn-primary pull-right']) ?> 
-    <?php ActiveForm::end(); ?>
 </div>
-
 </div>
+</div>
+<div class="box-footer"> 
 <div class="row">
-     
+  
+        <?= Html::submitButton($model->isNewRecord ? 'Save' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success pull-right' : 'btn btn-primary pull-right']) ?> 
 </div>
+</div>
+    <?php ActiveForm::end(); ?>
+
+ 
 </div>
 </div>
 </div>

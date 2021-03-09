@@ -98,9 +98,9 @@ use yii\bootstrap\Modal;
 
 
     // Below Pagination class click for reload the page for ajax loading issue
-    $(document).on('click', '.pagination', function(e){
+  /*  $(document).on('click', '.pagination', function(e){
         location.reload();
-    });
+    });*/
 
 
     /* When Model is in Page the User Profile option will not come for avoid that bug the below code has been resolved it. */

@@ -1,4 +1,3 @@
-
 # If a directory or a file exists, use it directly
 RewriteEngine on
 RewriteRule ^admin(/(.*))?$ backend/web/$2 [S=1]

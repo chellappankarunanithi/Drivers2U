@@ -92,7 +92,7 @@ class TripDetailsSearch extends TripDetails
             ->andFilterWhere(['like', 'CommissionType', $this->CommissionType])
             ->andFilterWhere(['like', 'client_master.company_name', $this->CustomerName])
             ->andFilterWhere(['like', 'client_master.mobile_no', $this->CustomerContactNo])
-            ->andFilterWhere(['like', 'driver_profile.employee_id', $this->DriverName])
+            ->andFilterWhere(['like', 'driver_profile.name', $this->DriverName])
             ->andFilterWhere(['like', 'driver_profile.mobile_number', $this->DriverContactNo])
             ->andFilterWhere(['like', 'TripStatus', $this->TripStatus])
             ->andFilterWhere(['like', 'UpdatedIpaddress', $this->UpdatedIpaddress]);

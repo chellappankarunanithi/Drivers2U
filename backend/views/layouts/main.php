@@ -11,15 +11,12 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use yii\helpers\Url;
-use yii\bootstrap\Model;
-//use backend\models\SwimServicecenterlogin;
+use yii\bootstrap\Model; 
 
 
 DashboardAsset::register($this);
 
-$session = Yii::$app->session;
-
-//$user_data = SwimServicecenterlogin::find()->where(['id' => $session['servicecenter_id']])->one();
+$session = Yii::$app->session; 
 $service_center='';
 /*if($user_data){
 $service_center=$user_data->service_center_name;

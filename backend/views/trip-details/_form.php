@@ -123,9 +123,10 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
    <div class="">
       <div class="eq-height">
          <div class="panel">
+		 <?php $form = ActiveForm::begin(['id'=>'my_submit']); ?>
             <div class="panel-body">
 
-    <?php $form = ActiveForm::begin(['id'=>'my_submit']); ?>
+    
       <div class="card-header">
         <h3 class="card-title" style="margin-top: 0px;">Customer Informations</h3>
         <div class="card-options">
@@ -278,20 +279,21 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
     </div>
   </div>
     
-     <div class="card-body" style="border: 1px solid #c7c6c6;padding: 10px;">
-        <div class="row">
-          <div class="col-sm-12">
-    <div class="col-sm-12"> 
-                <div class="form-group"> 
-                 <?php echo Html::submitButton('Save', ['class' => 'btn btn-success pull-right savesub','id'=>'savesub']); ?>
-              </div> 
-        </div>
-      </div>
-    </div>
-  </div>
-    <?php ActiveForm::end(); ?>
+     
+    
 
 </div>
+
+
+<div class="panel-footer text-right">
+
+<?php echo Html::submitButton('Save', ['class' => 'btn btn-success   savesub','id'=>'savesub']); ?>
+</div>
+
+
+<?php ActiveForm::end(); ?>
+
+
 </div>
 </div>
 </div>
@@ -386,16 +388,12 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
              return false;
   });
   
-     $('#tripdetails-startdatetime').datetimepicker({ format: 'DD-MM-YYYY hh:mm:ss A', minDate: new Date()});
+    /* $('#tripdetails-startdatetime').datetimepicker({ format: 'DD-MM-YYYY hh:mm:ss A', minDate: new Date()});
      $('#tripdetails-enddatetime').datetimepicker({ format: 'DD-MM-YYYY hh:mm:ss A'});
-   /* $('body').on('click','#tripdetails-enddatetime',function(){
+    $('body').on('click','#tripdetails-enddatetime',function(){
 	
 	});*/
- 	$('#tripdetails-enddatetime').on('dp.change', function(e){ 
- 		var date = $("#tripdetails-startdatetime").val();
- 		//alert(date); console.log(date); 
- 	});
-
+  
       $("#tripdetails-customerid").select2({ placeholder: "Select a Customer"}); 
       $("#tripdetails-driverid").select2({ placeholder: "Select a Driver"});  
 
@@ -409,4 +407,40 @@ $("#tripdetails-driver_contact").on("input", function(evt) {
     evt.preventDefault();
   }
 });
+
+
+
   </script>
+  
+  
+     
+  
+  
+  
+  
+  
+  
+ 
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#tripdetails-startdatetime').datetimepicker({
+			format: 'DD-MM-YYYY hh:mm:ss A',
+			minDate: new Date()
+		});
+        $('#tripdetails-enddatetime').datetimepicker({
+			format: 'DD-MM-YYYY hh:mm:ss A',
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#tripdetails-startdatetime").on("dp.change", function (e) {
+            $('#tripdetails-enddatetime').data("DateTimePicker").minDate(e.date);
+        });
+        $("#tripdetails-enddatetime").on("dp.change", function (e) {
+            $('#tripdetails-startdatetime').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+</script>
+  
+  
+  

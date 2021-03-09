@@ -54,7 +54,8 @@ class ClientMasterController extends Controller
     {
         $searchModel = new ClientMasterSearch();
         $post = Yii::$app->request->post();
-        // echo "<pre>";print_r($post);die;
+       //  echo "<pre>";print_r($post);die;
+       // echo "<pre>"; print_r(Yii::$app->request->queryParams); die;
         $dataProvider = $searchModel->search($post);
 
         return $this->render('index', [

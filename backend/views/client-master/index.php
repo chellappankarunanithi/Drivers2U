@@ -3,9 +3,10 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
-use backend\models\SuperviserMaster;
+use backend\models\ClientMaster;
 use backend\models\SuperviserClientMap;
 use yii\helpers\ArrayHelper;
+use yii\data\Pagination;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\ClientMasterSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -24,9 +25,16 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
       <div class="box-body">
       <div class="table-responsive"> 
-<?php Pjax::begin(['id' => 'grid', 'timeout' => false ,'clientOptions' => ['method' => 'POST'] ]); ?>    <?= GridView::widget([
+<?php Pjax::begin(['id' => 'grid', 'timeout' => false , 'clientOptions' => ['method' => 'POST'] ]); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+       /* 'pager' => [ 
+          'linkOptions' => [
+
+            'data-pjax' => 0
+
+        ]  
+        ],*/
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -43,9 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                  'headerOptions' => ['style' => 'width:150px;color:#337ab7;'],
                'template'=>'{view}{update}',
                             'buttons'=>[
-                              'view' => function ($url, $model, $key) {
-                               
-                                   // return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
+                              'view' => function ($url, $model, $key) { 
                                    return Html::button('<i class="glyphicon glyphicon-eye-open"></i>', ['value' => $url, 'style'=>'margin-right:4px;','class' => 'btn btn-primary btn-xs view view gridbtncustom modalView', 'data-toggle'=>'tooltip', 'title' =>'View' ]);
                                 }, 
                              'update' => function ($url, $model, $key) {
@@ -66,10 +72,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                   },
                           ] ],
         ],
-    ]); ?>
-<?php Pjax::end(); ?></div></div>
+ 
+    ]);
+     ?>
+<?php Pjax::end(); ?>
+ 
+</div></div>
 </div></div>
 <script type="text/javascript">
+
      $('body').on("click",".modalView",function(){
             
              var url = $(this).attr('value');
