@@ -256,7 +256,7 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
                <?= $form->field($model, 'TripHours')->textInput(['class'=>'form-control input-sm'])->label("Total Trip Hours");?>
            </div>
             <div class="col-sm-2">      
-                 <?= $form->field($model, 'TripCost')->textInput(['class'=>'form-control input-sm','style'=>'text-align:right;'])->label("Trip Close Amount");?>
+                 <?= $form->field($model, 'TripCost')->textInput(['class'=>'form-control input-sm','style'=>'text-align:right;'])->label("Trip Closing Amount");?>
            </div>
       </div>
     </div> 

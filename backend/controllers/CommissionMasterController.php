@@ -103,7 +103,7 @@ class CommissionMasterController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $session = Yii::$app->session;
         if ($model->load(Yii::$app->request->post())) {
                 if(Yii::$app->request->isAjax){
                     Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;

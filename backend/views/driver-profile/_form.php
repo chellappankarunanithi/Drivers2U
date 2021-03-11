@@ -96,17 +96,23 @@ use yii\widgets\ActiveForm;
 </div>
 <div class="row">
    
-      <div class='col-sm-4 form-group' >
+      <div class='col-sm-3 form-group' >
         <?= $form->field($model, 'mobile_number',['enableAjaxValidation'=>true])->textInput(['maxlength' => 10,'class'=>'without_decimal12 form-control']) ?>
     </div>
   
-  <div class='col-sm-6 form-group' >
+  <div class='col-sm-5 form-group' >
     <?= $form->field($model, 'address')->textarea(['rows' => 3]) ?>
   </div>
-
+ <div class='col-sm-2 form-group WorkingStatus' style="display: none;">
+        <?= $form->field($model, 'workstart_time')->textInput()->label("Work Start Time"); ?>
+    </div>
+  
+  <div class='col-sm-2 form-group WorkingStatus' style="display: none;">
+    <?= $form->field($model, 'workend_time')->textInput()->label("Work Start Time");; ?>
+  </div>
 </div>
+  
  
-
  <?php
              echo  $form->field($model, 'profile_photos')->hiddenInput(['maxlength' => true,'value'=>$model->profile_photo])->label(false);
             echo  $form->field($model, 'licence_copys')->hiddenInput(['maxlength' => true,'value'=>$model->licence_copy])->label(false);
@@ -215,7 +221,7 @@ use yii\widgets\ActiveForm;
 </div>
 <script>
   $(function() {
-    $('#driverprofile-dob').datetimepicker({ format: 'DD-MM-YYYY'});
+    $('#driverprofile-dob').datetimepicker({ format: 'DD-MM-YYYY',maxDate: new Date()});
     $('#driverprofile-workstart_time').datetimepicker({ format: 'hh:mm:ss A'});
     $('#driverprofile-workend_time').datetimepicker({ format: 'hh:mm:ss A'});
 });

@@ -3,11 +3,18 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=isofficial_drivers2u',
+            'dsn' => 'mysql:host=localhost;dbname=drivers2udb',
+            'username' => 'root',
+            'password' => '1st',
+            'charset' => 'utf8',
+        ],
+      /*  'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=localhost;dbname=isofficial_drivers2u ',
             'username' => 'isofficial_drivers2u',
             'password' => 'zwYdGyQmK',
             'charset' => 'utf8',
-        ],
+        ],*/
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@common/mail',

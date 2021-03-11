@@ -19,7 +19,7 @@ class ClientMasterSearch extends ClientMaster
     {
         return [
             [['id', 'mobile_no', 'pincode', 'user_id'], 'integer'],
-            [['company_name', 'client_name','address', 'email_id', 'website', 'created_at', 'modified_at', 'updated_ipaddress'], 'safe'],
+            [['company_name', 'client_name','Landmark','address','status', 'email_id', 'website', 'created_at', 'modified_at', 'updated_ipaddress'], 'safe'],
         ];
     }
 
@@ -76,7 +76,8 @@ class ClientMasterSearch extends ClientMaster
             ->andFilterWhere(['like', 'pincode', $this->pincode])
             ->andFilterWhere(['like', 'mobile_no', $this->mobile_no])
             ->andFilterWhere(['like', 'email_id', $this->email_id])
-            ->andFilterWhere(['like', 'website', $this->website]) 
+            ->andFilterWhere(['like', 'Landmark', $this->Landmark]) 
+            ->andFilterWhere(['like', 'status', $this->status]) 
             ->andFilterWhere(['like', 'updated_ipaddress', $this->updated_ipaddress]);
 
         return $dataProvider;

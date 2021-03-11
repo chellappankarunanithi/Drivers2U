@@ -269,7 +269,7 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
               <div class="col-sm-2">
                 <div class="form-group">
                   <label class="form-label required">Trip Type</label><span style="color: red; font-size: 15px;">*</span>
-                    <?= $form->field($model, 'TripType')->dropDownList(array('One Way'=>'One Way','Round Trip'=>'Round Trip'),['class'=>'form-control input-sm','prompt'=>"Select"])->label(false)?>
+                    <?= $form->field($model, 'TripType')->dropDownList(array('Drop'=>'Drop','Round Trip'=>'Round Trip'),['class'=>'form-control input-sm','prompt'=>"Select"])->label(false)?>
                 </div>
               </div>
                <div class="col-sm-2">
@@ -278,13 +278,13 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
                     <?= $form->field($model, 'TripLocationType')->dropDownList(array('Local'=>'Local','Out Station'=>'Out Station'),['class'=>'form-control input-sm','prompt'=>"Select"])->label(false)?>
                 </div>
               </div>
-              <div class="col-sm-5"> 
+              <div class="col-sm-4"> 
                 <div class="f orm-group"> 
                  <label class="form-label">Pickup Location</label>
                        <?= $form->field($model, 'TripStartLoc')->textarea(['row'=>3,'class'=>'form-control input-sm'])->label(false)?>
                 </div>
               </div>  
-              <div class="col-sm-5"> 
+              <div class="col-sm-4"> 
                 <div class="f orm-group"> 
                  <label class="form-label">Drop Location</label>
                        <?= $form->field($model, 'TripEndLoc')->textarea(['row'=>3,'class'=>'form-control input-sm'])->label(false)?>

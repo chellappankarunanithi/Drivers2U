@@ -198,7 +198,7 @@ class DriverProfileController extends Controller
               $confiq->config_value = $cust_id+1;
               $confiq->save(); 
             return $this->redirect(['driver-management']);
-            }else {
+            }else { echo "<pre>"; print_r($model->getErrors()); die;
             return $this->render('create', [
                 'model' => $model,
             ]);

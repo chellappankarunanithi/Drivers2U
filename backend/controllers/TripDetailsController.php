@@ -90,6 +90,7 @@ class TripDetailsController extends Controller
                         $model->EndDateTime = date('Y-m-d H:i:s', strtotime($_POST['TripDetails']['EndDateTime']));
                     }
                 }
+            $model->TripType = $_POST['TripDetails']['TripType'];
             $model->TripLocationType = $_POST['TripDetails']['TripLocationType'];
             $model->UpdatedIpaddress = $_SERVER['REMOTE_ADDR'];
             $model->TripStatus = 'Booked';
@@ -169,6 +170,7 @@ class TripDetailsController extends Controller
                 }
             }
             $model->TripStatus = 'Booked';
+            $model->TripType = $_POST['TripDetails']['TripType'];
             $model->TripLocationType = $_POST['TripDetails']['TripLocationType'];
             $model->UpdatedIpaddress = $_SERVER['REMOTE_ADDR'];
 
@@ -230,6 +232,7 @@ class TripDetailsController extends Controller
                     $model->EndDateTime = date('Y-m-d H:i:s', strtotime($_POST['TripDetails']['EndDateTime']));
                 }
             }
+            $model->TripType = $_POST['TripDetails']['TripType'];
             $model->TripLocationType = $_POST['TripDetails']['TripLocationType'];
             $model->TripStatus = 'Activated';
             $model->ChangeTrip = 'Yes'; 
