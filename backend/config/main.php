@@ -56,7 +56,7 @@ return [
             'web'=> '/backend/web',
 
             'adminUrl' => '/admin',
-            'baseUrl' => '/2021/drives2u',
+            'baseUrl' => '/drives2u',
 
         ],
        
