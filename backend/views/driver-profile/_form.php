@@ -82,48 +82,42 @@ use yii\widgets\ActiveForm;
     </div>
 </div>
 <div class="row">
-   
-      <div class='col-sm-2 form-group' >
-        <?= $form->field($model, 'mobile_number')->textInput(['maxlength' => 10,'class'=>'without_decimal12 form-control']) ?>
+ 
+    <div class='col-sm-4 form-group' >
+        <?= $form->field($model, 'LicenceNumber')->textInput(['maxlength' => true]) ?>
     </div>
-    <div class='col-sm-3 form-group' >
-        <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <div class='col-sm-4 form-group' >
+        <?= $form->field($model, 'VoteridNumber')->textInput(['maxlength' => true]) ?>
     </div>
-     <div class='col-sm-3 form-group' >
+     <div class='col-sm-4 form-group' >
      <?= $form->field($model, 'aadhar_no')->textInput(['maxlength' => 16,'class'=>'without_decimal12 form-control']) ?>
 </div>
-  <div class='col-sm-4 form-group' >
+
+</div>
+<div class="row">
+   
+      <div class='col-sm-4 form-group' >
+        <?= $form->field($model, 'mobile_number',['enableAjaxValidation'=>true])->textInput(['maxlength' => 10,'class'=>'without_decimal12 form-control']) ?>
+    </div>
+  
+  <div class='col-sm-6 form-group' >
     <?= $form->field($model, 'address')->textarea(['rows' => 3]) ?>
   </div>
 
 </div>
-<div class="row">
-  
-      <div class='col-sm-4 form-group WorkingStatus' style="display: none;">
-        <?= $form->field($model, 'workstart_time')->textInput(['maxlength' => true]) ?>
-    </div>
-    <div class='col-sm-4 form-group WorkingStatus' style="display: none;">
-        <?= $form->field($model, 'workend_time')->textInput(['maxlength' => true]) ?>
-    </div>
-     
-
-</div>
-
  
-<div class="row">
-    <div class='col-sm-6 form-group' >
-    <?php 
-     // if(!$model->isNewRecord){
-            echo  $form->field($model, 'profile_photos')->hiddenInput(['maxlength' => true,'value'=>$model->profile_photo])->label(false);
+
+ <?php
+             echo  $form->field($model, 'profile_photos')->hiddenInput(['maxlength' => true,'value'=>$model->profile_photo])->label(false);
             echo  $form->field($model, 'licence_copys')->hiddenInput(['maxlength' => true,'value'=>$model->licence_copy])->label(false);
             echo  $form->field($model, 'aadhar_copys')->hiddenInput(['maxlength' => true,'value'=>$model->aadhar_copy])->label(false);
             echo  $form->field($model, 'RationcardCopys')->hiddenInput(['maxlength' => true,'value'=>$model->RationcardCopy])->label(false);
             echo  $form->field($model, 'PoliceVerificationLetterCopys')->hiddenInput(['maxlength' => true,'value'=>$model->PoliceVerificationLetterCopy])->label(false);
-           // echo  $form->field($model, 'VoteridCopys')->hiddenInput(['maxlength' => true,'value'=>$model->VoteridCopy])->label(false);
-    //  }
 
-
-     ?>
+  ?>
+<div class="row">
+    <div class='col-sm-6 form-group' >
+   
       <?php if(isset($_GET['id'])){
                 
                echo $form->field($model, 'profile_photo')->fileInput([ 'value'=>$model->profile_photo, 'class' => 'btn btn-primary']);  

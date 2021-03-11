@@ -230,22 +230,33 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
       <div class="card-body" style="border: 1px solid #c7c6c6;padding: 10px;">
         <div class="row">
           <div class="col-sm-12"> 
-           <div class="col-sm-3">    
+           <div class="col-sm-2">    
             <?php //echo "<pre>"; print_r($model); die; ?>
               <?= $form->field($model, 'CommissionType')->dropDownList(array('Percentage'=>'Percentage','Flat'=>'Flat'),['class'=>'form-control input-sm','style'=>'width: 100%;','prompt'=>'Select'])->label("Commission Type"); ?>         
            </div> 
-           <div class="col-sm-3 CommissionPercentage" style="display: none;">   
+           <div class="col-sm-2 CommissionPercentage" style="display: none;">   
               <?php $commission =  ArrayHelper::map(CommissionMaster::find()->where(['Status'=>"Active"])->asArray()->all(),'id','CommissionValue');  ?>
               <?= $form->field($model, 'CommissionId')->dropDownList($commission,['class'=>'form-control input-sm','style'=>'width: 100%;','prompt'=>'Select'])->label("Commission Value %"); ?>         
            </div>
-           <div class="col-sm-3 CommissionValue" style="display: none;">        
+           <div class="col-sm-2 CommissionValue" style="display: none;">        
                <?= $form->field($model, 'CommissionValue')->textInput(['class'=>'form-control input-sm','style'=>'text-align:right;'])->label("Commission Value");?>
            </div>
-            <div class="col-sm-3">        
-               <?= $form->field($model, 'TripKilometers')->textInput(['class'=>'form-control input-sm','style'=>'text-align:right;'])->label("Kilometers Driven");?>
+            <div class="col-sm-2">         
+                 <label class="form-label">Trip End Date & Time</label><span style="color: red; font-size: 15px;">*</span>
+                      <?php 
+                       $date = date('d-m-Y h:i:s A', strtotime($model->EndDateTime)); 
+                       
+                      if (strpos($date, '0000') || strpos($date, '1970')) {  
+                          $date = "-";
+                      } 
+                      echo $form->field($model, 'EndDateTime')->textInput(['maxlength' => true, 'value'=>$date, 'class'=>'form-control input-sm'])->label(false); 
+                      ?> 
            </div>
-            <div class="col-sm-3">      
-                 <?= $form->field($model, 'TripCost')->textInput(['class'=>'form-control input-sm','style'=>'text-align:right;'])->label("Trip Cost");?>
+           <div class="col-sm-2">        
+               <?= $form->field($model, 'TripHours')->textInput(['class'=>'form-control input-sm'])->label("Total Trip Hours");?>
+           </div>
+            <div class="col-sm-2">      
+                 <?= $form->field($model, 'TripCost')->textInput(['class'=>'form-control input-sm','style'=>'text-align:right;'])->label("Trip Close Amount");?>
            </div>
       </div>
     </div> 
@@ -413,7 +424,7 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
   }
 
 });
- 
+ $('#tripdetails-enddatetime').datetimepicker({ format: 'DD-MM-YYYY hh:mm:ss A',minDate: new Date()});
   $('body').on('click','#addmore',function(){
              var PageUrl = '<?php echo Yii::$app->homeUrl;?>customer-trip-create';
              $('#operationalheader').html('<span> <i class="fa fa-fw fa-th-large"></i>Add New Customer</span>');
@@ -434,7 +445,7 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
   });
  
  
-$("#tripdetails-tripcost,#tripdetails-tripkilometers").on("input", function(evt) { 
+$("#tripdetails-tripcost").on("input", function(evt) { 
   var self = $(this); 
   self.val(self.val().replace(/[^0-9]/g, ''));
   if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57))

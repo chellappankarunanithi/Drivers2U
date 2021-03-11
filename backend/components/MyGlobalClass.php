@@ -2,21 +2,17 @@
 namespace backend\components; 
 use Yii;
 use yii\helpers\Html;
+
+
+
 class MyGlobalClass extends \yii\base\Component{
     public function init() {
-   /* require  "../../vendor/guzzle/guzzle.phar";
-    require  "../../vendor/bugsnag/utility/bugsnag.phar";
-      $bugsnag = \Bugsnag\Client::make('715d69a81cdd465e94c58748d7d0c527');
-          //$bugsnag->notifyException(new \RuntimeException("Test errordddddddddd"));
-       //  \Bugsnag\Handler::registerWithPrevious($bugsnag);
-        \Bugsnag\Handler::register($bugsnag);
-        */
+
         $session=Yii::$app->session;
-      $request = Yii::$app->request;
+        $request = Yii::$app->request;
         
         $s_G=$_SERVER['QUERY_STRING'];
         $s_G=trim($s_G); 
- 
         $get_array=explode('/', $_SERVER['REQUEST_URI']);
         $get_uri=end($get_array);
 

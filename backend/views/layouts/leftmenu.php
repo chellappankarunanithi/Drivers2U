@@ -14,6 +14,26 @@ use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use backend\models\LeftmenuManagement;
 use backend\models\IntegratedFunctionMenuMapping;
+?>
+<style type="text/css">
+    .main-sidebar{ 
+    background: #15167e !important;  
+    color: #fff !important;
+	
+	  
+ }
+ .skin-purple-light .sidebar a {
+    color: #fff;
+}
+.treeview.active a {
+    background-color: #e67a02!important;
+}
+.skin-purple-light .wrapper, .skin-purple-light .main-sidebar, .skin-purple-light .left-side {
+    background-color: #15167e;
+}
+</style>
+
+<?php
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $session = Yii::$app->session;
 $actual_link = explode('admin/', $actual_link);
@@ -159,9 +179,4 @@ $returnContent .= ' <section class="sidebar" style="height: auto;">
 echo $returnContent;
 ?>
 
-<style type="text/css">
-    .treeview.active a{
-        background-color: #ecf0f5!important;
-    }
-
-</style>
+ 

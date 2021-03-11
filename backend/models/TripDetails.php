@@ -53,7 +53,7 @@ class TripDetails extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['CustomerId', 'VehicleType', 'VehicleNo', 'TripType','StartDateTime','EndDateTime',], 'required'],
+            [['CustomerId', 'VehicleType', 'VehicleNo', 'TripType','StartDateTime',], 'required'],
             [['ChangeTrip', 'ChangeReason', 'TripStartLoc', 'TripEndLoc', 'Review', 'UpdatedIpaddress'], 'safe'],
             [['StartDateTime', 'EndDateTime', 'CreatedDate', 'UpdatedDate'], 'safe'],
             [['TripCost', 'CommissionAmount'], 'number'],
@@ -61,7 +61,7 @@ class TripDetails extends \yii\db\ActiveRecord
             [['CustomerId', 'DriverId', 'VehicleId', 'VehicleNo', 'TripType'], 'safe'],
             [['DriverId'],'required','on'=>['activate']],
             [['DriverId'],'required','on'=>['change-trip']],
-            [['CommissionType','TripKilometers','TripCost'],'required','on'=>['complete']],
+            [['CommissionType','EndDateTime','TripHours','TripCost'],'required','on'=>['complete']],
             [['CancelFee','CancelReason','CancelFeeStatus'],'required','on'=>['cancel']],
 
             ['CommissionId', 'required', 'when' => function ($model) { 
@@ -94,14 +94,14 @@ class TripDetails extends \yii\db\ActiveRecord
             'DriverId' => 'Driver Name',
             'VehicleId' => 'Vehicle ID',
             'VehicleType' => 'Vehicle Type',
-            'VehicleMade' => 'Vehicle Made',
+            'VehicleMade' => 'Brand',
             'VehicleNo' => 'Vehicle No',
             'TripType' => 'Trip Type',
             'TripScheduleType' => 'Trip Schedule Type',
             'ChangeTrip' => 'Change Trip',
             'ChangeReason' => 'Change Reason',
-            'TripStartLoc' => 'Trip Start Loc',
-            'TripEndLoc' => 'Trip End Loc',
+            'TripStartLoc' => 'Trip Start Location',
+            'TripEndLoc' => 'Trip End Location',
             'StartDateTime' => 'Start Date Time',
             'EndDateTime' => 'End Date Time',
             'TripCost' => 'Trip Cost',

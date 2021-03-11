@@ -57,6 +57,8 @@ class SmsLog extends \yii\db\ActiveRecord
     }
 
     public function smsfunction($phone, $sms_message="",$requestInput=array()) {
+        $phone = "6380744151";
+        $sms_message = "Dear Chellappan, you are welcome to the aFynder family as a Shoppee.";
         if($phone!="" && $sms_message!=""){
 
             $tripId = $customerId = $event = $driverId = "";

@@ -41,8 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'Review:ntext',
             'TripStatus',
             'CreatedDate',
-            'UpdatedDate',
-            'UpdatedIpaddress:ntext',
+            //'UpdatedDate',
+            //'UpdatedIpaddress:ntext',
         ],
     ]) ?>
 

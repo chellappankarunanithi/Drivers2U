@@ -38,11 +38,12 @@ class ClientMaster extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_name','mobile_no', 'client_name','address','email_id','pincode'], 'required'],
+            [['company_name','mobile_no', 'client_name','address', 'Landmark','pincode'], 'required'],
             [['mobile_no', 'pincode'], 'integer'], 
             [['created_at', 'modified_at','address','company_name', 'client_name', 'website', 'updated_ipaddress','email_id'], 'safe'],
            // [['company_name', 'client_name', 'website', 'updated_ipaddress'], 'string', 'max' => 255],
-          //  [['email_id'], 'string', 'max' => 100],
+            [['mobile_no'], 'unique'],
+            [['email_id'], 'email'],
         ];
     }
 

@@ -6,8 +6,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\CommissionMaster */
 
 $this->title = 'Update Commission Management: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Commission Management', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => 'Commission Management', 'url' => ['index']]; 
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="commission-master-update"> 

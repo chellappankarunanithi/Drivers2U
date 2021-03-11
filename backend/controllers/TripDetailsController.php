@@ -90,8 +90,9 @@ class TripDetailsController extends Controller
                         $model->EndDateTime = date('Y-m-d H:i:s', strtotime($_POST['TripDetails']['EndDateTime']));
                     }
                 }
+            $model->TripLocationType = $_POST['TripDetails']['TripLocationType'];
             $model->UpdatedIpaddress = $_SERVER['REMOTE_ADDR'];
-            $model->TripStatus = 'Created';
+            $model->TripStatus = 'Booked';
             $confiq = GeneralConfiguration::findOne(['config_key'=>'tripid']);
                $cust_id='1';
             if ($confiq) {
@@ -167,7 +168,8 @@ class TripDetailsController extends Controller
                     $model->EndDateTime = date('Y-m-d H:i:s', strtotime($_POST['TripDetails']['EndDateTime']));
                 }
             }
-            $model->TripStatus = 'Created';
+            $model->TripStatus = 'Booked';
+            $model->TripLocationType = $_POST['TripDetails']['TripLocationType'];
             $model->UpdatedIpaddress = $_SERVER['REMOTE_ADDR'];
 
             
@@ -228,6 +230,7 @@ class TripDetailsController extends Controller
                     $model->EndDateTime = date('Y-m-d H:i:s', strtotime($_POST['TripDetails']['EndDateTime']));
                 }
             }
+            $model->TripLocationType = $_POST['TripDetails']['TripLocationType'];
             $model->TripStatus = 'Activated';
             $model->ChangeTrip = 'Yes'; 
             $model->ChangeDate = date('Y-m-d H:i:s');
@@ -367,7 +370,7 @@ class TripDetailsController extends Controller
     {
         $searchModel = new TripDetailsSearch();
         $post = Yii::$app->request->post();
-        $dataProvider = $searchModel->search($post,"Created");
+        $dataProvider = $searchModel->search($post,"Booked");
 
         return $this->render('createindex', [
             'searchModel' => $searchModel,
@@ -411,27 +414,23 @@ class TripDetailsController extends Controller
 
     public function actionOtpsave($id="")
     { 
-        if (Yii::$app->request->post()) {
+        if (Yii::$app->request->post()) { //echo "<pre>"; print_r($_POST); die;
               $model = new AllenOtpLog();
-              $model->mobile_number = $_POST['contactno'];
-              $model->TripId = $_POST['tripid'];
-              $model->OtpFor = $_POST['otpfor'];
-              $model->CustomerId = $_POST['CustomerId'];
+              $model->mobile_number = $_POST['ClientMaster']['mobile_no'];
+              $model->OtpFor = "Customer Registration";
+              $model->CustomerId = $id;
               $model->otp_number = rand(9999,999);
               $model->status = "S";
               if($model->save()){  
                 ## OTP SMS 
                               $customercontact="6380744151";
-                              $customer = ClientMaster::findOne($model->CustomerId);
+                              $customer = ClientMaster::findOne($id);
                               if (!empty($customer)) {
                               //  $customercontact = $customer->mobile_no;
-                              }
-                              $tripmodel = $this->findModel($_POST['tripid']);
-                              $requestInput = array();
-                              $requestInput['tripId'] = $tripmodel->id;
-                              $requestInput['customerId'] = $tripmodel->CustomerId;
-                              $requestInput['driverId'] = $tripmodel->DriverId;
-                              $requestInput['event'] = "Activate OTP";
+                              } 
+                              $requestInput = array(); 
+                              $requestInput['customerId'] = $id;
+                              $requestInput['event'] = "Register OTP";
                               $callFun = new SmsLog();
                               $smscontent="this is test sms";
                               if($customercontact!=""){ 
@@ -449,38 +448,19 @@ class TripDetailsController extends Controller
 
      public function actionOtpverification($id="")
     { 
-        if (Yii::$app->request->post()) { //echo "<pre>"; print_r($_POST); die;
-              $model = AllenOtpLog::find()->where(['otp_number'=>$_POST['otp_number']])->andWhere(['tripid'=>$_POST['tripid']])
-              ->andWhere(['status'=>'S'])->one();
+        if (Yii::$app->request->post()) { // echo "<pre>"; print_r($_POST); die;
+              $model = AllenOtpLog::find()->where(['otp_number'=>$_POST['otp_number']])->andWhere(['mobile_number'=>$_POST['ClientMaster']['mobile_no']])->andWhere(['status'=>'S'])->one();
               if (!empty($model)) {
                    $model->status = "A";
                 if($model->save()){ 
-                  $tripmodel = TripDetails::find()->where(['id'=>$_POST['tripid']])->andWhere(['TripStatus'=>"Created"])->one();
-                  if (!empty($tripmodel)) {
+                  $clientmodel = ClientMaster::find()->where(['id'=>$_POST['id']])->andWhere(['status'=>"Register"])->one();
+                  if (!empty($clientmodel)) {
                     if ($_POST['otpfor']=="Activate") {
-                      $tripmodel->TripStatus = "Activated"; 
-                          if (array_key_exists('driverid', $_POST)) {
-                            if ($_POST['driverid']!="") {
-                                $tripmodel->DriverId = $_POST['driverid'];
-                                $drivermodel = DriverProfile::find()->where(['id'=>$_POST['driverid']])->one();
-                              if ($drivermodel) {
-                                $drivermodel->available_status= "1";
-                                $drivermodel->save();
-                              }
-                            }
-                          } 
-                  
-                    }else if ($_POST['otpfor']=="Cancel") {
-                      $tripmodel->TripStatus = "Cancelled";
+                      $clientmodel->status = "Active"; 
                     }
-                    $tripmodel->save();
+                    $clientmodel->save();
 
-                    $requestInput = array();
-                    $requestInput['tripId'] = $tripmodel->id;
-                    $requestInput['tripStatus'] = $tripmodel->TripStatus;
-                    $requestInput['apiMethod'] = 'Activate'; 
-                    $callFun = new TripLog();
-                    $response = $callFun->tripLog($requestInput);
+                 
 
                   }
                     return 1;
@@ -499,6 +479,32 @@ class TripDetailsController extends Controller
     {
         $model = $this->findModel($id);
         $model->scenario="activate";
+        if ($_POST) { 
+                    
+                      $model->TripStatus = "Activated"; 
+                          if (array_key_exists('DriverId', $_POST['TripDetails'])) {
+                            if ($_POST['TripDetails']['DriverId']!="") {
+                                $model->DriverId = $_POST['TripDetails']['DriverId'];
+                                $drivermodel = DriverProfile::find()->where(['id'=>$_POST['TripDetails']['DriverId']])->one();
+                              if ($drivermodel) {
+                                $drivermodel->available_status= "1";
+                                $drivermodel->save();
+                              }
+                            }
+                          } 
+                  
+                     
+                    $model->save();
+
+                    $requestInput = array();
+                    $requestInput['tripId'] = $model->id;
+                    $requestInput['tripStatus'] = $model->TripStatus;
+                    $requestInput['apiMethod'] = 'Activate'; 
+                    $callFun = new TripLog();
+                    $response = $callFun->tripLog($requestInput); 
+                    Yii::$app->getSession()->setFlash('success', 'Trip Activated Successfully.');
+                    return $this->redirect(['trip-index']);
+        }
             if ($model->TripStatus=="Activated") { // echo "as"; die;
                  return $this->render('response', [
                     'model' => $model,
@@ -546,17 +552,13 @@ class TripDetailsController extends Controller
                   }
                   $commissiontype = $_POST['TripDetails']['CommissionType'];
               } 
-              if (array_key_exists("TripKilometers", $_POST['TripDetails'])) {
-                if ($_POST['TripDetails']['TripKilometers']!="") { 
-                      $drivenkms = $_POST['TripDetails']['TripKilometers'];
+              if (array_key_exists("TripHours", $_POST['TripDetails'])) {
+                if ($_POST['TripDetails']['TripHours']!="") { 
+                      $TripHours = $_POST['TripDetails']['TripHours'];
                 }
               }
 
-              if (array_key_exists("TripKilometers", $_POST['TripDetails'])) {
-                if ($_POST['TripDetails']['TripKilometers']!="") { 
-                      $drivenkms = $_POST['TripDetails']['TripKilometers'];
-                }
-              }
+              
               $PreviousPending=0;
               $TotalAmountPaid=0;
               $CancelLogId="";
@@ -579,10 +581,17 @@ class TripDetailsController extends Controller
               if ($CancelLogId!="") {
                 $model->CancelFeeStatus = 'Yes';
               }
+
+                if (array_key_exists('EndDateTime', $_POST['TripDetails'])) {
+                    if ($_POST['TripDetails']['EndDateTime']!="") {
+                        $model->EndDateTime = date('Y-m-d H:i:s', strtotime($_POST['TripDetails']['EndDateTime']));
+                    }
+                }
+
                 $model->PreviousPending = $PreviousPending;
                 $model->TotalAmountPaid = $TotalAmountPaid;
                 $model->TripCost = $tripcost;
-                $model->TripKilometers =  $drivenkms;
+                $model->TripHours =  $TripHours;
                 $model->CommissionType =  $commissiontype;
                 $model->AdminCommission = $admincommission;
                 $model->CommissionValue = $admincommission;
@@ -789,15 +798,15 @@ class TripDetailsController extends Controller
         $model->save();
         return $this->redirect(['trip-index']); 
       }else{
-          if ($model->rating!="") {
+          /*if ($model->rating!="") {
             Yii::$app->getSession()->setFlash('success', 'Rating Completed Successfully.');
               return $this->redirect(['trip-index']); 
-          }else{
+          }else{*/
             return $this->renderAjax('trip-rating', [
                 'model' => $this->findModel($id),
             ]);
 
-          }
+         // }
       }
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use backend\models\SuperviserMaster;
 use yii\helpers\ArrayHelper;
@@ -39,8 +40,8 @@ use kartik\select2\Select2;
     border: 1px solid #aaa;
     }
 </style>
-<link rel="stylesheet" type="text/css" media="screen" href="dist/css/select2.css" />
- <script  src="dist/js/select2.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo Url::base(true)?>/dist/css/select2.css" />
+ <script  src="<?php echo Url::base(true)?>/dist/js/select2.js"></script>
 <div id="page-content">
    <div class="">
       <div class="eq-height">
@@ -52,9 +53,11 @@ use kartik\select2\Select2;
 <div class="row">
      <div class='col-sm-4 form-group' >
         <?= $form->field($model, 'client_name')->textInput(['maxlength' => true])->label('Customer Name') ?>
+        <div id="customererror" style="color: #e61717;" class="help-block"></div>
     </div>
     <div class='col-sm-4 form-group' >
-        <?= $form->field($model, 'mobile_no')->textInput(['maxlength' => 10, 'class'=>'form-control without_decimal12']) ?>
+        <?= $form->field($model, 'mobile_no',['enableAjaxValidation'=>true])->textInput(['maxlength' => 10, 'class'=>'form-control without_decimal12']) ?>
+        <div id="mobile_noerror" style="color: #e61717;" class="help-block"></div>
     </div>
     <div class='col-sm-4 form-group' >
         <?= $form->field($model, 'email_id')->textInput(['maxlength' => true]) ?>
@@ -63,15 +66,24 @@ use kartik\select2\Select2;
 <div class="row">
 
  <div class='col-sm-4 form-group' >
+        <?= $form->field($model, 'Landmark')->textInput(['maxlength' => true]) ?>
+        <div id="landmarkerror" style="color: #e61717;" class="help-block"></div>
+    </div>
+ <div class='col-sm-4 form-group' >
     <?= $form->field($model, 'address')->textarea(['rows' => 3]) ?>
+    <div id="addresserror" style="color: #e61717;" class="help-block"></div>
 </div>
 <div class='col-sm-4 form-group' >
     <?= $form->field($model, 'pincode')->textInput(['maxlength' => 6]) ?>
+    <div id="pincodeerror" style="color: #e61717;" class="help-block"></div>
     <?= $form->field($model, 'hidden_Input')->hiddenInput(['id'=>'hidden_Input','class'=>'form-control','value'=>$token_name])->label(false)?>
 </div>
 
 
-<div class='col-sm-4 form-group' style="margin-top: 25px;">
+
+</div>
+<div class=" ">
+     <div class='col-sm-12   pull-right'  >
          <?php 
           if($model->isNewRecord){
           $model->status = 1;
@@ -83,20 +95,20 @@ use kartik\select2\Select2;
             }
           } ?> 
          <?= $form->field($model, 'status', [
-            'template' => "<div class='checkbox checkbox-custom' style='margin-top:10px; margin-left:20px;'>{input}<label>Active</label></div>{error}",
+            'template' => "<div class='checkbox checkbox-custom' style='margin-top:10px; margin-left:20px; float:right;'>{input}<label>Active</label></div>{error}",
             ])->checkbox([],false)->label('Status'); ?>  
      
         
   
 </div>
-
-</div>
-<div class="row">
-     
 </div>
 </div>
+ 
 <div class="panel-footer text-right">
-<?= Html::submitButton($model->isNewRecord ? 'Save' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?> 
+ 
+  <?= Html::submitButton($model->isNewRecord ? 'Save' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>  
+ 
+ 
 </div>
 
   <?php ActiveForm::end(); ?>
@@ -106,8 +118,8 @@ use kartik\select2\Select2;
 </div>
 </div>
 <script type="text/javascript">
-    $(".without_decimal12").on("input", function(evt) {
-    
+   
+    $(".without_decimal12").on("input", function(evt) { 
    var self = $(this);
    self.val(self.val().replace(/[^0-9]/g, ''));
    if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) 
@@ -126,18 +138,12 @@ use kartik\select2\Select2;
  });
 
    
-  $("#clientmaster-client_name").on("keypress", function(e) { 
-   /*if (!/[a-z]/i.test(String.fromCharCode(e.which))) {
-        return false;
-    }*/
+  $("#clientmaster-client_name").on("keypress", function(e) {  
   if(e.which === 8){
      return true;
   }else if ((!/^[a-zA-Z\. ]*$/.test(String.fromCharCode(e.which )))) {
         return false;
     }
-});
-
-           
- 
+}); 
          
 </script>

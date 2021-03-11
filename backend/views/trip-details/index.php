@@ -74,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                       'aria-label' => Yii::t('yii', 'Update'),
                                       'data-pjax' => '0',
                                   ]);
-                                  if ($model->TripStatus=="Created") {
+                                  if ($model->TripStatus=="Booked") {
                                   return Html::a('<span class="fa fa-edit"></span>', $url, $options);
                                   }
                               },
@@ -114,7 +114,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'aria-label' => Yii::t('yii', 'Activate the Trip'),
                                             'data-pjax' => '0',
                                         ]);
-                                       if ($model->TripStatus=="Created") {  
+                                       if ($model->TripStatus=="Booked") {  
                                         $url = Url::base(true).'/activate/'.$model->id;
 
                                         if (!strpos('0000', $model->StartDateTime) && !strpos('1970', $model->StartDateTime)) {
@@ -162,9 +162,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                   }, 
 
                                   'rating' => function ($url, $model, $key) {
-                                        if ($model->TripStatus=="Completed" && $model->rating=="") {  
+                                        if ($model->TripStatus=="Completed") {  
                                            $url = Url::base(true).'/trip-rating/'.$model->id;
-                                           return Html::button('<span class="fa fa-star"></span> Rating', ['value' => $url, 'style'=>'margin-right:4px;','class' => 'btn btn-warning btn-xs view view gridbtncustom rating', 'data-toggle'=>'tooltip', 'title' =>'Coming Soon' ]);
+                                           return Html::button('<span class="fa fa-star"></span> Rating', ['value' => $url, 'style'=>'margin-right:4px;','class' => 'btn btn-warning btn-xs view view gridbtncustom rating', 'data-toggle'=>'tooltip', 'title' =>'Rate the Trip' ]);
                                          }
                                   },
                                   'cancel' => function ($url, $model, $key) {   

@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 <div class="row">
     <div class='col-sm-4 form-group'>
-    <?= $form->field($model, 'CommissionValue')->textInput(['maxlength' => 2,'style'=>'text-align:right;']) ?>
+    <?= $form->field($model, 'CommissionValue',['enableAjaxValidation'=>true])->textInput(['maxlength' => 2,'style'=>'text-align:right;']) ?>
 	</div>
 	 <div class='col-sm-4 form-group' >
     <?= $form->field($model, 'Status')->dropDownList([ 'Active' => 'Active', 'Inactive' => 'Inactive']) ?>

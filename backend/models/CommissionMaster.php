@@ -33,6 +33,7 @@ class CommissionMaster extends \yii\db\ActiveRecord
              
             [['CreatedDate', 'UpdatedDate'], 'safe'],
             [['CommissionValue','Status'], 'required'],
+            [['CommissionValue'], 'unique'],
         ];
     }
 

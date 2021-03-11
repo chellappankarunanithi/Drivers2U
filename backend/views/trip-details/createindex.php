@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="box box-primary  ">
    
         <div class=" box-header with-border box-header-bg"> 
-   <h3 class="box-title pull-left " ><?= Html::encode("Created Trips") ?></h3>
+   <h3 class="box-title pull-left " ><?= Html::encode("Booked Trips") ?></h3>
    <?= Html::a('Add New Trip', ['create'], ['class' => 'btn btn-success pull-right']) ?>
     </div>
       <div class="box-body">
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                               
                                 'activate' => function ($url, $model, $key) { 
                                    
-                                      if ($model->TripStatus=="Created") {  
+                                      if ($model->TripStatus=="Booked") {  
                                         $url = Url::base(true).'/activate/'.$model->id;
 
                                         if (!strpos('0000', $model->StartDateTime) && !strpos('1970', $model->StartDateTime)) {
@@ -119,7 +119,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                   }, 
                                    'cancel' => function ($url, $model, $key) { 
                                    
-                                      if ($model->TripStatus=="Created") {
+                                      if ($model->TripStatus=="Booked") {
                                         
                                         $options = array_merge([
                                             'class' => 'btn btn-warning btn-xs update gridbtncustom',

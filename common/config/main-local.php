@@ -3,9 +3,9 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=isofficial_drivers2u',
-            'username' => 'isofficial_drivers2u',
-            'password' => 'zwYdGyQmK',
+            'dsn' => 'mysql:host=localhost;dbname=drivers2udb',
+            'username' => 'root',
+            'password' => '1st',
             'charset' => 'utf8',
         ],
         'mailer' => [

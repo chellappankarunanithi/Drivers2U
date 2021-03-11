@@ -8,7 +8,7 @@ use backend\models\CommissionMasterSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\widgets\ActiveForm;
 /**
  * CommissionMasterController implements the CRUD actions for CommissionMaster model.
  */
@@ -68,7 +68,11 @@ class CommissionMasterController extends Controller
         $model = new CommissionMaster();        
         $session = Yii::$app->session;
         if ($model->load(Yii::$app->request->post())) {
-            // echo "<prE>";print_r($_POST);die;
+                if(Yii::$app->request->isAjax){
+                    Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                    return ActiveForm::validate($model);
+                }
+
             if ($formTokenValue = Yii::$app->request->post('CommissionMaster')['hidden_Input']){
                 $sessionTokenValue =  $session['hidden_token'];
                 if ($formTokenValue == $sessionTokenValue ){
@@ -101,6 +105,11 @@ class CommissionMasterController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
+                if(Yii::$app->request->isAjax){
+                    Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                    return ActiveForm::validate($model);
+                }
+
             if ($formTokenValue = Yii::$app->request->post('CommissionMaster')['hidden_Input']){
                 $sessionTokenValue =  $session['hidden_token'];
                 if ($formTokenValue == $sessionTokenValue ){

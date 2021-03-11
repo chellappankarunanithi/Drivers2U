@@ -222,38 +222,12 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
           
       </div> 
     </div>
-    <br>
-    <div class="card-header">
-        <h3 class="card-title text-center" style="margin-top: 0px;">TRIP Activate OTP Verification</h3> 
-      </div>  
-      <div class="card-body" style="border: 1px solid #c7c6c6;padding: 10px;">
-        <div class="row beforeverification">
-          <div class="col-sm-12"> 
-            <center>
-            <div class="form-group"> 
-              <input type="text" name="otp_number" id="otp_number" maxlength="4" class="form-control" style="width: 150px;font-size: 21px;text-align: center;">
-              <p id="requiredotp" style="color: #e01818; padding-top: 10px;"></p> 
-              <p class="invalidotp" style="color: #e01818; padding-top: 10px;"></p>
-                <h3 class="YourOtp" style="margin-top: -15px !important;"></h3>
-                <button class="btn btn-primary" id="otpsend" type="button">SEND OTP</button><br>
-                <button class="btn btn-success" style="display: none;" id="otpverify" type="button">VERIFY OTP</button>
-                <h4 class="mt-10 otpsendmsg" style="display: none;">OTP have been sent to customer's mobile number. Please call and verify the OTP. </h4>
-                <h4 class="mt-10 otpresendmsg" style="display: none;">OTP have been resent to customer's mobile number. Please call and verify the OTP. </h4>
-                <h5 class="otpalertmsg"  style="color: brown; display: none;">*** don't refresh this page or go back. *** </h5>
-                <br>
-                <button class="btn btn-xs btn-info" style="display: none;" id="resendotp" type="button">RESEND OTP</button>
-              </div>  
-            </center> 
-      </div>
-    </div>
-     <div class="row afterverification" style="display: none;">  
-            <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;"><span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
-           <div class="col-sm-12"> 
-            <h3 class="text-center">OTP Verified and  trip is activated Successfully!</h3><br>
-          </div>
-           <div class="text-center" style="width: 100%;"> <a href="<?php echo Url::base(true)?>/trip-index" class="btn btn-sm btn-primary" type="button">Go to Trip Details</a> </div>
-          </div>  
-    </div>
+   <div class="card-footer">
+   <div class="form-group">
+  <?php echo Html::submitButton('Save', ['class' => 'btn btn-success pull-right','id'=>'savesub']); ?>
+</div>
+</div>
+   
     <?php ActiveForm::end(); ?>
 </div>
 </div>

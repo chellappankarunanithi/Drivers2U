@@ -6,8 +6,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\DriverProfile */
 
 $this->title = 'Update Driver Management: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Driver Management', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => 'Driver Management', 'url' => ['driver-management']]; 
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="driver-profile-update">

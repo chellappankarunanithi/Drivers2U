@@ -10,7 +10,7 @@ use backend\models\DriverProfileSearch;
 use yii\web\Controller;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException; 
-use yii\widgets\ActiveForm;
+use yii\widgets\ActiveForm; 
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use yii\filters\AccessControl;
@@ -88,7 +88,10 @@ class DriverProfileController extends Controller
         $model = new DriverProfile();
         $session = Yii::$app->session;
         if ($model->load(Yii::$app->request->post())) { //echo "<pre>"; print_r($_POST); die;
-
+            if(Yii::$app->request->isAjax){
+                    Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                    return ActiveForm::validate($model);
+            }
              if($_POST['DriverProfile']['status']==0){
                 $model->status = "Inactive";
             }else{
@@ -220,11 +223,10 @@ class DriverProfileController extends Controller
         if (Yii::$app->request->post()) { //echo "<pre>"; print_r($_POST); die;
 
             
-           /* if($_POST['DriverProfile']['status']==0){
-                $model->status = "Inactive";
-            }else{
-                $model->status = "Active";
-            } */
+                if(Yii::$app->request->isAjax){
+                    Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                    return ActiveForm::validate($model);
+                }
 
             if($_FILES['DriverProfile']['error']['licence_copy']==0)
             {
@@ -534,26 +536,21 @@ public function actionEmpid($id)
 
   public function actionPancard($id)
     {
-      
-      $modes=DriverProfile::find()->where(['id'=>$id])->one();
+    $modes=DriverProfile::find()->where(['id'=>$id])->one();
      $upl=$modes->pancard_copy;
      $baseUrl = Yii::$app->basePath;
      $files=$baseUrl.'/web/'.$upl;
-      
      ini_set('max_execution_time', 5*60);
     return Yii::$app->response->sendFile($files); 
-     
   }
 
 
   public function actionAadhar($id)
     {
-      
-      $modes=DriverProfile::find()->where(['id'=>$id])->one();
+     $modes=DriverProfile::find()->where(['id'=>$id])->one();
      $upl=$modes->aadhar_copy; 
      $baseUrl = Yii::$app->basePath; 
      $files=$baseUrl.'/web/'.$upl;
-      
      ini_set('max_execution_time', 5*60);
     return Yii::$app->response->sendFile($files); 
      
@@ -562,14 +559,11 @@ public function actionEmpid($id)
 
   public function actionProfile($id)
     {
-      
       $modes=DriverProfile::find()->where(['id'=>$id])->one();
       $upl=$modes->profile_photo;
-     
-     $baseUrl = Yii::$app->basePath; 
-     $files=$baseUrl.'/web/'.$upl;
-      
-     ini_set('max_execution_time', 5*60);
+      $baseUrl = Yii::$app->basePath; 
+      $files=$baseUrl.'/web/'.$upl; 
+      ini_set('max_execution_time', 5*60);
     return Yii::$app->response->sendFile($files); 
      
   }
@@ -579,11 +573,10 @@ public function actionEmpid($id)
     {
       
       $modes=DriverProfile::find()->where(['id'=>$id])->one();
-    $upl=$modes->licence_copy;
-     $baseUrl = Yii::$app->basePath; 
-     $files=$baseUrl.'/web/'.$upl;
-      
-     ini_set('max_execution_time', 5*60);
+      $upl=$modes->licence_copy;
+      $baseUrl = Yii::$app->basePath; 
+      $files=$baseUrl.'/web/'.$upl; 
+      ni_set('max_execution_time', 5*60);
     return Yii::$app->response->sendFile($files); 
      
   }
@@ -592,11 +585,10 @@ public function actionEmpid($id)
     {
       
       $modes=DriverProfile::find()->where(['id'=>$id])->one();
-    $upl=$modes->PoliceVerificationLetterCopy;
-     $baseUrl = Yii::$app->basePath; 
-     $files=$baseUrl.'/web/'.$upl;
-      
-     ini_set('max_execution_time', 5*60);
+      $upl=$modes->PoliceVerificationLetterCopy;
+      $baseUrl = Yii::$app->basePath; 
+      $files=$baseUrl.'/web/'.$upl; 
+      ini_set('max_execution_time', 5*60);
     return Yii::$app->response->sendFile($files); 
      
   }
@@ -605,24 +597,21 @@ public function actionEmpid($id)
     {
       
       $modes=DriverProfile::find()->where(['id'=>$id])->one();
-    $upl=$modes->VoteridCopy;
-     $baseUrl = Yii::$app->basePath; 
-     $files=$baseUrl.'/web/'.$upl;
-      
-     ini_set('max_execution_time', 5*60);
+      $upl=$modes->VoteridCopy;
+      $baseUrl = Yii::$app->basePath; 
+      $files=$baseUrl.'/web/'.$upl; 
+      ini_set('max_execution_time', 5*60);
     return Yii::$app->response->sendFile($files); 
      
   }
 
   public function actionRationcard($id)
-    {
-      
+    { 
       $modes=DriverProfile::find()->where(['id'=>$id])->one();
-    $upl=$modes->RationcardCopy;
-     $baseUrl = Yii::$app->basePath; 
-     $files=$baseUrl.'/web/'.$upl;
-      
-     ini_set('max_execution_time', 5*60);
+      $upl=$modes->RationcardCopy;
+      $baseUrl = Yii::$app->basePath; 
+      $files=$baseUrl.'/web/'.$upl; 
+      ini_set('max_execution_time', 5*60);
     return Yii::$app->response->sendFile($files); 
      
   }

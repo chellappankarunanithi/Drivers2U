@@ -225,7 +225,10 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
           <div class="col-sm-12">
     <div class="col-sm-12"> 
                 <div class="form-group"> 
-                 <?php echo Html::submitButton('Save', ['class' => 'btn btn-success pull-right savesub','id'=>'savesub']); ?>
+                  <?php if ($model->rating=="") {
+                   echo Html::submitButton('Save', ['class' => 'btn btn-success pull-right savesub','id'=>'savesub']);
+                   }
+                    ?>
               </div> 
         </div>
       </div>

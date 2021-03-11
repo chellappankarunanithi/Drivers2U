@@ -10,7 +10,7 @@ use yii\db\Query;
 /* @var $form yii\widgets\ActiveForm */
 $action = Yii::$app->controller->action->id;
  
- $Created = TripDetails::find()->where(['TripStatus'=>'Created'])->asArray()->count();
+ $Created = TripDetails::find()->where(['TripStatus'=>'Booked'])->asArray()->count();
  $Activated = TripDetails::find()->where(['TripStatus'=>'Activated'])->asArray()->count();
  $cancelled = TripDetails::find()->where(['TripStatus'=>'Cancelled'])->asArray()->count();
  $completed = TripDetails::find()->where(['TripStatus'=>'Completed'])->asArray()->count();
@@ -43,7 +43,7 @@ nav.nav-menu-tab a:hover{
         <div class="merchant-master-search">
             <nav class="nav nav-menu-tab"> 
               <a class="nav-link" href="trip-index"><?php echo 'All Trips ('.$all.')'; ?></a>
-              <a class="nav-link" href="create-index"><?php echo 'Created Trips ('.$Created.')'; ?></a>
+              <a class="nav-link" href="create-index"><?php echo 'Booked Trips ('.$Created.')'; ?></a>
               <a class="nav-link" href="active-index"><?php echo 'Activated Trips ('.$Activated.')'; ?></a> 
               <a class="nav-link" href="cancel-index"><?php echo 'Cancelled Trips ('.$cancelled.')'; ?></a> 
               <a class="nav-link" href="complete-index"><?php echo 'Completed Trips ('.$completed.')'; ?></a> 

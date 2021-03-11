@@ -26,8 +26,9 @@ class DashboardAsset extends AssetBundle
         
         'bootstrap/css/bootstrap.min.css',
         'bootstrap/css/font-awesome.min.css',
-        'bootstrap/css/ionicons.min.css',
+        //'bootstrap/css/ionicons.min.css',
         'dist/css/AdminLTE.min.css',
+        'dist/css/ionicons.min.css',
         'dist/css/skins/_all-skins.min.css',
         'plugins/iCheck/flat/blue.css',
         'plugins/morris/morris.css',

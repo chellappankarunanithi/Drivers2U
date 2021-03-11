@@ -12,7 +12,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use yii\filters\AccessControl;
-
+use yii\widgets\ActiveForm;
 /**
  * ClientMasterController implements the CRUD actions for ClientMaster model.
  */
@@ -86,6 +86,11 @@ class ClientMasterController extends Controller
         $model = new ClientMaster();
         $session = Yii::$app->session;
         if ($model->load(Yii::$app->request->post())) {
+                if(Yii::$app->request->isAjax){
+                    Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                    return ActiveForm::validate($model);
+                }
+
             if ($formTokenValue = Yii::$app->request->post('ClientMaster')['hidden_Input']){
                 $sessionTokenValue =  $session['hidden_token'];
                 if ($formTokenValue == $sessionTokenValue ){           
@@ -102,13 +107,13 @@ class ClientMasterController extends Controller
                      if($_POST['ClientMaster']['status']==0){
                         $model->status = "Inactive";
                     }else{
-                        $model->status = "Active";
+                        $model->status = "Register";
                     }
                     if($model->save()){
                         Yii::$app->session->remove('hidden_token');
                         $confiq->config_value = $cust_id+1;
                         $confiq->save();
-                        return $this->redirect(['index']);
+                        return $this->redirect(['customer-otp/'.$model->id]);
                     }else{ echo "<pre>"; print_r($model->getErrors()); die;
                          return $this->render('create', [
                             'model' => $model,
@@ -127,13 +132,34 @@ class ClientMasterController extends Controller
         }
     }
 
+
+     public function actionCustomerOtp($id="")
+    {
+        $model = $this->findModel($id);
+        $session = Yii::$app->session;
+        if ($_POST) { //echo "<pre>"; print_r($_POST); die;
+
+        } else {
+            $formTokenName = uniqid();
+            $session['hidden_token']=$formTokenName;
+            return $this->render('otpverification', [
+                'model' => $model,
+                'token_name' => $formTokenName,
+            ]);
+        }
+    }
+
     #on running customer add
     public function actionCustomerTripCreate()
     {
         $model = new ClientMaster();
         $session = Yii::$app->session;
-            $savedId = '';
-        if ($model->load(Yii::$app->request->post())) {
+            $savedId = '';   
+        if ($model->load(Yii::$app->request->post())) { 
+                if(Yii::$app->request->isAjax){
+                    Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                    return ActiveForm::validate($model);
+                }
             if ($formTokenValue = Yii::$app->request->post('ClientMaster')['hidden_Input'])
             {
                 $sessionTokenValue =  $session['hidden_token'];
@@ -145,14 +171,14 @@ class ClientMasterController extends Controller
                     }
                     $model->company_name = "CUST-D2U-0".$cust_id;
                     $model->created_at = date('Y-m-d H:i:s');
-                    $model->status = $_POST['ClientMaster']['status'];
+                    $model->status = "Active";
                     $model->updated_ipaddress =$_SERVER['REMOTE_ADDR'];
                     $model->user_id = $session['user_id'];
-                     if($_POST['ClientMaster']['status']==0){
+                  /*   if($_POST['ClientMaster']['status']==0){
                         $model->status = "Inactive";
                     }else{
                         $model->status = "Active";
-                    }
+                    }*/
                     if($model->save()){
                         $savedId = $model->id;
                         $confiq->config_value = $cust_id+1;
@@ -201,7 +227,12 @@ class ClientMasterController extends Controller
     {
         $model = $this->findModel($id);
         $session = Yii::$app->session;
-        if ($model->load(Yii::$app->request->post())) { // echo "<pre>"; print_r($_POST); die;
+        if ($model->load(Yii::$app->request->post())) {  //echo "<pre>"; print_r($_POST); die;
+
+            if(Yii::$app->request->isAjax){
+                    Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                    return ActiveForm::validate($model);
+                }
             if ($formTokenValue = Yii::$app->request->post('ClientMaster')['hidden_Input']){
                 $sessionTokenValue =  $session['hidden_token'];
                 if ($formTokenValue == $sessionTokenValue ){

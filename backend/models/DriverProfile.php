@@ -45,13 +45,14 @@ class DriverProfile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['FatherName','MotherName','DOB','Gender','MaritalStatus','Experience','Qualification','PostAppliedFor','HouseDetails','mobile_number','name','aadhar_no','address'], 'required'],
-            [['mobile_number', 'aadhar_no'], 'integer'], 
+            [['mobile_number'], 'unique'],
+            [['FatherName','MotherName','DOB','Gender','MaritalStatus','Experience','Qualification','PostAppliedFor','HouseDetails','mobile_number','name','aadhar_no','address','LicenceNumber','VoteridNumber'], 'required'],
+            [['aadhar_no'], 'integer'], 
             [['created_at', 'modified_at','name', 'employee_id', 'updated_ipaddress','address', 'status','email'], 'safe'],
             [['email'], 'email'],
              [['aadhar_copy','RationcardCopy','licence_copy','PoliceVerificationLetterCopy','profile_photo'], 'file',  'extensions' => 'jpeg,jpg,png,pdf'],
            // [['employee_id'], 'unique', 'on' => 'update'],
-           // [['employee_id'], 'unique'],
+
            /* [['employee_id'], 'unique', 'on'=>'create', 'when' => function($model){
              return $model->isAttributeChanged('employee_id');
             }],*/
@@ -146,12 +147,15 @@ class DriverProfile extends \yii\db\ActiveRecord
             'MotherName' => "Mother's Name",
             'employee_id' => 'Driver ID',
             'mobile_number' => 'Mobile Number',
+            'DOB' => 'DOB',
             'email' => 'Email ID',
             'address' => 'Address',
             'profile_photo' => 'Profile Photo',
             'licence_copy' => 'Licence Copy',
             'RationcardCopy' => 'Ration Card / Voter ID Copy',
             'aadhar_no' => 'Aadhaar No',
+            'LicenceNumber' => 'Licence No',
+            'VoteridNumber' => 'Voter ID / Ration Card No',
             'status' => 'Status',
             'created_at' => 'Created At',
             'modified_at' => 'Modified At',

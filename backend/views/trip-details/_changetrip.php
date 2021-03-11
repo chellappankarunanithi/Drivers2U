@@ -147,9 +147,9 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
                     <?= $form->field($model, 'CustomerId')->dropDownList($customer,['class'=>'form-control input-sm','prompt'=>"Select",'value'=>$CustomerId])->label(false)?>
                 </div>
               </div>
-              <div class="col-sm-1" id="tripcusadd" hidden="" style="margin-top: 30px; display: block;">
+             <!--  <div class="col-sm-1" id="tripcusadd" hidden="" style="margin-top: 30px; display: block;">
                         <button type="button" id="addmore" data-toggle="tooltip" data-title="Add New Customer" class="btn btn-xs btn-info fa-fa-search" name="search"  value="search"><i class="fa fa-fw fa-plus"></i></button>      
-              </div>
+              </div> -->
                <div class="col-sm-4"> 
             <div class="f orm-group"> 
              <label class="form-label">Customer ID</label>
@@ -208,7 +208,7 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
              
                <div class="col-sm-4"> 
             <div class="f orm-group"> 
-             <label class="form-label">Vehicle Made</label>
+             <label class="form-label">Vehicle Brand</label>
                   <?= $form->field($model, 'VehicleMade')->textInput(['class'=>'form-control input-sm','style'=>'text-transform:uppercase;'])->label(false)?>
             </div>
           </div>  
@@ -272,6 +272,12 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
                     <?= $form->field($model, 'TripType')->dropDownList(array('One Way'=>'One Way','Round Trip'=>'Round Trip'),['class'=>'form-control input-sm','prompt'=>"Select"])->label(false)?>
                 </div>
               </div>
+               <div class="col-sm-2">
+                <div class="form-group">
+                  <label class="form-label required">Trip location Type</label><span style="color: red; font-size: 15px;">*</span>
+                    <?= $form->field($model, 'TripLocationType')->dropDownList(array('Local'=>'Local','Out Station'=>'Out Station'),['class'=>'form-control input-sm','prompt'=>"Select"])->label(false)?>
+                </div>
+              </div>
               <div class="col-sm-5"> 
                 <div class="f orm-group"> 
                  <label class="form-label">Pickup Location</label>
@@ -297,21 +303,6 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
                       }
                      ?>
                        <?= $form->field($model, 'StartDateTime')->textInput(['maxlength' => true,'value'=>$date,'class'=>'form-control input-sm'])->label(false); ?>
-                </div>
-              </div> 
-             
-              <div class="col-sm-4"> 
-                <div class="f orm-group"> 
-                 <label class="form-label">Trip End Date & Time</label><span style="color: red; font-size: 15px;">*</span>
-                      <?php 
-                       $date = date('d-m-Y h:i:s A', strtotime($model->EndDateTime));
-                      if (strpos($date, '0000') || strpos($date, '1970')) {
-                          $date = "-";
-                      }
-                      
-                      echo $form->field($model, 'EndDateTime')->textInput(['maxlength' => true, 'value'=>$date, 'class'=>'form-control input-sm'])->label(false); 
-                      ?>
-
                 </div>
               </div> 
              
@@ -396,8 +387,8 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
  
   $('body').on('click','#addmore',function(){
              var PageUrl = '<?php echo Yii::$app->homeUrl;?>customer-trip-create';
-             $('#operationalheader').html('<span> <i class="fa fa-fw fa-th-large"></i>Add New Customer</span>');
-             $('#operationalmodal').modal('show').find('#modalContenttwo').load(PageUrl);
+             $('#operationalheader_large').html('<span> <i class="fa fa-fw fa-th-large"></i>Add New Customer</span>');
+             $('#operationalmodal_large').modal('show').find('#modalContenttwo_large').load(PageUrl);
              return false;
   });
 
@@ -413,8 +404,8 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
              return false;
   });
   
-   /*  $('#tripdetails-startdatetime').datetimepicker({ format: 'DD-MM-YYYY hh:mm:ss A', minDate: new Date()});
-     $('#tripdetails-enddatetime').datetimepicker({ format: 'DD-MM-YYYY hh:mm:ss A',minDate: $('#tripdetails-startdatetime').val()});
+     $('#tripdetails-startdatetime').datetimepicker({ format: 'DD-MM-YYYY hh:mm:ss A', minDate: new Date()});
+   /*  $('#tripdetails-enddatetime').datetimepicker({ format: 'DD-MM-YYYY hh:mm:ss A',minDate: $('#tripdetails-startdatetime').val()});
 */
  
       $("#tripdetails-customerid").select2({ placeholder: "Select a Customer"}); 
@@ -431,21 +422,3 @@ $("#tripdetails-driver_contact").on("input", function(evt) {
   }
 });
   </script>
-  <script type="text/javascript">
-    $(function () {
-        $('#tripdetails-startdatetime').datetimepicker({
-      format: 'DD-MM-YYYY hh:mm:ss A',
-      minDate: new Date()
-    });
-        $('#tripdetails-enddatetime').datetimepicker({
-      format: 'DD-MM-YYYY hh:mm:ss A',
-            useCurrent: false //Important! See issue #1075
-        });
-        $("#tripdetails-startdatetime").on("dp.change", function (e) {
-            $('#tripdetails-enddatetime').data("DateTimePicker").minDate(e.date);
-        });
-        $("#tripdetails-enddatetime").on("dp.change", function (e) {
-            $('#tripdetails-startdatetime').data("DateTimePicker").maxDate(e.date);
-        });
-    });
-</script>

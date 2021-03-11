@@ -47,6 +47,9 @@ class ClientMasterSearch extends ClientMaster
         //echo $query->createCommand()->getRawSql(); die; 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pagesize' => 20,
+            ],
         ]);
 
         $this->load($params);

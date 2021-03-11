@@ -34,6 +34,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'Experience',
             'BackgroundCheck',
             'aadhar_no',
+            'LicenceNumber',
+            'VoteridNumber',
             
         ],
     ]) ?>

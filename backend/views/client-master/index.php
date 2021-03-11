@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use backend\models\ClientMaster;
@@ -42,14 +43,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'company_name',
             'client_name',  
             'mobile_no', 
-            'email_id:email',
+            'Landmark',
             'address:ntext',
             'pincode',
+            'status',
 
            ['class' => 'yii\grid\ActionColumn',
                'header'=> 'Action',
                  'headerOptions' => ['style' => 'width:150px;color:#337ab7;'],
-               'template'=>'{view}{update}',
+               'template'=>'{update}{customer-otp}',
                             'buttons'=>[
                               'view' => function ($url, $model, $key) { 
                                    return Html::button('<i class="glyphicon glyphicon-eye-open"></i>', ['value' => $url, 'style'=>'margin-right:4px;','class' => 'btn btn-primary btn-xs view view gridbtncustom modalView', 'data-toggle'=>'tooltip', 'title' =>'View' ]);
@@ -63,6 +65,19 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'data-pjax' => '0',
                                         ]);
                                         return Html::a('<span class="fa fa-edit"></span>', $url, $options);
+                                    },
+                                    'customer-otp' => function ($url, $model, $key) {
+                                        $options = array_merge([
+                                            'class' => 'btn btn-primary btn-xs update gridbtncustom',
+                                            'data-toggle'=>'tooltip',
+                                            'title' => Yii::t('yii', 'Otp Verification'),
+                                            'aria-label' => Yii::t('yii', 'Update'),
+                                            'data-pjax' => '0',
+                                        ]);
+                                        $url = Url::base(true).'/customer-otp/'.$model->id;
+                                        if ($model->status!="Active") {
+                                        return Html::a('<span class="fa fa-check"></span>', $url, $options);
+                                        }
                                     },
                               
                                 'delete' => function ($url, $model, $key) {

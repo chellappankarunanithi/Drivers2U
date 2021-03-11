@@ -39,14 +39,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'tripcode',
-            'VehicleNo',
+           // 'VehicleNo',
             'CustomerName',  
             'CustomerContactNo', 
             'DriverName', 
             'DriverContactNo', 
             'TripType',
             'TripStatus', 
-            'rating', 
+           // 'rating', 
+            //'Review',
 
            ['class' => 'yii\grid\ActionColumn',
                'header'=> 'Action',
@@ -58,10 +59,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                    return Html::button('<i class="glyphicon glyphicon-eye-open"></i>', ['value' => $url, 'style'=>'margin-right:4px;','class' => 'btn btn-primary btn-xs view view gridbtncustom modalView', 'data-toggle'=>'tooltip', 'title' =>'View' ]);
                                 },  
                                 'rating' => function ($url, $model, $key) {
-                                  if ($model->rating=="") {
+                                 // if ($model->rating=="") {
                                     $url = Url::base(true).'/trip-rating/'.$model->id;
-                                   return Html::button('<span class="fa fa-star"></span> Rating', ['value' => $url, 'style'=>'margin-right:4px;','class' => 'btn btn-warning btn-xs view view gridbtncustom rating', 'data-toggle'=>'tooltip', 'title' =>'Coming Soon' ]); 
-                                  }
+                                   return Html::button('<span class="fa fa-star"></span> Rating', ['value' => $url, 'style'=>'margin-right:4px;','class' => 'btn btn-warning btn-xs view view gridbtncustom rating', 'data-toggle'=>'tooltip', 'title' =>'Rate the Trip' ]); 
+                                 // }
                                 },
                           ] ],
         ],

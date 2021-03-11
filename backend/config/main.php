@@ -22,7 +22,7 @@ return [
             'nullDisplay' => '',
         ],
     'session' => [
-            'name' => 'drivers2usession',
+            'name' => 'drives2usession',
             'timeout' => 1440,       
         ],
         'user' => [
@@ -56,7 +56,7 @@ return [
             'web'=> '/backend/web',
 
             'adminUrl' => '/admin',
-            'baseUrl' => '/drivers2u',
+            'baseUrl' => '/2021/drives2u',
 
         ],
        
@@ -67,12 +67,14 @@ return [
             'enableStrictParsing' => false,
             'rules' => [
                 'home' => 'site/login',
+                'index' => 'site/index',
                 'customer-management' => 'client-master/index',
                 'customer-c'          => 'client-master/create',
                 'customer-trip-create'=> 'client-master/customer-trip-create',
                 'customer-u/<id:\d+>' => 'client-master/update',
                 'customer-v/<id:\d+>' => 'client-master/view',
                 'customer-d/<id:\d+>' => 'client-master/delete', 
+                'customer-otp/<id:\d+>' => 'client-master/customer-otp', 
 
                 'commission-management' => 'commission-master/index',
                 'commission-c'          => 'commission-master/create',
@@ -123,7 +125,7 @@ return [
                 'cancel/<id:\d+>' => 'trip-details/cancel',
                 'cancel-payment/<id:\d+>' => 'trip-details/cancel-payment',
                 'complete/<id:\d+>' => 'trip-details/complete',
-                'otpsave' => 'trip-details/otpsave',
+                'otpsave/<id:\d+>' => 'trip-details/otpsave',
                 'otpverification' => 'trip-details/otpverification',
                 'response/<id:\d+>' => 'trip-details/response',
                 'change-trip/<id:\d+>' => 'trip-details/change-trip',

@@ -30,15 +30,15 @@ $service_center=$user_data->service_center_name;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode("DRIVERS2U") ?></title>
+    <title><?= Html::encode("DRIVES2U") ?></title>
     <?php $this->head() ?>
   
     <style>
     .skin-purple-light .main-header .navbar {
-		    background-color: #337ab7 !important;
+		    background-color: #15167e !important;
 	}
 	.skin-purple-light .main-header li.user-header {
-    background-color: #337ab7 !important;
+    background-color: #15167e !important;
 	}
       .modal-header > h3{
         margin-top: 1px;
@@ -49,24 +49,31 @@ $service_center=$user_data->service_center_name;
         margin-top: 1px;
         margin-bottom: -6px;
     }
+	
+	.skin-purple-light .sidebar-menu>li:hover>a, .skin-purple-light .sidebar-menu>li.active>a {
+    color: #fff;
+    background: #e67a02;
+}
+
+
 
     .skin-purple-light .main-header .navbar {
-    background-color: #337ab7;
+    background-color: #15167e;
 }
 
 .skin-purple-light .main-header .logo {
-    background-color: #337ab7;
+    background-color: #15167e;
     color: #fff;
     border-bottom: 0 solid transparent;
 }
 .skin-purple-light .main-header li.user-header {
-    background-color: #337ab7;
+    background-color: #15167e;
 }
 .skin-purple-light .main-header .logo:hover {
-    background-color: #337ab7;
+        background-color: #f39c12; 
 }
 .skin-purple-light .main-header .navbar .sidebar-toggle:hover {
-    background-color: #337ab7;
+    background-color: #15167e;
 }
     /* .content-wrapper{
        background-image: url('control_images/nasa-bg.png');
@@ -82,6 +89,7 @@ $service_center=$user_data->service_center_name;
  .cgridoverlap{
       overflow-x: scroll;
  }
+ 
 </style>
 <?php 
    $session = Yii::$app->session;

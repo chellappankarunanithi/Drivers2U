@@ -82,16 +82,15 @@ use kartik\select2\Select2;
 <div id="page-content">
    <div class="">
       <div class="eq-height">
-         <div class="panel">
-            <div class="panel-body   ">
-
+         <div class="panel"> 
     <?php $form = ActiveForm::begin(); ?>
+            <div class="panel-body   ">
 <div class="row">
      <div class='col-sm-4 form-group' >
         <?= $form->field($model, 'client_name')->textInput(['maxlength' => true])->label('Customer Name') ?>
     </div>
     <div class='col-sm-4 form-group' >
-        <?= $form->field($model, 'mobile_no')->textInput(['maxlength' => 10, 'class'=>'form-control without_decimal12']) ?>
+        <?= $form->field($model, 'mobile_no',['enableAjaxValidation'=>true])->textInput(['maxlength' => 10, 'class'=>'form-control without_decimal12']) ?>
     </div>
     <div class='col-sm-4 form-group' >
         <?= $form->field($model, 'email_id')->textInput(['maxlength' => true]) ?>
@@ -101,34 +100,20 @@ use kartik\select2\Select2;
 <div class="row">
 
  <div class='col-sm-4 form-group' >
+     <?= $form->field($model, 'Landmark')->textInput(['maxlength' => true]) ?>
+</div>
+<div class='col-sm-4 form-group' >
     <?= $form->field($model, 'address')->textarea(['rows' => 3]) ?>
 </div>
 <div class='col-sm-4 form-group' >
     <?= $form->field($model, 'pincode')->textInput(['maxlength' => 6]) ?>
-</div>
+</div> 
 
-
-<div class='col-sm-4 form-group' style="margin-top: 25px;">
-         <?php 
-          if($model->isNewRecord){
-          $model->status = 1;
-          }else{
-            if($model->status=="Active"){
-              $model->status = 1;
-            }else{
-              $model->status = 0;
-            }
-          } ?> 
-         <?= $form->field($model, 'status', [
-            'template' => "<div class='checkbox checkbox-custom' style='margin-top:10px; margin-left:20px;'>{input}<label>Active</label></div>{error}",
-            ])->checkbox([],false)->label('Status'); ?>  
-     
 </div>
-</div>
+ 
 </div>
 <div class="box-footer"> 
-<div class="row">
-  
+<div class="row"> 
         <?= Html::submitButton($model->isNewRecord ? 'Save' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success pull-right' : 'btn btn-primary pull-right']) ?> 
 </div>
 </div>
@@ -138,8 +123,7 @@ use kartik\select2\Select2;
 </div>
 </div>
 </div>
-</div>
-</div>
+</div> 
 <script type="text/javascript">
     $(".without_decimal12").on("input", function(evt) {
     

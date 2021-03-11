@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Drivers2U - LOGIN';
+$this->title = 'Drives2U - LOGIN';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
