@@ -102,7 +102,7 @@ class DriverProfileController extends Controller
             {
                   $rand = rand(0, 999); // random number generation for unique image save
                   $model->file = UploadedFile::getInstance($model, 'licence_copy');
-                  $image_name = 'uploads/driver_licence/' . $model->file->basename . "." . $model->file->extension;
+                  $image_name = 'uploads/driver_licence/' .$rand. $model->file->basename . "." . $model->file->extension;
                   $model->file->saveAs($image_name);
                   $model->licence_copy = $image_name;
             }
@@ -110,7 +110,7 @@ class DriverProfileController extends Controller
             {
                   $rand = rand(0, 999); // random number generation for unique image save
                   $model->files = UploadedFile::getInstance($model, 'profile_photo');
-                  $image_name = 'uploads/driver_profile/' . $model->files->basename . "." . $model->files->extension;
+                  $image_name = 'uploads/driver_profile/' .$rand. $model->files->basename . "." . $model->files->extension;
                   $model->files->saveAs($image_name);
                   $model->profile_photo = $image_name;
             }
@@ -118,7 +118,7 @@ class DriverProfileController extends Controller
             {
                   $rand = rand(0, 999); // random number generation for unique image save
                   $model->files = UploadedFile::getInstance($model, 'aadhar_copy');
-                  $image_name = 'uploads/driver_aadhar/' . $model->files->basename . "." . $model->files->extension;
+                  $image_name = 'uploads/driver_aadhar/' .$rand. $model->files->basename . "." . $model->files->extension;
                   $model->files->saveAs($image_name);
                   $model->aadhar_copy = $image_name;
             }
@@ -126,7 +126,7 @@ class DriverProfileController extends Controller
             {
                   $rand = rand(0, 999); // random number generation for unique image save
                   $model->files = UploadedFile::getInstance($model, 'RationcardCopy');
-                  $image_name = 'uploads/RationcardCopy/' . $model->files->basename . "." . $model->files->extension;
+                  $image_name = 'uploads/RationcardCopy/' .$rand. $model->files->basename . "." . $model->files->extension;
                   $model->files->saveAs($image_name);
                   $model->RationcardCopy = $image_name;
             }
@@ -142,7 +142,7 @@ class DriverProfileController extends Controller
             {
                   $rand = rand(0, 999); // random number generation for unique image save
                   $model->files = UploadedFile::getInstance($model, 'PoliceVerificationLetterCopy');
-                  $image_name = 'uploads/PoliceVerificationLetterCopy/' . $model->files->basename . "." . $model->files->extension;
+                  $image_name = 'uploads/PoliceVerificationLetterCopy/' .$rand. $model->files->basename . "." . $model->files->extension;
                   $model->files->saveAs($image_name);
                   $model->PoliceVerificationLetterCopy = $image_name;
             }
@@ -176,7 +176,8 @@ class DriverProfileController extends Controller
                 }
             }
           }
-
+            $model->LicenceNumber = $_POST['DriverProfile']['LicenceNumber'];
+            $model->VoteridNumber = $_POST['DriverProfile']['VoteridNumber'];
             $model->BackgroundCheck = $_POST['DriverProfile']['BackgroundCheck'];
             $model->name = strtoupper($_POST['DriverProfile']['name']);
             $model->FatherName = strtoupper($_POST['DriverProfile']['FatherName']);
@@ -232,7 +233,7 @@ class DriverProfileController extends Controller
             {
                   $rand = rand(0, 999); // random number generation for unique image save
                   $model->file = UploadedFile::getInstance($model, 'licence_copy');
-                  $image_name = 'uploads/driver_licence/' . $model->file->basename . "." . $model->file->extension;
+                  $image_name = 'uploads/driver_licence/' .$rand. $model->file->basename . "." . $model->file->extension;
                   $model->file->saveAs($image_name);
                   $model->licence_copy = $image_name;
             }
@@ -240,7 +241,7 @@ class DriverProfileController extends Controller
             {
                   $rand = rand(0, 999); // random number generation for unique image save
                   $model->files = UploadedFile::getInstance($model, 'profile_photo');
-                  $image_name = 'uploads/driver_profile/' . $model->files->basename . "." . $model->files->extension;
+                  $image_name = 'uploads/driver_profile/' .$rand. $model->files->basename . "." . $model->files->extension;
                   $model->files->saveAs($image_name);
                   $model->profile_photo = $image_name;
             }
@@ -248,7 +249,7 @@ class DriverProfileController extends Controller
             {
                   $rand = rand(0, 999); // random number generation for unique image save
                   $model->files = UploadedFile::getInstance($model, 'aadhar_copy');
-                  $image_name = 'uploads/driver_aadhar/' . $model->files->basename . "." . $model->files->extension;
+                  $image_name = 'uploads/driver_aadhar/' .$rand. $model->files->basename . "." . $model->files->extension;
                   $model->files->saveAs($image_name);
                   $model->aadhar_copy = $image_name;
             }
@@ -256,7 +257,7 @@ class DriverProfileController extends Controller
             {
                   $rand = rand(0, 999); // random number generation for unique image save
                   $model->files = UploadedFile::getInstance($model, 'RationcardCopy');
-                  $image_name = 'uploads/RationcardCopy/' . $model->files->basename . "." . $model->files->extension;
+                  $image_name = 'uploads/RationcardCopy/' .$rand. $model->files->basename . "." . $model->files->extension;
                   $model->files->saveAs($image_name);
                   $model->RationcardCopy = $image_name;
             }
@@ -272,7 +273,7 @@ class DriverProfileController extends Controller
             {
                   $rand = rand(0, 999); // random number generation for unique image save
                   $model->files = UploadedFile::getInstance($model, 'PoliceVerificationLetterCopy');
-                  $image_name = 'uploads/PoliceVerificationLetterCopy/' . $model->files->basename . "." . $model->files->extension;
+                  $image_name = 'uploads/PoliceVerificationLetterCopy/' .$rand. $model->files->basename . "." . $model->files->extension;
                   $model->files->saveAs($image_name);
                   $model->PoliceVerificationLetterCopy = $image_name;
             }
@@ -313,7 +314,8 @@ class DriverProfileController extends Controller
             $model->Qualification = strtoupper($_POST['DriverProfile']['Qualification']);
             $model->PostAppliedFor = $_POST['DriverProfile']['PostAppliedFor'];
             $model->Experience = $_POST['DriverProfile']['Experience'];
-
+            $model->LicenceNumber = $_POST['DriverProfile']['LicenceNumber'];
+            $model->VoteridNumber = $_POST['DriverProfile']['VoteridNumber'];
             $model->created_at = date('Y-m-d H:i:s'); 
             $model->updated_ipaddress =$_SERVER['REMOTE_ADDR'];
              $model->user_id = $session['user_id'];
