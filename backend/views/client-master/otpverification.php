@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
  
 $data="";
 if(array_key_exists('data', $_GET)){
-  if ($_GET['data']!="09") {
+  if ($_GET['data']!="") {
     $data=$_GET['data'];
   } 
 }
@@ -125,9 +125,7 @@ if(array_key_exists('data', $_GET)){
            <div class="text-center" style="width: 100%;"> 
           <?php  if ($data=="09") { ?>
            <a href="<?php echo Url::base(true).'/trip-c/'.$model->id.'/09'; ?>" class="btn btn-sm btn-primary" type="button">Go to Trip Booking Page</a>
-          <?php }else if($data=="08") { ?>
-           <a href="<?php echo Url::base(true).'/change-trip/'.$model->id.'/08'; ?>" class="btn btn-sm btn-primary" type="button">Go to Trip Booking Page</a>
-          <?php } else{ ?>
+          <?php }else{ ?>
             <a href="<?php echo Url::base(true)?>/customer-management" class="btn btn-sm btn-primary" type="button">Go to Customer Management</a>
          <?php } ?>
            </div>

@@ -138,12 +138,19 @@ class ClientMasterController extends Controller
         if ($_POST) { //echo "<pre>"; print_r($_POST); die;
 
         } else {
-            $formTokenName = uniqid();
-            $session['hidden_token']=$formTokenName;
-            return $this->render('otpverification', [
-                'model' => $model,
-                'token_name' => $formTokenName,
-            ]);
+            if ($model->status=="Active") { // echo "as"; die;
+                 return $this->render('/trip-details/response', [
+                    'model' => $model,
+                    'status' => "Active",
+                ]);   
+            }else{
+                $formTokenName = uniqid();
+                $session['hidden_token']=$formTokenName;
+                return $this->render('otpverification', [
+                    'model' => $model,
+                    'token_name' => $formTokenName,
+                ]); 
+            }
         }
     }
 
