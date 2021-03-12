@@ -300,7 +300,7 @@ class DriverProfileController extends Controller
                 }
             }
           }
-             $model->available_status ="0"; 
+            // $model->available_status ="0"; 
             $model->BackgroundCheck = $_POST['DriverProfile']['BackgroundCheck'];
             $model->name = strtoupper($_POST['DriverProfile']['name']);
             $model->FatherName = strtoupper($_POST['DriverProfile']['FatherName']);
