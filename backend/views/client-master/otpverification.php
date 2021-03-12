@@ -12,6 +12,14 @@ use kartik\select2\Select2;
 $this->title = 'Add New Customer';
 $this->params['breadcrumbs'][] = ['label' => 'Customer Management', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title; 
+ 
+$data="";
+if(array_key_exists('data', $_GET)){
+  if ($_GET['data']!="09") {
+    $data=$_GET['data'];
+  } 
+}
+
 ?>
 <style>
    .score {
@@ -114,7 +122,15 @@ $this->params['breadcrumbs'][] = $this->title;
            <div class="col-sm-12"> 
             <h3 class="text-center">OTP Verified and  Customer is activated Successfully!</h3><br>
           </div>
-           <div class="text-center" style="width: 100%;"> <a href="<?php echo Url::base(true)?>/customer-management" class="btn btn-sm btn-primary" type="button">Go to Customer Management</a> </div>
+           <div class="text-center" style="width: 100%;"> 
+          <?php  if ($data=="09") { ?>
+           <a href="<?php echo Url::base(true).'/trip-c/'.$model->id.'/09'; ?>" class="btn btn-sm btn-primary" type="button">Go to Trip Booking Page</a>
+          <?php }else if($data=="08") { ?>
+           <a href="<?php echo Url::base(true).'/change-trip/'.$model->id.'/08'; ?>" class="btn btn-sm btn-primary" type="button">Go to Trip Booking Page</a>
+          <?php } else{ ?>
+            <a href="<?php echo Url::base(true)?>/customer-management" class="btn btn-sm btn-primary" type="button">Go to Customer Management</a>
+         <?php } ?>
+           </div>
           </div>  
     </div>
  

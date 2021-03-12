@@ -1,11 +1,8 @@
+
+# If a directory or a file exists, use it directly
 RewriteEngine on
+RewriteRule ^admin(/(.*))?$ backend/web/$2 [S=1]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule .* index.php?/$0 [PT,L] 
-RewriteRule .? - [E=Authorization:%{HTTP:Authorization}]
-
-# Use PHP56 as default
-AddHandler application/x-httpd-php56 .php
-<IfModule mod_suphp.c>
-    suPHP_ConfigPath /opt/php56/lib
-</IfModule>
+# Otherwise forward it to index.php
+RewriteRule . index.php

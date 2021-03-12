@@ -54,9 +54,7 @@ class ClientMasterController extends Controller
     {
         $searchModel = new ClientMasterSearch();
         $post = Yii::$app->request->post();
-       //  echo "<pre>";print_r($post);die;
-       // echo "<pre>"; print_r(Yii::$app->request->queryParams); die;
-        $dataProvider = $searchModel->search($post);
+        $dataProvider = $searchModel->search($post); 
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -150,7 +148,7 @@ class ClientMasterController extends Controller
     }
 
     #on running customer add
-    public function actionCustomerTripCreate()
+    public function actionCustomerTripCreate($id="")
     {
         $model = new ClientMaster();
         $session = Yii::$app->session;
@@ -171,20 +169,21 @@ class ClientMasterController extends Controller
                     }
                     $model->company_name = "CUST-D2U-0".$cust_id;
                     $model->created_at = date('Y-m-d H:i:s');
-                    $model->status = "Active";
+                    $model->status = "Register";
                     $model->updated_ipaddress =$_SERVER['REMOTE_ADDR'];
                     $model->user_id = $session['user_id'];
-                  /*   if($_POST['ClientMaster']['status']==0){
-                        $model->status = "Inactive";
-                    }else{
-                        $model->status = "Active";
-                    }*/
+                  
                     if($model->save()){
                         $savedId = $model->id;
                         $confiq->config_value = $cust_id+1;
                         $confiq->save();
                         Yii::$app->session->remove('hidden_token');
-                        return $this->redirect(['/trip-c/'.$model->id.'/09']);
+                        if($id=="08"){
+                            return $this->redirect(['customer-otp/'.$model->id.'/08']);
+                        }else{
+                            return $this->redirect(['customer-otp/'.$model->id.'/09']);
+                        }
+                        //return $this->redirect(['/trip-c/'.$model->id.'/09']);
                     }else{ echo "<pre>"; print_r($model->getErrors()); die;
                         return $this->render('create', [
                             'model' => $model,
@@ -196,21 +195,31 @@ class ClientMasterController extends Controller
                     if(!empty($models)){
                         $savedId = $models['id'];
                     }
-                    return $this->redirect(['/trip-c/'.$savedId.'/09']);
+                    if($id=="08"){
+                            return $this->redirect(['customer-otp/'.$savedId.'/08']);
+                        }else{
+                            return $this->redirect(['customer-otp/'.$savedId.'/09']);
+                        }
+                   // return $this->redirect(['/trip-c/'.$savedId.'/09']);
                 }
             }else{
                 $models = ClientMaster::find()->orderBy(['id'=>SORT_DESC])->asArray()->one();
                     if(!empty($models)){
                         $savedId = $models['id'];
                     }
-                return $this->redirect(['/trip-c/'.$savedId.'/09']);
+                        if($id=="08"){
+                            return $this->redirect(['customer-otp/'.$savedId.'/08']);
+                        }else{
+                            return $this->redirect(['customer-otp/'.$savedId.'/09']);
+                        }
+               // return $this->redirect(['/trip-c/'.$savedId.'/09']);
             }
         } else {
 
             $formTokenName = uniqid();
             $session['hidden_token']=$formTokenName;
             // echo "string";die;
-            return $this->renderAjax('create', [
+            return $this->render('create', [
                 'model' => $model, 'token_name' => $formTokenName,
             ]);
         }

@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use backend\models\SuperviserMaster;
 use yii\helpers\ArrayHelper;
@@ -77,8 +78,8 @@ use kartik\select2\Select2;
     border: 1px solid #aaa;
     }
 </style>
-<link rel="stylesheet" type="text/css" media="screen" href="dist/css/select2.css" />
- <script  src="dist/js/select2.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo Url::base(true); ?>/dist/css/select2.css" />
+ <script  src="<?php echo Url::base(true); ?>/dist/js/select2.js"></script>
 <div id="page-content">
    <div class="">
       <div class="eq-height">
@@ -114,6 +115,7 @@ use kartik\select2\Select2;
 </div>
 <div class="box-footer"> 
 <div class="row"> 
+<div class="col-md-12"> 
         <?= Html::submitButton($model->isNewRecord ? 'Save' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success pull-right' : 'btn btn-primary pull-right']) ?> 
 </div>
 </div>

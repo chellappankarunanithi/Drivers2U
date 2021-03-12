@@ -6,9 +6,17 @@ $params = array_merge(
     require(__DIR__ . '/params-local.php')
 );
 use \yii\web\Request;
+use yii\helpers\Url;
 
 
+    
 $baseUrl = str_replace('/backend/web', '', (new Request)->getBaseUrl());
+ $server = $_SERVER['SERVER_NAME']; 
+        if ($server=="192.168.1.114") {
+            $url = '/2021/drives2u';
+        }else{
+            $url = '/drives2u';
+        }
 return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
@@ -55,8 +63,8 @@ return [
 
             'web'=> '/backend/web',
 
-            'adminUrl' => '/admin',
-            'baseUrl' => '/drives2u',
+            'adminUrl' => '/admin', 
+            'baseUrl' => $url, 
 
         ],
        
@@ -70,11 +78,11 @@ return [
                 'index' => 'site/index',
                 'customer-management' => 'client-master/index',
                 'customer-c'          => 'client-master/create',
-                'customer-trip-create'=> 'client-master/customer-trip-create',
+                'customer-trip-create/<id:\d+>'=> 'client-master/customer-trip-create',
                 'customer-u/<id:\d+>' => 'client-master/update',
                 'customer-v/<id:\d+>' => 'client-master/view',
                 'customer-d/<id:\d+>' => 'client-master/delete', 
-                'customer-otp/<id:\d+>' => 'client-master/customer-otp', 
+                'customer-otp/<id:\d+>/<data:\d+>' => 'client-master/customer-otp', 
 
                 'commission-management' => 'commission-master/index',
                 'commission-c'          => 'commission-master/create',
@@ -128,6 +136,7 @@ return [
                 'otpsave/<id:\d+>' => 'trip-details/otpsave',
                 'otpverification' => 'trip-details/otpverification',
                 'response/<id:\d+>' => 'trip-details/response',
+                'change-trip/<id:\d+>/<data:\d+>' => 'trip-details/change-trip',
                 'change-trip/<id:\d+>' => 'trip-details/change-trip',
                 'trip-rating/<id:\d+>' => 'trip-details/trip-rating',
 

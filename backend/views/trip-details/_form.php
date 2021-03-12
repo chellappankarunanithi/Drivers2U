@@ -143,9 +143,10 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
                     <?= $form->field($model, 'CustomerId')->dropDownList($customer,['class'=>'form-control input-sm','prompt'=>"Select",'value'=>$CustomerId])->label(false)?>
                 </div>
               </div>
-            <!--   <div class="col-sm-1" id="tripcusadd" hidden="" style="margin-top: 30px; display: block;">
-                        <button type="button" id="addmore" data-toggle="tooltip" data-title="Add New Customer" class="btn btn-xs btn-info fa-fa-search" name="search"  value="search"><i class="fa fa-fw fa-plus"></i></button>      
-              </div> -->
+               <div class="col-sm-1" id="tripcusadd" hidden="" style="margin-top: 30px; display: block;">
+                  <a href="<?php echo Url::base(true).'/customer-trip-create/09' ?>" data-toggle="tooltip" data-title="Add New Customer" class="btn btn-xs btn-info fa-fa-search"><i class="fa fa-fw fa-plus"></i></a>
+                      <!--   <button type="button" id="addmore" data-toggle="tooltip" data-title="Add New Customer" class="btn btn-xs btn-info fa-fa-search" name="search"  value="search"><i class="fa fa-fw fa-plus"></i></button>       -->
+              </div> 
                <div class="col-sm-4"> 
             <div class="f orm-group"> 
              <label class="form-label">Customer ID</label>

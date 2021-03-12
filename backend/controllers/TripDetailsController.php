@@ -217,11 +217,11 @@ class TripDetailsController extends Controller
 
 
     ## change trip
-    public function actionChangeTrip($id)
-    {
-        $model = $this->findModel($id);
+    public function actionChangeTrip($id,$data="")
+    {    
+        $model = $this->findModel($id); 
         $model->scenario = "change-trip";
-        if ($model->load(Yii::$app->request->post())) { //echo "<pre>"; print_r($_POST); die;
+        if ($model->load(Yii::$app->request->post())) { 
              if (array_key_exists('StartDateTime', $_POST['TripDetails'])) {
                 if ($_POST['TripDetails']['StartDateTime']!="") {
                     $model->StartDateTime = date('Y-m-d H:i:s', strtotime($_POST['TripDetails']['StartDateTime']));
@@ -304,10 +304,12 @@ class TripDetailsController extends Controller
                     'model' => $model,
                 ]);
             }
+        }else{ 
+                 return $this->render('_changetrip', [
+                    'model' => $model,
+                ]);
+
         }
-         return $this->render('_changetrip', [
-            'model' => $model,
-        ]);
     }
 
     /**
