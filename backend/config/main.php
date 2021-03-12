@@ -82,6 +82,7 @@ return [
                 'customer-u/<id:\d+>' => 'client-master/update',
                 'customer-v/<id:\d+>' => 'client-master/view',
                 'customer-d/<id:\d+>' => 'client-master/delete', 
+                'customer-otp/<id:\d+>' => 'client-master/customer-otp', 
                 'customer-otp/<id:\d+>/<data:\d+>' => 'client-master/customer-otp', 
 
                 'commission-management' => 'commission-master/index',
