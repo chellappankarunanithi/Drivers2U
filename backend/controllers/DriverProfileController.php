@@ -576,7 +576,7 @@ public function actionEmpid($id)
       $upl=$modes->licence_copy;
       $baseUrl = Yii::$app->basePath; 
       $files=$baseUrl.'/web/'.$upl; 
-      ni_set('max_execution_time', 5*60);
+      ini_set('max_execution_time', 5*60);
     return Yii::$app->response->sendFile($files); 
      
   }
