@@ -237,7 +237,6 @@ class TripDetailsController extends Controller
             $model->TripStatus = 'Activated';
             $model->ChangeTrip = 'Yes'; 
             $model->ChangeDate = date('Y-m-d H:i:s');
-            $model->TripStatus = 'Activated';
 
             $model->UpdatedIpaddress = $_SERVER['REMOTE_ADDR'];
 

@@ -9,7 +9,7 @@ use yii\bootstrap\Modal;
         <div class="pull-right hidden-xs">
           <b></b>
         </div>
-        <strong>&copy; <?= date('Y') ?>  DRIVES2U </strong> All rights reserved.
+        <strong>&copy; <?= date('Y') ?>  Drives2u </strong> All rights reserved.
       </footer>
 
 <!--Common Modal Starts For Delete -->

@@ -211,7 +211,7 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
           </div>  
               <div class="col-sm-3">
                 <div class="f orm-group">
-                   <label class="form-label">Vehicle No</label><span style="color: red; font-size: 15px;">*</span>
+                   <label class="form-label">Vehicle No</label>
                   <?= $form->field($model, 'VehicleNo')->textInput(['maxlength'=>10,'class'=>'form-control input-sm','style'=>'text-transform:uppercase;'])->label(false)?>
                 </div>
               </div>

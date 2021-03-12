@@ -16,8 +16,7 @@ class MyGlobalClass extends \yii\base\Component{
         $get_array=explode('/', $_SERVER['REQUEST_URI']);
         $get_uri=end($get_array);
 
-      if( $get_uri!="" && $get_uri != 'home' &&  $get_uri != 'index' &&  $get_uri != 'index.php' &&  $get_uri != 'logout'  && $session['user_id'] == ''){
-        $session['user_id']="";
+      if( $get_uri!="" && $get_uri != 'home' &&  $get_uri != 'index' &&  $get_uri != 'index.php' &&  $get_uri != 'logout'  && $session['user_id']==""){ 
         echo '<center><div style="border:#999999 solid 2px;;width:25%;">';
         
         echo "</br>";

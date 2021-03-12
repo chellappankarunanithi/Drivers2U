@@ -30,7 +30,7 @@ $service_center=$user_data->service_center_name;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode("DRIVES2U") ?></title>
+    <title><?= Html::encode("Drives2u") ?></title>
     <?php $this->head() ?>
   
     <style>
@@ -100,7 +100,7 @@ $service_center=$user_data->service_center_name;
         <!-- <a href="<?= Yii::$app->homeUrl ?>" class="logo"> -->
          <a class="logo" href="<?= Yii::$app->homeUrl ?>">
          <span class="logo-mini" style=" margin-top: -15px; margin-left: -15px;"><img src="<?php echo Url::base(true)?>/images/logo.png" width="50px;" height="50px;" style="margin-top: 15px;"></span>
-           <span class="logo-lg"><b>DRIVES2U</b></span>
+           <span class="logo-lg"><b style="font-style: italic;">Drives2u</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->

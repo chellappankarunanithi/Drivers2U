@@ -53,7 +53,7 @@ class TripDetails extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['CustomerId', 'VehicleType', 'VehicleNo', 'TripType','StartDateTime',], 'required'],
+            [['CustomerId', 'VehicleType', 'TripType','StartDateTime',], 'required'],
             [['ChangeTrip', 'ChangeReason', 'TripStartLoc', 'TripEndLoc', 'Review', 'UpdatedIpaddress'], 'safe'],
             [['StartDateTime', 'EndDateTime', 'CreatedDate', 'UpdatedDate'], 'safe'],
             [['TripCost', 'CommissionAmount'], 'number'],
@@ -102,14 +102,14 @@ class TripDetails extends \yii\db\ActiveRecord
             'ChangeReason' => 'Change Reason',
             'TripStartLoc' => 'Trip Start Location',
             'TripEndLoc' => 'Trip End Location',
-            'StartDateTime' => 'Start Date Time',
-            'EndDateTime' => 'End Date Time',
+            'StartDateTime' => 'Trip Starting Date Time',
+            'EndDateTime' => 'Trip Closing Date Time',
             'TripCost' => 'Trip Cost',
             'Review' => 'Review',
             'CommissionId' => 'Commission value',
             'CommissionType' => 'Commission Type',
             'CommissionAmount' => 'Commission Amount',
-            'CreatedDate' => 'Created Date',
+            'CreatedDate' => 'Booked Date',
             'UpdatedDate' => 'Updated Date',
             'UpdatedIpaddress' => 'Updated Ipaddress',
         ];

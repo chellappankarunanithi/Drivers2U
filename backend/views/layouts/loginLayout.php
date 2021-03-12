@@ -111,7 +111,7 @@ LoginAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; <?= date('Y') ?> Drives2U.</strong>     All rights reserved.</p>
+        <p class="pull-left">&copy; <?= date('Y') ?> Drives2u.</strong>     All rights reserved.</p>
 
         <p class="pull-right"></p>
     </div>

@@ -41,15 +41,16 @@ return [
         'MyGlobalClass'=>[
             'class'=>'backend\components\MyGlobalClass'
         ],
-        'log' => [
+       /* 'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
+            'flushInterval' => 100, 
             'targets' => [
                 [
-                    'class' => 'yii\log\FileTarget',
+                    'class' => 'yii\log\FileTarget', 
                     'levels' => ['error', 'warning'],
                 ],
             ],
-        ],
+        ],*/
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],

@@ -83,7 +83,7 @@ class TripLog extends \yii\db\ActiveRecord
             $tripStatus = $requestInput['tripStatus'];
 
             $list['message'] = 'Invalid Api method';
-            if($apiMethod=='tripLogSave'){
+           // if($apiMethod=='tripLogSave'){
                 $TripDetails = TripDetails::find()->where(['id'=>$tripId])->asArray()->one();
                 $list['message'] = 'Trip not found';
                 if(!empty($TripDetails)){
@@ -91,10 +91,11 @@ class TripLog extends \yii\db\ActiveRecord
                     $newLog->tripId = $tripId;
                     $newLog->customerId = $TripDetails['CustomerId'];
                     $newLog->tripStatus = $tripStatus;
+                    $newLog->apiMethod = $apiMethod;
                     $newLog->tripDetails = json_encode($TripDetails);
                     $newLog->createdAt = date('Y-m-d H:i:s');
                     $newLog->updatedAt = date('Y-m-d H:i:s');
-                    $newLog->updatedAt = $_SERVER['REMOTE_ADDR'];
+                    $newLog->updatedIpAddress = $_SERVER['REMOTE_ADDR'];
                     if($newLog->save()){
                         $list['stutus'] = 'success';
                         $list['message'] = 'Log saved successfully';
@@ -102,7 +103,7 @@ class TripLog extends \yii\db\ActiveRecord
                         echo "<pre>";print_r($newLog->getErrors());die;
                     }
                 }
-            }
+            //}
         }
         return $list;
 

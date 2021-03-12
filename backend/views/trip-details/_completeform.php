@@ -241,8 +241,8 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
            <div class="col-sm-2 CommissionValue" style="display: none;">        
                <?= $form->field($model, 'CommissionValue')->textInput(['class'=>'form-control input-sm','style'=>'text-align:right;'])->label("Commission Value");?>
            </div>
-            <div class="col-sm-2">         
-                 <label class="form-label">Trip End Date & Time</label><span style="color: red; font-size: 15px;">*</span>
+            <div class="col-sm-3">         
+                 <label class="form-label">Trip Closing Date & Time</label><span style="color: red; font-size: 15px;">*</span>
                       <?php 
                        $date = date('d-m-Y h:i:s A', strtotime($model->EndDateTime)); 
                        
