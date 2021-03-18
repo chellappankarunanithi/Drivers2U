@@ -22936,3 +22936,285 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1615470584.064
     'REQUEST_TIME' => 1615470584
 ]
+2021-03-12 15:44:48 [192.168.1.52][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.1.52
+2021-03-12 15:44:48 [192.168.1.52][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity' => '2222fa771074695178750787fc65373dac85f5ca606b7ee4ed777ace8993eeb4a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"8nAQquRZCfOFOdOngHc2lEhhJ5brco1t\",2592000]\";}'
+]
+
+$_SERVER = [
+    'MIBDIRS' => 'E:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'E:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.1.114'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://192.168.1.114/2021/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8'
+    'HTTP_COOKIE' => '_identity=2222fa771074695178750787fc65373dac85f5ca606b7ee4ed777ace8993eeb4a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%228nAQquRZCfOFOdOngHc2lEhhJ5brco1t%22%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files\\nodejs\\;C:\\Program Files\\PuTTY\\;E:\\xampp\\php;C:\\composer;C:\\Program Files\\Git\\cmd;C:\\Users\\Admin\\AppData\\Roaming\\npm;C:\\Users\\Admin\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\Admin\\AppData\\Local\\Programs\\Microsoft VS Code\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.17 (Win32) OpenSSL/1.0.2d PHP/5.6.14 Server at 192.168.1.114 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.17 (Win32) OpenSSL/1.0.2d PHP/5.6.14'
+    'SERVER_NAME' => '192.168.1.114'
+    'SERVER_ADDR' => '192.168.1.114'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.1.52'
+    'DOCUMENT_ROOT' => 'E:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'E:/xampp/htdocs/2021/drives2u/index.php'
+    'REMOTE_PORT' => '59823'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/2021/drives2u/'
+    'SCRIPT_NAME' => '/2021/drives2u/index.php'
+    'PHP_SELF' => '/2021/drives2u/index.php'
+    'REQUEST_TIME_FLOAT' => 1615544088.107
+    'REQUEST_TIME' => 1615544088
+]
+2021-03-17 18:20:51 [192.168.1.203][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.1.203
+2021-03-17 18:20:51 [192.168.1.203][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga' => 'GA1.1.1851778436.1615282832'
+    'drives2usession' => '8sm01a7q5b73aqj93ttt9gc3p5'
+    '_csrf' => '118b2ec201e11d6c15fb56577a82fbf7146cc574f0ad87afdf203869224197c3a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"pqSj8cdhXzkStrRRHOahOQCzxmtBQ1mQ\";}'
+]
+
+$_SERVER = [
+    'MIBDIRS' => 'E:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'E:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.1.114'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_PURPOSE' => 'prefetch'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,la;q=0.8'
+    'HTTP_COOKIE' => '_ga=GA1.1.1851778436.1615282832; drives2usession=8sm01a7q5b73aqj93ttt9gc3p5; _csrf=118b2ec201e11d6c15fb56577a82fbf7146cc574f0ad87afdf203869224197c3a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22pqSj8cdhXzkStrRRHOahOQCzxmtBQ1mQ%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files\\nodejs\\;C:\\Program Files\\PuTTY\\;E:\\xampp\\php;C:\\composer;C:\\Program Files\\Git\\cmd;C:\\Users\\Admin\\AppData\\Roaming\\npm;C:\\Users\\Admin\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.17 (Win32) OpenSSL/1.0.2d PHP/5.6.14 Server at 192.168.1.114 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.17 (Win32) OpenSSL/1.0.2d PHP/5.6.14'
+    'SERVER_NAME' => '192.168.1.114'
+    'SERVER_ADDR' => '192.168.1.114'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.1.203'
+    'DOCUMENT_ROOT' => 'E:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'E:/xampp/htdocs/2021/drives2u/index.php'
+    'REMOTE_PORT' => '64562'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/2021/drives2u/'
+    'SCRIPT_NAME' => '/2021/drives2u/index.php'
+    'PHP_SELF' => '/2021/drives2u/index.php'
+    'REQUEST_TIME_FLOAT' => 1615985451.526
+    'REQUEST_TIME' => 1615985451
+]
+2021-03-18 12:21:12 [192.168.1.114][-][5s6uabrtvurmtl9ufb5kef7nl0][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "tripsheet/MQ==".' in E:\xampp\htdocs\2021\drives2u\vendor\yiisoft\yii2\base\Module.php:537
+Stack trace:
+#0 E:\xampp\htdocs\2021\drives2u\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('tripsheet/MQ==', Array)
+#1 E:\xampp\htdocs\2021\drives2u\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 E:\xampp\htdocs\2021\drives2u\index.php(48): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in E:\xampp\htdocs\2021\drives2u\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 E:\xampp\htdocs\2021\drives2u\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 E:\xampp\htdocs\2021\drives2u\index.php(48): yii\base\Application->run()
+#2 {main}
+2021-03-18 12:21:12 [192.168.1.114][-][5s6uabrtvurmtl9ufb5kef7nl0][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.1.114
+    in E:\xampp\htdocs\2021\drives2u\frontend\views\layouts\main.php:218
+2021-03-18 12:21:12 [192.168.1.114][-][5s6uabrtvurmtl9ufb5kef7nl0][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.1.114
+2021-03-18 12:21:12 [192.168.1.114][-][5s6uabrtvurmtl9ufb5kef7nl0][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga' => 'GA1.1.540934922.1614670549'
+    'drives2usession' => 'd9t2homvv9av6d3g8291vk1373'
+    '_csrf' => '3740d510c28d23e9730b3916607dadf26a7ed110d886912752b7d1110a16feeda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"q9AbM-QpgYrL2c_kpav45qJ_xQ_QJMXE\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'E:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'E:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'E:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'E:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.1.114'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => '_ga=GA1.1.540934922.1614670549; drives2usession=d9t2homvv9av6d3g8291vk1373; _csrf=3740d510c28d23e9730b3916607dadf26a7ed110d886912752b7d1110a16feeda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22q9AbM-QpgYrL2c_kpav45qJ_xQ_QJMXE%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files\\nodejs\\;C:\\Program Files\\PuTTY\\;E:\\xampp\\php;C:\\composer;C:\\Program Files\\Git\\cmd;C:\\Users\\Admin\\AppData\\Roaming\\npm;C:\\Users\\Admin\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.17 (Win32) OpenSSL/1.0.2d PHP/5.6.14 Server at 192.168.1.114 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.17 (Win32) OpenSSL/1.0.2d PHP/5.6.14'
+    'SERVER_NAME' => '192.168.1.114'
+    'SERVER_ADDR' => '192.168.1.114'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.1.114'
+    'DOCUMENT_ROOT' => 'E:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'E:/xampp/htdocs/2021/drives2u/index.php'
+    'REMOTE_PORT' => '52463'
+    'REDIRECT_URL' => 'http://192.168.1.114/2021/drives2u/tripsheet/MQ=='
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/2021/drives2u/tripsheet/MQ=='
+    'SCRIPT_NAME' => '/2021/drives2u/index.php'
+    'PHP_SELF' => '/2021/drives2u/index.php'
+    'REQUEST_TIME_FLOAT' => 1616050272.2
+    'REQUEST_TIME' => 1616050272
+]
+2021-03-18 12:21:13 [192.168.1.114][-][5s6uabrtvurmtl9ufb5kef7nl0][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "frontend/web/images/swim_logo1.png".' in E:\xampp\htdocs\2021\drives2u\vendor\yiisoft\yii2\base\Module.php:537
+Stack trace:
+#0 E:\xampp\htdocs\2021\drives2u\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('frontend/web/im...', Array)
+#1 E:\xampp\htdocs\2021\drives2u\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 E:\xampp\htdocs\2021\drives2u\index.php(48): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in E:\xampp\htdocs\2021\drives2u\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 E:\xampp\htdocs\2021\drives2u\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 E:\xampp\htdocs\2021\drives2u\index.php(48): yii\base\Application->run()
+#2 {main}
+2021-03-18 12:21:13 [192.168.1.114][-][5s6uabrtvurmtl9ufb5kef7nl0][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.1.114
+    in E:\xampp\htdocs\2021\drives2u\frontend\views\layouts\main.php:218
+2021-03-18 12:21:13 [192.168.1.114][-][5s6uabrtvurmtl9ufb5kef7nl0][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.1.114
+2021-03-18 12:21:13 [192.168.1.114][-][5s6uabrtvurmtl9ufb5kef7nl0][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga' => 'GA1.1.540934922.1614670549'
+    'drives2usession' => 'd9t2homvv9av6d3g8291vk1373'
+    '_csrf' => '3740d510c28d23e9730b3916607dadf26a7ed110d886912752b7d1110a16feeda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"q9AbM-QpgYrL2c_kpav45qJ_xQ_QJMXE\";}'
+    'Swim987963frontend' => '5s6uabrtvurmtl9ufb5kef7nl0'
+    '_frontendCSRF' => '0304ae286c3ff73cbf468a7059e292c67338bf0490a990e3894f9f7f58c126e8a:2:{i:0;s:13:\"_frontendCSRF\";i:1;s:32:\"lBTqyro120pxWNcFnScfDtNkWPVvwEAi\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'E:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'E:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'E:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'E:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.1.114'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36'
+    'HTTP_ACCEPT' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://192.168.1.114/2021/drives2u/tripsheet/MQ=='
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => '_ga=GA1.1.540934922.1614670549; drives2usession=d9t2homvv9av6d3g8291vk1373; _csrf=3740d510c28d23e9730b3916607dadf26a7ed110d886912752b7d1110a16feeda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22q9AbM-QpgYrL2c_kpav45qJ_xQ_QJMXE%22%3B%7D; Swim987963frontend=5s6uabrtvurmtl9ufb5kef7nl0; _frontendCSRF=0304ae286c3ff73cbf468a7059e292c67338bf0490a990e3894f9f7f58c126e8a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_frontendCSRF%22%3Bi%3A1%3Bs%3A32%3A%22lBTqyro120pxWNcFnScfDtNkWPVvwEAi%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files\\nodejs\\;C:\\Program Files\\PuTTY\\;E:\\xampp\\php;C:\\composer;C:\\Program Files\\Git\\cmd;C:\\Users\\Admin\\AppData\\Roaming\\npm;C:\\Users\\Admin\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.17 (Win32) OpenSSL/1.0.2d PHP/5.6.14 Server at 192.168.1.114 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.17 (Win32) OpenSSL/1.0.2d PHP/5.6.14'
+    'SERVER_NAME' => '192.168.1.114'
+    'SERVER_ADDR' => '192.168.1.114'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.1.114'
+    'DOCUMENT_ROOT' => 'E:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'E:/xampp/htdocs/2021/drives2u/index.php'
+    'REMOTE_PORT' => '52471'
+    'REDIRECT_URL' => 'http://192.168.1.114/2021/drives2u/frontend/web/images/swim_logo1.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/2021/drives2u/frontend/web/images/swim_logo1.png'
+    'SCRIPT_NAME' => '/2021/drives2u/index.php'
+    'PHP_SELF' => '/2021/drives2u/index.php'
+    'REQUEST_TIME_FLOAT' => 1616050273.327
+    'REQUEST_TIME' => 1616050273
+]
