@@ -29,7 +29,7 @@ EOF;
     private $retryNum;
     private $retryInterval;
 
-    public function __construct($action, array $arguments = [], $retryNum, $retryInterval)
+    public function __construct($action, array $arguments, $retryNum, $retryInterval)
     {
         $this->action = $action;
         $this->arguments = $arguments;
@@ -43,14 +43,16 @@ EOF;
         $interval = $this->retryInterval;
         while (true) {
             try {
+                $this->isTry = $retry < $this->retryNum;
                 return parent::run($container);
             } catch (\Exception $e) {
                 $retry++;
-                if ($retry > $this->retryNum) {
+                if (!$this->isTry) {
                     throw $e;
                 }
                 codecept_debug("Retrying #$retry in ${interval}ms");
                 usleep($interval * 1000);
+                $interval *= 2;
             }
         }
     }

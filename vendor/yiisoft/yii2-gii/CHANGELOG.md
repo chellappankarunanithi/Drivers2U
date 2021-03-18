@@ -1,6 +1,44 @@
 Yii Framework 2 gii extension Change Log
 ========================================
 
+2.2.1 May 02, 2020
+------------------
+
+- Bug #428: Permit the usage of anonymous generators using dependency injection (aguevaraIL)
+
+
+2.2.0 March 24, 2020
+--------------------
+
+- Enh #424: Added support for `via()` junction relations in model generator (rhertogh)
+
+
+2.1.4 January 17, 2020
+----------------------
+
+- Bug #422: Fix relational query getter documentation style (mikk150)
+- Enh #287: Model generator is now generating relation's phpdoc hints with target ActiveQuery class (bscheshirwork)
+
+
+2.1.3 November 19, 2019
+-----------------------
+
+- Bug #417: Fixed issue where RTL implementation for foreign keys causes problems with LTR tables names (NickvdMeij)
+- Enh #416: Improved generation of model attributes and type annotations (uldisn)
+
+
+2.1.2 October 08, 2019
+----------------------
+
+- Bug #413: Controller Generator produces invalid alias when namespace starts with backslash (cebe)
+
+
+2.1.1 August 13, 2019
+---------------------
+
+- Bug #410: Inserted rows in the diff were not highlighted (albertborsos)
+
+
 2.1.0 March 17, 2019
 --------------------
 

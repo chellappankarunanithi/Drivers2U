@@ -527,7 +527,7 @@ class TripDetailsController extends Controller
         $model->scenario="activate";
         if ($_POST) { 
                     
-                      $model->TripStatus = "Activated"; 
+                      
                           if (array_key_exists('DriverId', $_POST['TripDetails'])) {
                             if ($_POST['TripDetails']['DriverId']!="") {
                                 $model->DriverId = $_POST['TripDetails']['DriverId'];
@@ -535,12 +535,17 @@ class TripDetailsController extends Controller
                               if ($drivermodel) {
                                 $drivermodel->available_status= "1";
                                 $drivermodel->save();
+                                $model->TripStatus = "Activated"; 
                               }
                             }
                           } 
                   
                      
-                    $model->save();
+                    if($model->save()){
+                        Yii::$app->getSession()->setFlash('success', 'Trip Activated Successfully.');
+                    }else{
+                        Yii::$app->getSession()->setFlash('error', 'Driver not Available.');
+                    }
 
                     $requestInput = array();
                     $requestInput['tripId'] = $model->id;
@@ -548,7 +553,7 @@ class TripDetailsController extends Controller
                     $requestInput['apiMethod'] = 'Activate'; 
                     $callFun = new TripLog();
                     $response = $callFun->tripLog($requestInput); 
-                    Yii::$app->getSession()->setFlash('success', 'Trip Activated Successfully.');
+                    
                     return $this->redirect(['trip-index']);
         }
             if ($model->TripStatus=="Activated") { // echo "as"; die;
@@ -655,7 +660,7 @@ class TripDetailsController extends Controller
 
                   $drivermodel = DriverProfile::find()->where(['id'=>$model->DriverId])->one();
                   if (!empty($drivermodel)) {
-                    $drivermodel->available_status = 1;
+                    $drivermodel->available_status = 0;
                     $drivermodel->save();
                   }
 

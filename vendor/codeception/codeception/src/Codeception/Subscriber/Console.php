@@ -76,15 +76,16 @@ class Console implements EventSubscriberInterface
     protected $chars = ['success' => '+', 'fail' => 'x', 'of' => ':'];
 
     protected $options = [
-        'debug'       => false,
-        'ansi'        => false,
-        'steps'       => true,
-        'verbosity'   => 0,
-        'xml'         => null,
-        'phpunit-xml' => null,
-        'html'        => null,
-        'tap'         => null,
-        'json'        => null,
+        'debug'         => false,
+        'ansi'          => false,
+        'steps'         => true,
+        'verbosity'     => 0,
+        'xml'           => null,
+        'phpunit-xml'   => null,
+        'html'          => null,
+        'tap'           => null,
+        'json'          => null,
+        'no-artifacts'  => false,
     ];
 
     /**
@@ -293,11 +294,7 @@ class Console implements EventSubscriberInterface
 
     protected function isDetailed($test)
     {
-        if ($test instanceof ScenarioDriven && $this->steps) {
-            return true;
-        }
-
-        return false;
+        return $test instanceof ScenarioDriven && $this->steps;
     }
 
     public function beforeStep(StepEvent $e)
@@ -375,6 +372,9 @@ class Console implements EventSubscriberInterface
 
     public function printReports(TestInterface $failedTest)
     {
+        if ($this->options['no-artifacts']) {
+            return;
+        }
         $reports = $failedTest->getMetadata()->getReports();
         if (count($reports)) {
             $this->output->writeln('<comment>Artifacts:</comment>');

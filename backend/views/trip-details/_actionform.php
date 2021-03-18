@@ -226,7 +226,15 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
               <div class="col-sm-3">
                 <div class="form-group">
                   <label class="form-label required">Driver Name</label>
-                    <?= $form->field($model, 'DriverId')->dropDownList($driver,['class'=>'form-control input-sm','prompt'=>"Select",'style'=>'width: 100%;'])->label(false)?>
+                  <?php // echo "<pre>"; print_r($driver); die;
+                    if (!empty($driver)) {
+                      echo $form->field($model, 'DriverId')->dropDownList($driver,['class'=>'form-control input-sm','prompt'=>"Select",'style'=>'width: 100%;'])->label(false);
+                    }else{
+                      echo $form->field($model, 'DriverId')->dropDownList($driver,['class'=>'form-control input-sm','id'=>'driverid', 'prompt'=>"Select",'style'=>'width: 100%;'])->label(false);
+                    }
+
+                   ?>
+                    <!-- <?= $form->field($model, 'DriverId')->dropDownList($driver,['class'=>'form-control input-sm','prompt'=>"Select",'style'=>'width: 100%;'])->label(false)?> -->
                     <div id="driveriderror" style="color: #e61717;" class="help-block"></div>
                 </div>
               </div> 
