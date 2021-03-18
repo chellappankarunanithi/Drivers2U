@@ -235,7 +235,7 @@ class TripDetails extends \yii\db\ActiveRecord
                  }
             }
        $baseUrl = Url::base(true);
-        $files=$baseUrl.'/images/Logo.png';
+        $files=$baseUrl.'/images/logo.png';
         $filetype = explode('.', $files);
        $pdf->Image( $files, 14, 16, 25, '', 'PNG', '', '', false, 500, '', false, false, 0, false, false, false);
       $html = '
