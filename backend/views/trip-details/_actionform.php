@@ -137,14 +137,41 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
       <div class="card-body" style="border: 1px solid #c7c6c6;padding: 10px;">
         <div class="row">
           <div class="col-sm-12">
-              <div class="col-sm-4">
+              
+           <?php if ($model->GuestName!="") { ?>
+                <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="form-label required">Company Name</label><span style="color: red; font-size: 15px;">*</span>
+                    <?= $form->field($model, 'CustomerId')->textInput(['class'=>'form-control input-sm','value'=>$CustomerName, 'readOnly'=>true])->label(false)?>
+                </div>
+              </div>
+            <div class="col-sm-3"> 
+            <div class="f orm-group"> 
+             <label class="form-label">Customer ID</label>
+                  <input type="text" id="tripdetails-company_name" class="form-control input-sm" name="TripDetails[company_name]" placeholder="Customer Id" readonly value="<?php echo $company_name; ?>" aria-invalid="false">
+            </div>
+          </div>  
+
+              <div class="col-sm-3">
+                <div class="f orm-group">
+                  <label class="form-label">Guest Name</label>
+                   <?= $form->field($model, 'GuestName')->textInput(['class'=>'form-control input-sm','readOnly'=>true])->label(false)?>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="f orm-group">
+                  <label class="form-label">Guest Contact No</label>
+                   <?= $form->field($model, 'GuestContact')->textInput(['class'=>'form-control input-sm','readOnly'=>true])->label(false)?>
+                </div>
+              </div>
+           <?php }else{ ?>
+                    <div class="col-sm-4">
                 <div class="form-group">
                   <label class="form-label required">Customer Name</label><span style="color: red; font-size: 15px;">*</span>
                     <?= $form->field($model, 'CustomerId')->textInput(['class'=>'form-control input-sm','value'=>$CustomerName, 'readOnly'=>true])->label(false)?>
                 </div>
               </div>
-           
-               <div class="col-sm-4"> 
+            <div class="col-sm-4"> 
             <div class="f orm-group"> 
              <label class="form-label">Customer ID</label>
                   <input type="text" id="tripdetails-company_name" class="form-control input-sm" name="TripDetails[company_name]" placeholder="Customer Id" readonly value="<?php echo $company_name; ?>" aria-invalid="false">
@@ -156,6 +183,10 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
                     <input type="text" id="tripdetails-contactno" class="form-control input-sm" name="TripDetails[ContactNo]" maxlength="10" placeholder="Contact No" readonly value="<?php echo $contact; ?>" aria-invalid="false">
                 </div>
               </div>
+
+
+           <?php } ?>
+           
            
         </div>
       </div>
@@ -224,7 +255,11 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
     </div>
    <div class="card-footer">
    <div class="form-group">
-  <?php echo Html::submitButton('Save', ['class' => 'btn btn-success pull-right','id'=>'savesub']); ?>
+ <div class="text-right" style="padding: 10px;">
+                        <?= Html::a('<i class="fa fa-close"></i> Close', ['/trip-index'], ['class' => 'btn btn-outline-primary ','title'=>'Close'])?>
+
+                        <?= Html::submitButton('Save', ['class' => 'btn btn-success ']) ?>
+                    </div>
 </div>
 </div>
    

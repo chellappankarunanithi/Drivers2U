@@ -36,9 +36,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'tripcode',
-            'VehicleNo',
-            'CustomerName',  
+            'tripcode', 
+            'GuestName',
+            'GuestContact',
+            [ 'attribute'=>'CustomerName',
+              'label'=>'Company Name'],
             'CustomerContactNo', 
             'DriverName', 
             'DriverContactNo', 

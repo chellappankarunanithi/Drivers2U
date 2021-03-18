@@ -141,7 +141,7 @@ $service_center=$user_data->service_center_name;
                     </div>
                     <div class="pull-right">                  
 					<?php  if (Yii::$app->user->isGuest) {
-					       echo  ['label' => 'Sign out', 'url' => ['/site/login']];
+					       print_r(  ['label' => 'Sign out', 'url' => ['/site/login']]);
 					    } else {
 					        echo '<a>'
 					            . Html::beginForm(['/site/logout'], 'post')

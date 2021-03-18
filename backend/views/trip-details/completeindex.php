@@ -40,7 +40,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'tripcode',
            // 'VehicleNo',
-            'CustomerName',  
+            'GuestName',
+            'GuestContact',
+            [ 'attribute'=>'CustomerName',
+              'label'=>'Company Name'],
+             
             'CustomerContactNo', 
             'DriverName', 
             'DriverContactNo', 

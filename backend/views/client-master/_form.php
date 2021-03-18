@@ -51,15 +51,24 @@ use kartik\select2\Select2;
 
    
 <div class="row">
-     <div class='col-sm-4 form-group' >
-        <?= $form->field($model, 'client_name')->textInput(['maxlength' => true])->label('Customer Name') ?>
+
+    <div class='col-sm-3 form-group' >
+        <?= $form->field($model, 'UserType')->dropDownList(array('Home'=>'Home','Company'=>'Company'),[/*'prompt' => "Select",*/'maxlength' => true])->label('Customer type') ?>
         <div id="customererror" style="color: #e61717;" class="help-block"></div>
     </div>
-    <div class='col-sm-4 form-group' >
+    <div class='col-sm-3 form-group' >
+
+      
+      <label class="form-label company" style="display: none;">Company Name<sub style="color:red; font-size:20px;">*</sub></label> 
+      <label class="form-label home" style="display: none;">Customer Name<sub style="color:red; font-size:20px;">*</sub></label> 
+        <?= $form->field($model, 'client_name')->textInput(['maxlength' => true])->label(false) ?>
+        <div id="customererror" style="color: #e61717;" class="help-block"></div>
+    </div>
+    <div class='col-sm-3 form-group' >
         <?= $form->field($model, 'mobile_no',['enableAjaxValidation'=>true])->textInput(['maxlength' => 10, 'class'=>'form-control without_decimal12']) ?>
         <div id="mobile_noerror" style="color: #e61717;" class="help-block"></div>
     </div>
-    <div class='col-sm-4 form-group' >
+    <div class='col-sm-3 form-group' >
         <?= $form->field($model, 'email_id')->textInput(['maxlength' => true]) ?>
     </div>
 </div>
@@ -118,7 +127,24 @@ use kartik\select2\Select2;
 </div>
 </div>
 <script type="text/javascript">
-   
+    var vals = $("#clientmaster-usertype").val();
+      if (vals=="Home"){
+        $(".company").hide();
+        $(".home").show();
+      }else if(vals=="Company") {
+        $(".home").hide();
+        $(".company").show();
+      }
+    $("#clientmaster-usertype").on("change", function() {
+      var vals = $(this).val();
+      if (vals=="Home"){
+        $(".company").hide();
+        $(".home").show();
+      }else if ("Company") {
+        $(".home").hide();
+        $(".company").show();
+      }
+    });
     $(".without_decimal12").on("input", function(evt) { 
    var self = $(this);
    self.val(self.val().replace(/[^0-9]/g, ''));

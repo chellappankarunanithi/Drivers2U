@@ -99,6 +99,7 @@ class ClientMasterController extends Controller
                     }
                     $model->company_name = "CUST-D2U-0".$cust_id;
                     $model->created_at = date('Y-m-d H:i:s');
+                    $model->UserType = $_POST['ClientMaster']['UserType'];
                     $model->status = $_POST['ClientMaster']['status'];
                     $model->updated_ipaddress =$_SERVER['REMOTE_ADDR'];
                     $model->user_id = $session['user_id'];
@@ -174,12 +175,13 @@ class ClientMasterController extends Controller
                     if ($confiq) {
                         $cust_id = $confiq->config_value;
                     }
+                     $model->UserType = $_POST['ClientMaster']['UserType'];
                     $model->company_name = "CUST-D2U-0".$cust_id;
                     $model->created_at = date('Y-m-d H:i:s');
                     $model->status = "Register";
                     $model->updated_ipaddress =$_SERVER['REMOTE_ADDR'];
                     $model->user_id = $session['user_id'];
-                  
+                   
                     if($model->save()){
                         $savedId = $model->id;
                         $confiq->config_value = $cust_id+1;
@@ -253,7 +255,7 @@ class ClientMasterController extends Controller
                 $sessionTokenValue =  $session['hidden_token'];
                 if ($formTokenValue == $sessionTokenValue ){
                     $model->status = $_POST['ClientMaster']['status'];
-                
+                    $model->UserType = $_POST['ClientMaster']['UserType'];
                     $model->updated_ipaddress =$_SERVER['REMOTE_ADDR'];
                     $model->user_id = $session['user_id'];
                      if($_POST['ClientMaster']['status']==0){

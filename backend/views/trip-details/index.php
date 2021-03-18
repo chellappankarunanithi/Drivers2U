@@ -51,7 +51,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             },
           ],
-            'CustomerName',  
+          'GuestName',
+          'GuestContact',
+          [ 'attribute'=>'CustomerName',
+              'label'=>'Company Name'],
+               
             'CustomerContactNo', 
             'DriverName', 
             'DriverContactNo', 
@@ -61,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
            ['class' => 'yii\grid\ActionColumn',
                'header'=> 'Action',
                  'headerOptions' => ['style' => 'width:200px;color:#337ab7;'],
-               'template'=>'{view}{update}{activate}{change-trip}{cancel}{rating}',
+               'template'=>'{view}{update}{activate}{change-trip}{cancel}{rating}{dutyslip}',
                             'buttons'=>[
                               'view' => function ($url, $model, $key) {
                                    return Html::button('<i class="glyphicon glyphicon-eye-open"></i>', ['value' => $url, 'style'=>'margin-right:4px;','class' => 'btn btn-primary btn-xs view view gridbtncustom modalView', 'data-toggle'=>'tooltip', 'title' =>'View' ]);
@@ -97,11 +101,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                       //  echo $tempdate; die;
                                         $temp = date('d-m-Y h:i A', strtotime('+1 day', $startdate)); 
-                                        if ($todaydate<$tempdate) {
+                                       // if (true) {
+                                       // if ($todaydate<$tempdate) {
                                            return Html::a('<span class="fa fa-edit"></span> Change trip', $url, $options);
-                                         }else{
+                                        /* }else{
                                            return Html::button('<span class="fa fa-refresh"></span> Change trip', ['value' => $url, 'style'=>'margin-right:4px;','class' => 'btn btn-primary btn-xs view view gridbtncustom  ', 'data-toggle'=>'tooltip', 'title' =>'You can change trip details before 2 hours from trip start time.']);
-                                         }
+                                         }*/
                                        }
                                   }
                               },
@@ -165,6 +170,23 @@ $this->params['breadcrumbs'][] = $this->title;
                                         if ($model->TripStatus=="Completed") {  
                                            $url = Url::base(true).'/trip-rating/'.$model->id;
                                            return Html::button('<span class="fa fa-star"></span> Rating', ['value' => $url, 'style'=>'margin-right:4px;','class' => 'btn btn-warning btn-xs view view gridbtncustom rating', 'data-toggle'=>'tooltip', 'title' =>'Rate the Trip' ]);
+                                         }
+                                  },
+                                  'dutyslip' => function ($url, $model, $key) {
+                                        if ($model->TripStatus!="Booked" && $model->TripStatus!="Cancelled") {  
+                                            
+
+                                           $options = array_merge([
+                                            'class' => 'btn bg-black btn-xs',
+                                            'data-toggle'=>'tooltip',
+                                            'title' => Yii::t('yii', 'Duty Slip'),
+                                            'aria-label' => Yii::t('yii', 'Duty Slip'),
+                                            'data-pjax' => '0',
+                                            'target'=>"_blank",
+                                        ]); 
+                                        $url = Url::base(true).'/dutyslip?id='.base64_encode($model->id);
+                                         
+                                        return Html::a('<span class="fa fa-print"></span>&nbsp;Duty Slip', $url, $options); 
                                          }
                                   },
                                   'cancel' => function ($url, $model, $key) {   

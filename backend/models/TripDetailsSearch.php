@@ -18,7 +18,7 @@ class TripDetailsSearch extends TripDetails
     {
         return [
             [['id'], 'integer'],
-            [['tripcode', 'CustomerId', 'CustomerName', 'CustomerContactNo', 'DriverName', 'DriverContactNo', 'DriverId', 'VehicleId', 'VehicleType', 'VehicleMade', 'VehicleNo', 'TripType', 'TripScheduleType', 'ChangeTrip', 'ChangeReason', 'TripStartLoc', 'TripEndLoc', 'StartDateTime', 'EndDateTime', 'Review', 'CommissionId', 'CommissionType', 'CreatedDate', 'UpdatedDate', 'UpdatedIpaddress','TripStatus'], 'safe'],
+            [['tripcode', 'CustomerId', 'CustomerName', 'GuestName', 'GuestContact', 'CustomerContactNo', 'DriverName', 'DriverContactNo', 'DriverId', 'VehicleId', 'VehicleType', 'VehicleMade', 'VehicleNo', 'TripType', 'TripScheduleType', 'ChangeTrip', 'ChangeReason', 'TripStartLoc', 'TripEndLoc', 'StartDateTime', 'EndDateTime', 'Review', 'CommissionId', 'CommissionType', 'CreatedDate', 'UpdatedDate', 'UpdatedIpaddress','TripStatus'], 'safe'],
             [['TripCost', 'CommissionAmount'], 'number'],
         ];
     }
@@ -66,10 +66,10 @@ class TripDetailsSearch extends TripDetails
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'StartDateTime' => $this->StartDateTime,
-            'EndDateTime' => $this->EndDateTime,
-            'TripCost' => $this->TripCost,
-            'CommissionAmount' => $this->CommissionAmount,
+            //'StartDateTime' => $this->StartDateTime,
+            //'EndDateTime' => $this->EndDateTime,
+           // 'TripCost' => $this->TripCost,
+           // 'CommissionAmount' => $this->CommissionAmount,
             'CreatedDate' => $this->CreatedDate,
             'UpdatedDate' => $this->UpdatedDate,
         ]);
@@ -87,13 +87,19 @@ class TripDetailsSearch extends TripDetails
             ->andFilterWhere(['like', 'ChangeReason', $this->ChangeReason])
             ->andFilterWhere(['like', 'TripStartLoc', $this->TripStartLoc])
             ->andFilterWhere(['like', 'TripEndLoc', $this->TripEndLoc])
+            ->andFilterWhere(['like', 'GuestContact', $this->GuestContact])
+            ->andFilterWhere(['like', 'GuestName', $this->GuestName])
             ->andFilterWhere(['like', 'Review', $this->Review])
             ->andFilterWhere(['like', 'CommissionId', $this->CommissionId])
             ->andFilterWhere(['like', 'CommissionType', $this->CommissionType])
-            ->andFilterWhere(['like', 'client_master.company_name', $this->CustomerName])
+            ->andFilterWhere(['like', 'client_master.company_name', $this->CustomerName]) 
             ->andFilterWhere(['like', 'client_master.mobile_no', $this->CustomerContactNo])
             ->andFilterWhere(['like', 'driver_profile.name', $this->DriverName])
             ->andFilterWhere(['like', 'driver_profile.mobile_number', $this->DriverContactNo])
+            ->andFilterWhere(['like', 'StartDateTime', $this->StartDateTime])
+            ->andFilterWhere(['like', 'EndDateTime', $this->EndDateTime])
+            ->andFilterWhere(['like', 'TripCost', $this->TripCost])
+            ->andFilterWhere(['like', 'CommissionAmount', $this->CommissionAmount])
             ->andFilterWhere(['like', 'TripStatus', $this->TripStatus])
             ->andFilterWhere(['like', 'UpdatedIpaddress', $this->UpdatedIpaddress]);
 

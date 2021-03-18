@@ -17,27 +17,39 @@ use backend\models\VehicleMaster;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\filters\AccessControl;
 /**
  * TripDetailsController implements the CRUD actions for TripDetails model.
  */
 class TripDetailsController extends Controller
-{
+{ 
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
-    {
+     public function behaviors()
+    { 
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['post'],
                 ],
             ],
+          'access' => [
+            'class' => AccessControl::className(),
+            'rules' => [
+                [
+                    'allow' => true,
+                    'roles' => ['@'],
+                ],
+
+                // ...
+            ],
+        ],
+
+
         ];
     }
-
     /**
      * Lists all TripDetails models.
      * @return mixed
@@ -88,6 +100,17 @@ class TripDetailsController extends Controller
                 if (array_key_exists('EndDateTime', $_POST['TripDetails'])) {
                     if ($_POST['TripDetails']['EndDateTime']!="") {
                         $model->EndDateTime = date('Y-m-d H:i:s', strtotime($_POST['TripDetails']['EndDateTime']));
+                    }
+                }
+
+            if (array_key_exists('GuestName', $_POST['TripDetails'])) {
+                    if ($_POST['TripDetails']['GuestName']!="") {
+                        $model->GuestName = $_POST['TripDetails']['GuestName'];
+                    }
+                }
+            if (array_key_exists('GuestContact', $_POST['TripDetails'])) {
+                    if ($_POST['TripDetails']['GuestContact']!="") {
+                        $model->GuestContact = $_POST['TripDetails']['GuestContact'];
                     }
                 }
             $model->TripType = $_POST['TripDetails']['TripType'];
@@ -169,13 +192,23 @@ class TripDetailsController extends Controller
                     $model->EndDateTime = date('Y-m-d H:i:s', strtotime($_POST['TripDetails']['EndDateTime']));
                 }
             }
+            if (array_key_exists('GuestName', $_POST['TripDetails'])) { 
+                    if ($_POST['TripDetails']['GuestName']!="") {
+                        $model->GuestName = $_POST['TripDetails']['GuestName'];
+                    }
+                }
+            if (array_key_exists('GuestContact', $_POST['TripDetails'])) {
+                    if ($_POST['TripDetails']['GuestContact']!="") {
+                        $model->GuestContact = $_POST['TripDetails']['GuestContact'];
+                    }
+                }
             $model->TripStatus = 'Booked';
             $model->TripType = $_POST['TripDetails']['TripType'];
             $model->TripLocationType = $_POST['TripDetails']['TripLocationType'];
             $model->UpdatedIpaddress = $_SERVER['REMOTE_ADDR'];
 
             
-            if ($model->save()) {
+            if ($model->save()) {  
                     if (array_key_exists('DriverId', $_POST['TripDetails'])) {
                         if ($_POST['TripDetails']['DriverId']!="") {
                           $drivermodel = DriverProfile::find()->where(['id'=>$_POST['TripDetails']['DriverId']])->one();
@@ -239,7 +272,16 @@ class TripDetailsController extends Controller
             $model->ChangeDate = date('Y-m-d H:i:s');
 
             $model->UpdatedIpaddress = $_SERVER['REMOTE_ADDR'];
-
+            if (array_key_exists('GuestName', $_POST['TripDetails'])) {
+                    if ($_POST['TripDetails']['GuestName']!="") {
+                        $model->GuestName = $_POST['TripDetails']['GuestName'];
+                    }
+                }
+            if (array_key_exists('GuestContact', $_POST['TripDetails'])) {
+                    if ($_POST['TripDetails']['GuestContact']!="") {
+                        $model->GuestContact = $_POST['TripDetails']['GuestContact'];
+                    }
+                }
             
             if ($model->save()) {
                     if (array_key_exists('DriverId', $_POST['TripDetails'])) {
@@ -812,6 +854,14 @@ class TripDetailsController extends Controller
 
          // }
       }
+    }
+
+    public function actionTripsheet($id=""){ 
+           $id = base64_decode($id); 
+            $model = new TripDetails();
+            $details = $model->tripsheet($id);
+
+            
     }
 
 }

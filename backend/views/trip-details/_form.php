@@ -28,6 +28,8 @@ $drivercontact  = "";
 $driveraddress = "";
 $driveraadhar  = "";
 $profile_photo  = "";
+$user_type = "";
+$Landmark = "";
 
 if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "as"; die;
   $CustomerId = $_GET['id'];
@@ -36,9 +38,11 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
   $newcustomer = ClientMaster::find()->where(['id'=>$CustomerId])->asArray()->one();
   if (!empty($newcustomer)) {
     $contact  = $newcustomer['mobile_no'];
+    $user_type  = $newcustomer['UserType'];
     $address  = $newcustomer['address'];
     $email_id = $newcustomer['email_id'];
     $pincode  = $newcustomer['pincode'];
+    $Landmark  = $newcustomer['Landmark'];
     $company_name  = $newcustomer['company_name'];
   }
 
@@ -137,7 +141,7 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
       <div class="card-body" style="border: 1px solid #c7c6c6;padding: 10px;">
         <div class="row">
           <div class="col-sm-12">
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 <div class="form-group">
                   <label class="form-label required">Customer Name</label><span style="color: red; font-size: 15px;">*</span>
                     <?= $form->field($model, 'CustomerId')->dropDownList($customer,['class'=>'form-control input-sm','prompt'=>"Select",'value'=>$CustomerId])->label(false)?>
@@ -147,13 +151,27 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
                   <a href="<?php echo Url::base(true).'/customer-trip-create/09' ?>" data-toggle="tooltip" data-title="Add New Customer" class="btn btn-xs btn-info fa-fa-search"><i class="fa fa-fw fa-plus"></i></a>
                       <!--   <button type="button" id="addmore" data-toggle="tooltip" data-title="Add New Customer" class="btn btn-xs btn-info fa-fa-search" name="search"  value="search"><i class="fa fa-fw fa-plus"></i></button>       -->
               </div> 
-               <div class="col-sm-4"> 
+              <div class="company" style="display: none;">
+              <div class="col-sm-2">
+                <div class="f orm-group">
+                   <label class="form-label">Guest Name</label>
+                  <?= $form->field($model, 'GuestName')->textInput(['maxlength'=>true,'class'=>'form-control input-sm','style'=>'text-transform:uppercase;'])->label(false)?>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="f orm-group">
+                   <label class="form-label">Guest Contact</label>
+                  <?= $form->field($model, 'GuestContact')->textInput(['maxlength'=>10,'class'=>'form-control input-sm','style'=>'text-transform:uppercase;'])->label(false)?>
+                </div>
+              </div>
+              </div>
+               <div class="col-sm-2"> 
             <div class="f orm-group"> 
              <label class="form-label">Customer ID</label>
                   <input type="text" id="tripdetails-company_name" class="form-control input-sm" name="TripDetails[company_name]" placeholder="Customer Id" readonly value="<?php echo $company_name; ?>" aria-invalid="false">
             </div>
           </div>  
-              <div class="col-sm-3">
+              <div class="col-sm-2">
                 <div class="f orm-group">
                   <label class="form-label">Customer Contact No</label>
                     <input type="text" id="tripdetails-contactno" class="form-control input-sm" name="TripDetails[ContactNo]" maxlength="10" placeholder="Contact No" readonly value="<?php echo $contact; ?>" aria-invalid="false">
@@ -164,19 +182,25 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
       </div>
         <div class="row">
            <div class="col-sm-12">
-            <div class="col-sm-4"> 
+            <div class="col-sm-3"> 
             <div class="f orm-group"> 
              <label class="form-label">Customer Email ID</label>
                   <input type="text" id="tripdetails-emailid" class="form-control input-sm" name="TripDetails[EmailId]" placeholder="Email ID" value="<?php echo $email_id; ?>" readonly aria-invalid="false">
             </div>
           </div> 
-              <div class="col-sm-4">
+              <div class="col-sm-3">
+                <div class="f orm-group">
+                  <label class="form-label">Customer Landmark</label>
+                        <input type="text" id="tripdetails-landmark" class="form-control input-sm" name="TripDetails[Landmark]" maxlength="6" placeholder="Landmark" value="<?php echo $Landmark; ?>" readonly aria-invalid="false">
+                </div>
+              </div>
+              <div class="col-sm-3">
                 <div class="form-group">
                   <label class="form-label required">Customer Address</label>
                      <textarea id="tripdetails-address" class="form-control input-sm" name="TripDetails[Address]" placeholder="Address" aria-invalid="false" value="<?php echo $address; ?>" readonly rows="3"><?php echo $address; ?></textarea>
                 </div>
               </div>
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 <div class="f orm-group">
                   <label class="form-label">Customer Pincode</label>
                         <input type="text" id="tripdetails-pincode" class="form-control input-sm" name="TripDetails[Pincode]" maxlength="6" placeholder="Pincode" value="<?php echo $pincode; ?>" readonly aria-invalid="false">
@@ -228,7 +252,7 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
           <div class="col-sm-12">
               <div class="col-sm-2">
                 <div class="form-group">
-                  <label class="form-label required">Trip Type</label><span style="color: red; font-size: 15px;">*</span>
+                  <label class="form-label required">Duty Type</label><span style="color: red; font-size: 15px;">*</span>
                     <?= $form->field($model, 'TripType')->dropDownList(array('Drop'=>'Drop','Round Trip'=>'Round Trip'),['class'=>'form-control input-sm','prompt'=>"Select"])->label(false)?>
                 </div>
               </div>
@@ -278,9 +302,14 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
 </div>
 
 
-<div class="panel-footer text-right">
+ <div class="panel-footer">
+   <div class="form-group">
+ <div class="text-right" style="padding: 10px;">
+                        <?= Html::a('<i class="fa fa-close"></i> Close', ['/trip-index'], ['class' => 'btn btn-outline-primary ','title'=>'Close'])?>
 
-<?php echo Html::submitButton('Save', ['class' => 'btn btn-success   savesub','id'=>'savesub']); ?>
+                        <?= Html::submitButton('Save', ['class' => 'btn btn-success ']) ?>
+                    </div>
+</div>
 </div>
 
 
@@ -293,6 +322,12 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
 </div>
 <?php //echo Yii::$app->homeUrl; die;?>
 <script type="text/javascript">
+
+  var Guest = '<?php echo $model->GuestName ?>';
+  var GuestContact = '<?php echo $model->GuestContact ?>';
+  if (Guest!="") {
+    $(".company").show();
+  }
 
   $('body').on('change','#tripdetails-customerid',function(){
         var CustomerId =  $(this).val();
@@ -308,6 +343,12 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
                 $('#tripdetails-emailid').val(data.email_id);
                 $('#tripdetails-address').val(data.address);
                 $('#tripdetails-pincode').val(data.pincode);
+                if(data.UserType=="Company"){
+                   $(".company").show();
+                }else if(data.UserType=="Home"){
+                   $(".company").hide();
+                }
+                $('#tripdetails-landmark').val(data.Landmark);
               }
           });
         }
@@ -388,7 +429,7 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
       $("#tripdetails-driverid").select2({ placeholder: "Select a Driver"});  
 
 
-$("#tripdetails-driver_contact").on("input", function(evt) {
+$("#tripdetails-driver_contact,#tripdetails-guestcontact").on("input", function(evt) {
 
   var self = $(this);
   self.val(self.val().replace(/[^0-9]/g, ''));

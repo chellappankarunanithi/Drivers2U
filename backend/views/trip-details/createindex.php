@@ -49,6 +49,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             },
           ],
+            'GuestName',
+            'GuestContact',
             'CustomerName',  
             'CustomerContactNo',  
             'TripType',

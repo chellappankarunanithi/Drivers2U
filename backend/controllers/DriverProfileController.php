@@ -26,15 +26,28 @@ class DriverProfileController extends Controller
     /**
      * @inheritdoc
      */
-   public function behaviors()
+    public function behaviors()
     {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['post'],
                 ],
             ],
+          'access' => [
+            'class' => AccessControl::className(),
+            'rules' => [
+                [
+                    'allow' => true,
+                    'roles' => ['@'],
+                ],
+
+                // ...
+            ],
+        ],
+
+
         ];
     }
 

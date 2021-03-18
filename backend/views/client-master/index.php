@@ -29,17 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php Pjax::begin(['id' => 'grid', 'timeout' => false , 'clientOptions' => ['method' => 'POST'] ]); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-       /* 'pager' => [ 
-          'linkOptions' => [
-
-            'data-pjax' => 0
-
-        ]  
-        ],*/
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-             
+            'UserType',
             'company_name',
             'client_name',  
             'mobile_no', 

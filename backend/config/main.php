@@ -141,6 +141,7 @@ return [
                 'change-trip/<id:\d+>/<data:\d+>' => 'trip-details/change-trip',
                 'change-trip/<id:\d+>' => 'trip-details/change-trip',
                 'trip-rating/<id:\d+>' => 'trip-details/trip-rating',
+                'dutyslip' => 'trip-details/tripsheet',
 
                 'card-list/<id:\d+>' => 'vehicle-master/index',
 
