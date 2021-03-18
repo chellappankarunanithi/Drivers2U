@@ -237,7 +237,7 @@ class TripDetails extends \yii\db\ActiveRecord
        $baseUrl = Url::base(true);
         $files=$baseUrl.'/images/Logo.png';
         $filetype = explode('.', $files);
-       $pdf->Image( $files, 60, 4, 25, '', 'PNG', '', '', false, 500, '', false, false, 0, false, false, false);
+       $pdf->Image( $files, 14, 16, 25, '', 'PNG', '', '', false, 500, '', false, false, 0, false, false, false);
       $html = '
       <html>
       <style>
@@ -280,8 +280,8 @@ class TripDetails extends \yii\db\ActiveRecord
      </style>
      <body>
 
-    <div class="border-cl"></div><br> <br> <br> <br> <br>
-    <table width="100%" style="text-align:right; padding:5px;">
+    <div class="border-cl"></div><br> 
+    <table width="100%" style="text-align:right; border-top: 1px solid #000; border-right: 1px solid #000;border-left:1px solid #000; padding:5px;">
         <tr class="">
         <td class="text-center">
         <h4 style="color: #E27D29;">DRIVES2U CALL DRIVER SERVICE PRIVATE LIMITED</h4> 
@@ -289,7 +289,12 @@ class TripDetails extends \yii\db\ActiveRecord
         </tr> 
          <tr class="">
         <td class="text-center">
-        &nbsp;&nbsp;&nbsp;&nbsp;284/9. Thiruvalluvar Street, Keelkattalai, Chennai, Tamil Nadu,India, 6000117
+        &nbsp;&nbsp;&nbsp;&nbsp;284/9. Thiruvalluvar Street, Keelkattalai,
+        </td>
+        </tr>
+        <tr class="">
+        <td class="text-center">
+        &nbsp;&nbsp;&nbsp;&nbsp;Chennai, Tamil Nadu,India, 6000117
         </td>
         </tr>
         <tr class="">
@@ -299,7 +304,6 @@ class TripDetails extends \yii\db\ActiveRecord
         </tr>
     </table>
 
-    <br> <br> 
 
     <table width="100%" cellpadding="4" cellspacing="3" style="border: 1px solid #000;">
 		<tr>
@@ -345,8 +349,8 @@ class TripDetails extends \yii\db\ActiveRecord
         </tr>
         <tr class="ht-cs">
         <td width="32%" class="f-16">Start Date:&nbsp;&nbsp;'.$StartDate.'</td> 
-        <td width="34%" class="f-16">Close Date:&nbsp;&nbsp;</td> 
-        <td width="34%" class="f-16"></td>
+        <td width="37%" class="f-16">Close Date:&nbsp;&nbsp;</td> 
+        <td width="31%" class="f-16">Total Days:</td>
         </tr>
         <tr class="ht-cs">
         <td width="32%" class="f-16">Start Time:&nbsp;&nbsp;'.$StartTime.'</td>
