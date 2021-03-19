@@ -323,15 +323,15 @@ class TripDetails extends \yii\db\ActiveRecord
         if ($UserType=="Home") {
              $html .='
                 <tr class="ht-cs">
-                <td width="50%" class="f-16">Customer Name:&nbsp;&nbsp;'.$customername.'</td>
+                <td width="50%" class="f-16">Customer Name:&nbsp;&nbsp;'.ucwords($customername).'</td>
                  
                 <td width="50%" class="f-16 text-right">Mobile No:&nbsp;&nbsp;'.$customercontact.'</td> 
                 </tr></table>';
         }else if ($UserType=="Company") {
                  $html .='
                 <tr class="ht-cs">
-                <td width="36%" class="f-16">Company Name:&nbsp;&nbsp;'.$customername.'</td> 
-                <td width="34%" class="f-16">Guest Name:&nbsp;&nbsp;'.$GuestName.'</td> 
+                <td width="36%" class="f-16">Company Name:&nbsp;&nbsp;'.ucwords($customername).'</td> 
+                <td width="34%" class="f-16">Guest Name:&nbsp;&nbsp;'.ucwords($GuestName).'</td> 
                 <td width="30%" class="f-16">Mobile No:&nbsp;&nbsp;'.$GuestContact.'</td> 
                 </tr></table>';
         }
@@ -343,7 +343,7 @@ class TripDetails extends \yii\db\ActiveRecord
         <td width="100%" class="text- center"><b class="f-18">Trip Details</b></td>
         </tr>
         <tr class="ht-cs">
-        <td width="32%" class="f-16">Duty Type:&nbsp;&nbsp;'.$DutyType.'</td> 
+        <td width="32%" class="f-16">Duty Type:&nbsp;&nbsp;'.ucwords($DutyType).'</td> 
         <td width="37%" class="f-16">Pickup Location:&nbsp;&nbsp;'.ucfirst($pickupLoc).'</td> 
         <td width="34%" class="f-16">Drop Location:&nbsp;&nbsp;'.ucfirst($dropLoc).'</td> 
         </tr>
@@ -368,12 +368,12 @@ class TripDetails extends \yii\db\ActiveRecord
         <td width="100%" class="text- center"><b class="f-18">Driver Details</b></td>
         </tr>
         <tr class="ht-cs">
-        <td width="50%" class="f-16">Driver Name:&nbsp;&nbsp;'.$drivername.'</td>
+        <td width="50%" class="f-16">Driver Name:&nbsp;&nbsp;'.ucwords($drivername).'</td>
         <td width="50%" class="f-16">Mobile No: &nbsp;&nbsp;'.$drivercontact.'</td>
         </tr>
         <tr class="ht-cs">
-        <td width="50%" class="f-16">Vehicle Type:&nbsp;&nbsp;'.$VehicleType.'</td> 
-        <td width="50%" class="f-16">Vehicle No:&nbsp;&nbsp;'.$VehicleNo.'</td> 
+        <td width="50%" class="f-16">Vehicle Type:&nbsp;&nbsp;'.ucwords($VehicleType).'</td> 
+        <td width="50%" class="f-16">Vehicle No:&nbsp;&nbsp;'.ucwords($VehicleNo).'</td> 
         </tr>
     </table>
     <table  cellspacing="3" width="100%" style="border: 1px solid #000;  padding:5px;">
