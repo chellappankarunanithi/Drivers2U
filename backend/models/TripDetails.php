@@ -344,8 +344,8 @@ class TripDetails extends \yii\db\ActiveRecord
         </tr>
         <tr class="ht-cs">
         <td width="32%" class="f-16">Duty Type:&nbsp;&nbsp;'.ucwords($DutyType).'</td> 
-        <td width="37%" class="f-16">Pickup Location:<br>'.$pickupLoc.'</td> 
-        <td width="34%" class="f-16">Drop Location:<br>'.$dropLoc.'</td> 
+        <td class="f-16" style="width:160px; word-wrap:break-word;">Pickup Location:&nbsp; &nbsp;'.$pickupLoc.'</td> 
+        <td class="f-16" style="width:130px; word-wrap:break-word;">Drop Location: &nbsp;&nbsp;'.$dropLoc.'</td> 
         </tr>
         <tr class="ht-cs">
         <td width="32%" class="f-16">Start Date:&nbsp;&nbsp;'.$StartDate.'</td> 
