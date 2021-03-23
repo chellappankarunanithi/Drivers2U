@@ -438,8 +438,13 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
   var self = $("#tripdetails-tripcost").val();  
   var pendingamount = '<?php echo $pendingamount; ?>';
   if (pendingamount > 0) {
-    var z = parseInt(self) + parseInt(pendingamount);
-    $("#tripdetails-totalamountpaid").val(z);
+    var z = parseInt(self) + parseInt(pendingamount); 
+
+    if (isNaN(z)) {
+      $("#tripdetails-totalamountpaid").val("");
+    }else{
+      $("#tripdetails-totalamountpaid").val(z);
+    }
   }
 
  
@@ -449,7 +454,11 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
   var pendingamount = '<?php echo $pendingamount; ?>';
   if (pendingamount > 0) {
     var z = parseInt(self) + parseInt(pendingamount);
-    $("#tripdetails-totalamountpaid").val(z);
+    if (isNaN(z)) {
+      $("#tripdetails-totalamountpaid").val("");
+    }else{
+      $("#tripdetails-totalamountpaid").val(z);
+    } 
   }
 
 });
