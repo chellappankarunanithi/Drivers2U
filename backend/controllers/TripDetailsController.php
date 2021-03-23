@@ -747,6 +747,9 @@ class TripDetailsController extends Controller
                         if (!empty($drivermodel)) {
                           $drivercontact = $drivermodel->mobile_number;
                         } 
+                        $drivermodel->available_status = "0";
+                        $drivermodel->save();
+
                         $requestInput = array();
                         $requestInput['tripId'] = $model->id;
                         $requestInput['customerId'] = $model->CustomerId;
