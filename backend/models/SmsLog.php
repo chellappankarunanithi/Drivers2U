@@ -56,9 +56,9 @@ class SmsLog extends \yii\db\ActiveRecord
         ];
     }
 
-    public function smsfunction($phone, $sms_message="",$requestInput=array()) {
-        $phone = "6380744151";
-        $sms_message = "Dear Chellappan, you are welcome to the aFynder family as a Shoppee.";
+    public function smsfunction($phone="", $sms_message="",$requestInput=array()) {
+      //  $phone = "6380744151";
+       // $sms_message = "Dear Chellappan, you are welcome to the aFynder family as a Shoppee.";
         if($phone!="" && $sms_message!=""){
 
             $tripId = $customerId = $event = $driverId = "";
@@ -89,12 +89,12 @@ class SmsLog extends \yii\db\ActiveRecord
             $sms_message = str_replace("`", " " , $sms_message);
             //$sms_message = str_replace("?", " " , $sms_message);
             $sms_message = urlencode($sms_message);
-            $phone  = "91".substr($phone,(strlen($phone)-10),strlen($phone));
+            $phone  = substr($phone,(strlen($phone)-10),strlen($phone));
             
-            
+           // echo $phone; die;
             // $url="http://bulksms.mysmsmantra.com:8080/WebSMS/SMSAPI.jsp?username=e34&password=2342&sendername=23423&mobileno=".$phone."&message=".$sms_message;
 
-            $url="https://api.mylogin.co.in/api/v2/SendSMS?SenderId=FYNDER&Is_Unicode=true&Is_Flash=false&ApiKey=yakcv2Xh%2F5UCgR2FQDShF4zDodTtcOR7%2FB%2B9hs%2BOx48%3D&ClientId=b3afea27-8dd9-44cd-8b54-fde56692f09a&MobileNumbers=".$phone."&Message=".$sms_message;
+            $url="https://api.mylogin.co.in/api/v2/SendSMS?SenderId=DRIVEZ&Is_Unicode=false&Is_Flash=false&ApiKey=ZhKiBUBF1yZk1B8oNYhzkC9Adj4uNMnGFiXguKdJ2EA=&ClientId=c5cd9e5c-380c-4208-9c8f-d22965aecd98&MobileNumbers=".$phone."&Message=".$sms_message;
             $curl = curl_init();
             curl_setopt_array($curl, array(
               CURLOPT_URL => $url,
