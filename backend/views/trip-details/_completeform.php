@@ -355,7 +355,7 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
       }
   });
 
-
+ 
   $('body').on('click','#otpsend',function(){
          $(".invalidotp").html("");
          $tripid = '<?php echo $_GET['id']; ?>';

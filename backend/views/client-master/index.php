@@ -68,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         ]);
                                         $url = Url::base(true).'/customer-otp/'.$model->id;
                                         if ($model->status!="Active") {
-                                        return Html::a('<span class="fa fa-check"></span>', $url, $options);
+                                        return Html::a('<span class="fa fa-user-secret"></span> Otp Verification', $url, $options);
                                         }
                                     },
                               

@@ -254,17 +254,21 @@ class TripDetailsController extends Controller
     {    
         $model = $this->findModel($id); 
         $model->scenario = "change-trip";
-        if ($model->load(Yii::$app->request->post())) { 
+        $isChange="no";
+        if ($model->load(Yii::$app->request->post())) {  //echo "<pre>"; print_r($_POST); die;
              if (array_key_exists('StartDateTime', $_POST['TripDetails'])) {
                 if ($_POST['TripDetails']['StartDateTime']!="") {
-                    $model->StartDateTime = date('Y-m-d H:i:s', strtotime($_POST['TripDetails']['StartDateTime']));
+                    $StartDateTime = date('Y-m-d H:i:s', strtotime($_POST['TripDetails']['StartDateTime']));
+                }else{
+                    $StartDateTime = $model->StartDateTime;
                 }
             }
-            if (array_key_exists('EndDateTime', $_POST['TripDetails'])) {
-                if ($_POST['TripDetails']['EndDateTime']!="") {
-                    $model->EndDateTime = date('Y-m-d H:i:s', strtotime($_POST['TripDetails']['EndDateTime']));
-                }
+            $tripdetails = $_POST['TripDetails'];
+            if ($StartDateTime!=$model->StartDateTime || $tripdetails['CustomerId']!=$model->CustomerId || $tripdetails['TripStartLoc']!=$model->TripStartLoc || $tripdetails['TripType']!=$model->TripType || $tripdetails['TripLocationType']!=$model->TripLocationType || $tripdetails['TripEndLoc']!=$model->TripEndLoc || $tripdetails['DriverId']!=$model->DriverId) {
+                $isChange = "yes";
             }
+
+            $model->StartDateTime = $StartDateTime; 
             $model->TripType = $_POST['TripDetails']['TripType'];
             $model->TripLocationType = $_POST['TripDetails']['TripLocationType'];
             $model->TripStatus = 'Activated';
@@ -282,7 +286,7 @@ class TripDetailsController extends Controller
                         $model->GuestContact = $_POST['TripDetails']['GuestContact'];
                     }
                 }
-            
+            $existingDriver = $model->DriverId;
             if ($model->save()) {
                     if (array_key_exists('DriverId', $_POST['TripDetails'])) {
                         if ($_POST['TripDetails']['DriverId']!="") {
@@ -290,6 +294,11 @@ class TripDetailsController extends Controller
                           if ($drivermodel) {
                             $drivermodel->available_status= "1";
                             $drivermodel->save();
+                          }
+                          $exdrivermodel = DriverProfile::find()->where(['id'=>$existingDriver])->one();
+                          if ($exdrivermodel) {
+                            $exdrivermodel->available_status= "0";
+                            $exdrivermodel->save();
                           }
                         }
                       }
@@ -315,12 +324,19 @@ class TripDetailsController extends Controller
 
 
                     ##Trip Change SMS  
+                    if($isChange=="yes"){
+
                         $customercontact="";
                         $drivercontact="";
                         $customer = ClientMaster::findOne($model->CustomerId);
-                        if (!empty($customer)) {
-                          $customercontact = $customer->mobile_no;
-                        }
+                        if (!empty($customer)) { 
+                                    $customercontact = $customer->mobile_no;
+                                    $customername = $customer->client_name; 
+                                if($customer->UserType=="Company"){
+                                    $customername =  $model->GuestName; 
+                                    $customercontact =  $model->GuestContact;
+                                }
+                            }
                         if (!empty($drivermodel)) {
                           $drivercontact = $drivermodel->mobile_number;
                         } 
@@ -328,15 +344,25 @@ class TripDetailsController extends Controller
                         $requestInput['tripId'] = $model->id;
                         $requestInput['customerId'] = $model->CustomerId;
                         $requestInput['driverId'] = $model->DriverId;
-                        $requestInput['event'] = "Change Trip";
-                        $callFun = new SmsLog();
-                        $smscontent="";
-                        if($customercontact!=""){
-                        //  $response = $callFun->smsfunction($customercontact,$smscontent,$requestInput);
-                        }
-                        if($drivercontact!=""){
-                        //  $response = $callFun->smsfunction($drivercontact,$smscontent,$requestInput);
-                        }
+                        $requestInput['event'] = "Change Trip Customer SMS";
+                     
+                              $callFun = new SmsLog();
+                              $smscontent='Dear '.$customername.',  updated trip details - '.$model->tripcode.' on '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).', Driver - '.$drivermodel->name.' , '.$drivermodel->mobile_number.'. Contact Drives2U at 9626423232 for any query.';
+                              if($customercontact!=""){ 
+                                $response = $callFun->smsfunction($customercontact,$smscontent,$requestInput);
+                                 
+                              }
+                              $requestInput = array(); 
+                              $requestInput['customerId'] = $id;
+                              $requestInput['event'] = "Change Trip Driver SMS";
+                              
+                              $smscontent='Updated Trip Details for '.$model->tripcode.' is '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).', Location - '.ucfirst($model->TripStartLoc).', Customer Contact - '.$customername.' - '.$customercontact.'.';
+                              if($customercontact!=""){ 
+                                $response = $callFun->smsfunction($drivermodel->mobile_number,$smscontent,$requestInput);
+                                 
+                              }
+                    }
+
 
 
                 return $this->redirect(['trip-index']); 
@@ -469,16 +495,19 @@ class TripDetailsController extends Controller
               $model->status = "S";
               if($model->save()){  
                 ## OTP SMS 
-                              $customercontact="6380744151";
+                              //$customercontact="6380744151";
+                            $customercontact ="";
+                            $customername ="";
                               $customer = ClientMaster::findOne($id);
-                              if (!empty($customer)) {
-                              //  $customercontact = $customer->mobile_no;
+                              if (!empty($customer)) { 
+                                    $customercontact = $customer->mobile_no;
+                                    $customername = $customer->client_name; 
                               } 
                               $requestInput = array(); 
                               $requestInput['customerId'] = $id;
                               $requestInput['event'] = "Register OTP";
                               $callFun = new SmsLog();
-                              $smscontent="this is test sms";
+                              $smscontent="Dear ".$customername.", your one time verification code for Drives2U is ".$model->otp_number;
                               if($customercontact!=""){ 
                                 $response = $callFun->smsfunction($customercontact,$smscontent,$requestInput);
                                  
@@ -525,23 +554,52 @@ class TripDetailsController extends Controller
     {
         $model = $this->findModel($id);
         $model->scenario="activate";
-        if ($_POST) { 
-                    
-                      
-                          if (array_key_exists('DriverId', $_POST['TripDetails'])) {
-                            if ($_POST['TripDetails']['DriverId']!="") {
-                                $model->DriverId = $_POST['TripDetails']['DriverId'];
-                                $drivermodel = DriverProfile::find()->where(['id'=>$_POST['TripDetails']['DriverId']])->one();
-                              if ($drivermodel) {
-                                $drivermodel->available_status= "1";
-                                $drivermodel->save();
-                                $model->TripStatus = "Activated"; 
-                              }
-                            }
-                          } 
-                  
-                     
+        if ($_POST) {  
+                    if (array_key_exists('DriverId', $_POST['TripDetails'])) {
+                        if ($_POST['TripDetails']['DriverId']!="") {
+                            $model->DriverId = $_POST['TripDetails']['DriverId'];
+                            $drivermodel = DriverProfile::find()->where(['id'=>$_POST['TripDetails']['DriverId']])->one();
+                          if ($drivermodel) {
+                            $drivermodel->available_status= "1";
+                            $drivermodel->save();
+                            $model->TripStatus = "Activated"; 
+                          }
+                        }
+                    }  
                     if($model->save()){
+                             $customercontact ="";
+                            $customername ="";
+                              $customer = ClientMaster::findOne($model->CustomerId);
+                            if (!empty($customer)) { 
+                                    $customercontact = $customer->mobile_no;
+                                    $customername = $customer->client_name; 
+                                if($customer->UserType=="Company"){
+                                    $customername = $model->GuestName; 
+                                    $customercontact =  $model->GuestContact;
+                                }
+                            } 
+                              
+                              $requestInput = array(); 
+                              $requestInput['customerId'] = $id;
+                              $requestInput['event'] = "Trip Booking";
+                              $callFun = new SmsLog();
+                              $smscontent='Dear '.$customername.', driver details for your trip '.$model->tripcode.' on '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).' is '.$drivermodel->name.' - '.$drivermodel->mobile_number.'. Contact Drives2U at 9626423232 for any query.';
+                              if($customercontact!=""){ 
+                                $response = $callFun->smsfunction($customercontact,$smscontent,$requestInput);
+                                 
+                              }
+                              $requestInput = array(); 
+                              $requestInput['customerId'] = $id;
+                              $requestInput['event'] = "Trip Booking";
+                              $smscontent='Trip Details for '.$model->tripcode.' on '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).', Location - '.ucfirst($model->TripStartLoc).', Customer Contact - '.$customername.' - '.$customercontact.'.';
+                              if($customercontact!=""){ 
+                                $response = $callFun->smsfunction($drivermodel->mobile_number,$smscontent,$requestInput);
+                                 
+                              }
+
+
+
+
                         Yii::$app->getSession()->setFlash('success', 'Trip Activated Successfully.');
                     }else{
                         Yii::$app->getSession()->setFlash('error', 'Driver not Available.');
@@ -671,13 +729,20 @@ class TripDetailsController extends Controller
                     $callFun = new TripLog();
                     $response = $callFun->tripLog($requestInput);
 
-##Trip Complete SMS  
+##Trip Complete SMS   
+                        $drivercontact="";
+                        $customer = ClientMaster::findOne($model->CustomerId);
                         $customercontact="";
                         $drivercontact="";
                         $customer = ClientMaster::findOne($model->CustomerId);
-                        if (!empty($customer)) {
-                          $customercontact = $customer->mobile_no;
-                        }
+                        if (!empty($customer)) { 
+                                    $customercontact = $customer->mobile_no;
+                                    $customername = $customer->client_name; 
+                                if($customer->UserType=="Company"){
+                                    $customername =  $model->GuestName; 
+                                    $customercontact =  $model->GuestContact;
+                                }
+                            }
                         if (!empty($drivermodel)) {
                           $drivercontact = $drivermodel->mobile_number;
                         } 
@@ -687,13 +752,12 @@ class TripDetailsController extends Controller
                         $requestInput['driverId'] = $model->DriverId;
                         $requestInput['event'] = "Complete Trip";
                         $callFun = new SmsLog();
-                        $smscontent="";
+                        
+                        $smscontent = "Dear ".$customername.", Trip ".$model->tripcode." is completed successfully for ".$model->TripHours." Hours @ Rs. ".number_format($model->TripCost,2).". Thanks for your booking. Please book further trips only through us & Drives2U won't be responsible for bookings without our knowledge.";
                         if($customercontact!=""){
-                         // $response = $callFun->smsfunction($customercontact,$smscontent,$requestInput);
+                          $response = $callFun->smsfunction($customercontact,$smscontent,$requestInput);
                         }
-                        if($drivercontact!=""){
-                         // $response = $callFun->smsfunction($drivercontact,$smscontent,$requestInput);
-                        }
+                        
 
                   return $this->redirect(['complete/'.$id]);
                 }else{

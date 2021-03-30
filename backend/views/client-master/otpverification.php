@@ -105,7 +105,6 @@ if(array_key_exists('data', $_GET)){
               <input type="text" name="otp_number" id="otp_number" maxlength="4" class="form-control" style="width: 150px;font-size: 21px;text-align: center;">
               <p id="requiredotp" style="color: #e01818; padding-top: 10px;"></p> 
               <p class="invalidotp" style="color: #e01818; padding-top: 10px;"></p>
-                <h3 class="YourOtp" style="margin-top: -15px !important;"></h3>
                 <button class="btn btn-primary" id="otpsend" type="button">SEND OTP</button><br>
                 <button class="btn btn-success" style="display: none;" id="otpverify" type="button">VERIFY OTP</button>
                 <h4 class="mt-10 otpsendmsg" style="display: none;">OTP have been sent to customer's mobile number. Please call and verify the OTP. </h4>

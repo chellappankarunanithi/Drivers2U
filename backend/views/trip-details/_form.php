@@ -15,7 +15,7 @@ use yii\helpers\Url;
 // echo "<pre>";print_r($model);die;
 
 $driver =  ArrayHelper::map(DriverProfile::find()->where(['available_status'=>"0"])->asArray()->all(),'id','name'); 
-$customer =  ArrayHelper::map(ClientMaster::find()->where(['status'=>'Active'])->asArray()->all(),'id','client_name'); 
+$customer =  ArrayHelper::map(ClientMaster::find()->where(['IN','status',array('Active','Register')])->asArray()->all(),'id','client_name'); 
 $CustomerId= $model->CustomerId;
 $contact  = "";
 $address  = "";

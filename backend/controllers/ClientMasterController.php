@@ -112,7 +112,8 @@ class ClientMasterController extends Controller
                         Yii::$app->session->remove('hidden_token');
                         $confiq->config_value = $cust_id+1;
                         $confiq->save();
-                        return $this->redirect(['customer-otp/'.$model->id]);
+                        //return $this->redirect(['customer-otp/'.$model->id]);
+                         return $this->redirect(['index']);
                     }else{ echo "<pre>"; print_r($model->getErrors()); die;
                          return $this->render('create', [
                             'model' => $model,
@@ -188,11 +189,11 @@ class ClientMasterController extends Controller
                         $confiq->save();
                         Yii::$app->session->remove('hidden_token');
                         if($id=="08"){
-                            return $this->redirect(['customer-otp/'.$model->id.'/08']);
+                           // return $this->redirect(['customer-otp/'.$model->id.'/08']);
                         }else{
-                            return $this->redirect(['customer-otp/'.$model->id.'/09']);
+                          //  return $this->redirect(['customer-otp/'.$model->id.'/09']);
                         }
-                        //return $this->redirect(['/trip-c/'.$model->id.'/09']);
+                        return $this->redirect(['/trip-c/'.$model->id.'/09']);
                     }else{ echo "<pre>"; print_r($model->getErrors()); die;
                         return $this->render('create', [
                             'model' => $model,
@@ -205,11 +206,11 @@ class ClientMasterController extends Controller
                         $savedId = $models['id'];
                     }
                     if($id=="08"){
-                            return $this->redirect(['customer-otp/'.$savedId.'/08']);
+                          //  return $this->redirect(['customer-otp/'.$savedId.'/08']);
                         }else{
-                            return $this->redirect(['customer-otp/'.$savedId.'/09']);
+                           // return $this->redirect(['customer-otp/'.$savedId.'/09']);
                         }
-                   // return $this->redirect(['/trip-c/'.$savedId.'/09']);
+                    return $this->redirect(['/trip-c/'.$savedId.'/09']);
                 }
             }else{
                 $models = ClientMaster::find()->orderBy(['id'=>SORT_DESC])->asArray()->one();
@@ -217,11 +218,11 @@ class ClientMasterController extends Controller
                         $savedId = $models['id'];
                     }
                         if($id=="08"){
-                            return $this->redirect(['customer-otp/'.$savedId.'/08']);
+                           // return $this->redirect(['customer-otp/'.$savedId.'/08']);
                         }else{
-                            return $this->redirect(['customer-otp/'.$savedId.'/09']);
+                           // return $this->redirect(['customer-otp/'.$savedId.'/09']);
                         }
-               // return $this->redirect(['/trip-c/'.$savedId.'/09']);
+                return $this->redirect(['/trip-c/'.$savedId.'/09']);
             }
         } else {
 
