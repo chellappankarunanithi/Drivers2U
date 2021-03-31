@@ -56,6 +56,7 @@ class ClientMaster extends \yii\db\ActiveRecord
             'id' => 'ID',
             'company_name' => 'Customer ID',
             'client_name' => 'Customer Name',
+            'UserType' => 'Customer Type',
             'mobile_no' => 'Mobile No',
             'address' => 'Address',
             'pincode' => 'Pincode',

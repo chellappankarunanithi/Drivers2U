@@ -143,6 +143,11 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
       <div class="card-body" style="border: 1px solid #c7c6c6;padding: 10px;">
          <div class="row">
           <div class="col-sm-12">
+             <div class="col-sm-2"> 
+            <div class="f orm-group">  
+                   <?= $form->field($model, 'UserType')->dropDownList(array('Home'=>'Home','Company'=>'Company'),['onchange'=>'$.post( "'.Url::base(true).'/customer-info'.'", { id: $(this).val()}).done (function(data){ $("#tripdetails-customerid").html(data);});'])?>
+            </div>
+          </div> 
               <div class="col-sm-3">
                 <div class="form-group">
                   <label class="form-label required">Customer Name</label><span style="color: red; font-size: 15px;">*</span>
@@ -156,13 +161,13 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
               <div class="company" style="display: none;">
               <div class="col-sm-2">
                 <div class="f orm-group">
-                   <label class="form-label">Guest Name</label>
+                   <label class="form-label">Customer Name</label>
                   <?= $form->field($model, 'GuestName')->textInput(['maxlength'=>true,'class'=>'form-control input-sm','style'=>'text-transform:uppercase;'])->label(false)?>
                 </div>
               </div>
               <div class="col-sm-2">
                 <div class="f orm-group">
-                   <label class="form-label">Guest Contact</label>
+                   <label class="form-label">Customer Contact</label>
                   <?= $form->field($model, 'GuestContact')->textInput(['maxlength'=>10,'class'=>'form-control input-sm','style'=>'text-transform:uppercase;'])->label(false)?>
                 </div>
               </div>
@@ -173,12 +178,14 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
                   <input type="text" id="tripdetails-company_name" class="form-control input-sm" name="TripDetails[company_name]" placeholder="Customer Id" readonly value="<?php echo $company_name; ?>" aria-invalid="false">
             </div>
           </div>  
+            <div class="home" style="display: none;">
               <div class="col-sm-2">
                 <div class="f orm-group">
                   <label class="form-label">Customer Contact No</label>
                     <input type="text" id="tripdetails-contactno" class="form-control input-sm" name="TripDetails[ContactNo]" maxlength="10" placeholder="Contact No" readonly value="<?php echo $contact; ?>" aria-invalid="false">
                 </div>
               </div>
+            </div>
            
         </div>
       </div>
@@ -357,12 +364,23 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
 <?php //echo Yii::$app->homeUrl; die;?>
 <script type="text/javascript">
 
-   var Guest = '<?php echo $model->GuestName ?>';
-  var GuestContact = '<?php echo $model->GuestContact ?>';
-  if (Guest!="") {
-    $(".company").show();
-  }
+   if($("#tripdetails-usertype").val()=="Company"){
+                   $(".company").show();
+                   $(".home").hide();
+                }else if($("#tripdetails-usertype").val()=="Home"){
+                   $(".company").hide();
+                   $(".home").show();
+                }
 
+  $('body').on('change','#tripdetails-usertype',function(){
+      if($(this).val()=="Company"){
+                   $(".company").show();
+                   $(".home").hide();
+                }else if($(this).val()=="Home"){
+                   $(".company").hide();
+                   $(".home").show();
+                }
+  });
   $('body').on('change','#tripdetails-customerid',function(){
         var CustomerId =  $(this).val();
         if(CustomerId!=''){
@@ -377,11 +395,7 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
                 $('#tripdetails-emailid').val(data.email_id);
                 $('#tripdetails-address').val(data.address);
                 $('#tripdetails-pincode').val(data.pincode);
-                if(data.UserType=="Company"){
-                   $(".company").show();
-                }else if(data.UserType=="Home"){
-                   $(".company").hide();
-                }
+              
                 $('#tripdetails-landmark').val(data.Landmark);
               }
           });

@@ -91,8 +91,9 @@ class TripDetails extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'tripcode' => 'Trip Code',
+            'tripcode' => 'Booking Code',
             'CustomerId' => 'Company Name',
+            'UserType' => 'Customer Type',
             'DriverId' => 'Driver Name',
             'VehicleId' => 'Vehicle ID',
             'VehicleType' => 'Vehicle Type',
@@ -331,7 +332,7 @@ class TripDetails extends \yii\db\ActiveRecord
                  $html .='
                 <tr class="ht-cs">
                 <td width="36%" class="f-16">Company Name:&nbsp;&nbsp;'.ucwords($customername).'</td> 
-                <td width="34%" class="f-16">Guest Name:&nbsp;&nbsp;'.ucwords($GuestName).'</td> 
+                <td width="34%" class="f-16">Customer Name:&nbsp;&nbsp;'.ucwords($GuestName).'</td> 
                 <td width="30%" class="f-16">Mobile No:&nbsp;&nbsp;'.$GuestContact.'</td> 
                 </tr></table>';
         }

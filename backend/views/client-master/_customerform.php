@@ -97,7 +97,9 @@ use kartik\select2\Select2;
         <?= $form->field($model, 'client_name')->textInput(['maxlength' => true])->label(false) ?>
     </div>
     <div class='col-sm-3 form-group' >
-        <?= $form->field($model, 'mobile_no',['enableAjaxValidation'=>true])->textInput(['maxlength' => 10, 'class'=>'form-control without_decimal12']) ?>
+      <label class="form-label company" style="display: none;">Company Contact No<sub style="color:red; font-size:20px;">*</sub></label> 
+      <label class="form-label home" style="display: none;">Customer Contact No<sub style="color:red; font-size:20px;">*</sub></label> 
+        <?= $form->field($model, 'mobile_no',['enableAjaxValidation'=>true])->textInput(['maxlength' => 10, 'class'=>'form-control without_decimal12'])->label(false); ?>
     </div>
     <div class='col-sm-3 form-group' >
         <?= $form->field($model, 'email_id')->textInput(['maxlength' => true]) ?>

@@ -153,13 +153,13 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
 
               <div class="col-sm-3">
                 <div class="f orm-group">
-                  <label class="form-label">Guest Name</label>
+                  <label class="form-label">Customer Name</label>
                    <?= $form->field($model, 'GuestName')->textInput(['class'=>'form-control input-sm','readOnly'=>true])->label(false)?>
                 </div>
               </div>
               <div class="col-sm-3">
                 <div class="f orm-group">
-                  <label class="form-label">Guest Contact No</label>
+                  <label class="form-label">Customer Contact No</label>
                    <?= $form->field($model, 'GuestContact')->textInput(['class'=>'form-control input-sm','readOnly'=>true])->label(false)?>
                 </div>
               </div>

@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'client_name',  
             'mobile_no', 
             'Landmark',
-            'address:ntext',
+           // 'address:ntext',
             'pincode',
             'status',
 

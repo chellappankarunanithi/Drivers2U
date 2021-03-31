@@ -71,7 +71,7 @@ date_default_timezone_set('Asia/Kolkata');
             <span class="info-box-icon bg-yellow"><i class="fa fa-smile-o"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Available Drivers</span>
+              <span class="info-box-text">Vacant Drivers</span>
               <span class="info-box-number"><?php echo $available; ?></span>
             </div>
             <!-- /.info-box-content -->

@@ -113,7 +113,12 @@ class TripDetailsController extends Controller
                         $model->GuestContact = $_POST['TripDetails']['GuestContact'];
                     }
                 }
+                if ($_POST['TripDetails']['UserType']=="Home") {
+                    $model->GuestContact = "";
+                    $model->GuestName = "";
+                }
             $model->TripType = $_POST['TripDetails']['TripType'];
+            $model->UserType = $_POST['TripDetails']['UserType'];
             $model->TripLocationType = $_POST['TripDetails']['TripLocationType'];
             $model->UpdatedIpaddress = $_SERVER['REMOTE_ADDR'];
             $model->TripStatus = 'Booked';
@@ -196,12 +201,21 @@ class TripDetailsController extends Controller
                     if ($_POST['TripDetails']['GuestName']!="") {
                         $model->GuestName = $_POST['TripDetails']['GuestName'];
                     }
+                }else{
+                    $model->GuestName = "";
                 }
             if (array_key_exists('GuestContact', $_POST['TripDetails'])) {
                     if ($_POST['TripDetails']['GuestContact']!="") {
                         $model->GuestContact = $_POST['TripDetails']['GuestContact'];
                     }
+                }else{
+                    $model->GuestContact = "";
                 }
+                if ($_POST['TripDetails']['UserType']=="Home") {
+                    $model->GuestContact = "";
+                    $model->GuestName = "";
+                }
+                $model->UserType = $_POST['TripDetails']['UserType'];
             $model->TripStatus = 'Booked';
             $model->TripType = $_POST['TripDetails']['TripType'];
             $model->TripLocationType = $_POST['TripDetails']['TripLocationType'];
@@ -269,6 +283,8 @@ class TripDetailsController extends Controller
             }
 
             $model->StartDateTime = $StartDateTime; 
+
+            $model->UserType = $_POST['TripDetails']['UserType'];
             $model->TripType = $_POST['TripDetails']['TripType'];
             $model->TripLocationType = $_POST['TripDetails']['TripLocationType'];
             $model->TripStatus = 'Activated';
@@ -285,6 +301,10 @@ class TripDetailsController extends Controller
                     if ($_POST['TripDetails']['GuestContact']!="") {
                         $model->GuestContact = $_POST['TripDetails']['GuestContact'];
                     }
+                }
+                 if ($_POST['TripDetails']['UserType']=="Home") {
+                    $model->GuestContact = "";
+                    $model->GuestName = "";
                 }
             $existingDriver = $model->DriverId;
             if ($model->save()) {
@@ -386,6 +406,20 @@ class TripDetailsController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
+
+     public function actionCustomerInfo($id="")
+    {
+        if($_POST){
+            $scua = ClientMaster::find()->where(['UserType'=>$_POST['id']])->asArray()->all();   
+            $cont =  "<option value=''>Select..</option>"; 
+            if (!empty($scua)) {
+                foreach ($scua as $key => $value) {
+                   $cont .= "<option value='".$value['id']."'>".$value['client_name']."</option>";
+                }   
+            }
+            return $cont;
+        }
+    } 
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();

@@ -39,7 +39,7 @@ nav.nav-menu-tab a:hover{
         <div class="panel-body">
         <div class="merchant-master-search">
             <nav class="nav nav-menu-tab"> 
-              <a class="nav-link" href="driver-management"><?php echo 'Available Drivers ('.$availabe.')'; ?></a> 
+              <a class="nav-link" href="driver-management"><?php echo 'Vacant Drivers ('.$availabe.')'; ?></a> 
               <a class="nav-link" href="unavailable-driver-management"><?php echo 'Occupied Drivers ('.$unavailable.')'; ?></a> 
             </nav> 
         </div> 
