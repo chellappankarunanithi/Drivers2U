@@ -117,6 +117,7 @@ class TripDetailsController extends Controller
                     $model->GuestContact = "";
                     $model->GuestName = "";
                 }
+                $model->GearType = $_POST['TripDetails']['GearType'];
             $model->TripType = $_POST['TripDetails']['TripType'];
             $model->UserType = $_POST['TripDetails']['UserType'];
             $model->TripLocationType = $_POST['TripDetails']['TripLocationType'];
@@ -215,6 +216,7 @@ class TripDetailsController extends Controller
                     $model->GuestContact = "";
                     $model->GuestName = "";
                 }
+                $model->GearType = $_POST['TripDetails']['GearType'];
                 $model->UserType = $_POST['TripDetails']['UserType'];
             $model->TripStatus = 'Booked';
             $model->TripType = $_POST['TripDetails']['TripType'];
@@ -284,6 +286,7 @@ class TripDetailsController extends Controller
 
             $model->StartDateTime = $StartDateTime; 
 
+            $model->GearType = $_POST['TripDetails']['GearType'];
             $model->UserType = $_POST['TripDetails']['UserType'];
             $model->TripType = $_POST['TripDetails']['TripType'];
             $model->TripLocationType = $_POST['TripDetails']['TripLocationType'];

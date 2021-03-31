@@ -235,14 +235,19 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
                     <?= $form->field($model, 'VehicleType')->dropDownList(array('Hatchback'=>'Hatchback', 'Sedan'=>'Sedan','Luxury'=>'Luxury', 'Premium'=>'Premium'),['class'=>'form-control input-sm','prompt'=>"Select"])->label(false)?>
                 </div>
               </div>
-             
-               <div class="col-sm-4"> 
+             <div class="col-sm-2">
+                <div class="form-group">
+                  <label class="form-label required">Gear Type</label>
+                    <?= $form->field($model, 'GearType')->dropDownList(array('Manual'=>'Manual', 'Automatic'=>'Automatic'),['class'=>'form-control input-sm'])->label(false)?>
+                </div>
+              </div>
+               <div class="col-sm-3"> 
             <div class="f orm-group"> 
              <label class="form-label">Vehicle Brand</label>
                   <?= $form->field($model, 'VehicleMade')->textInput(['class'=>'form-control input-sm','style'=>'text-transform:uppercase;'])->label(false)?>
             </div>
           </div>  
-              <div class="col-sm-3">
+              <div class="col-sm-2">
                 <div class="f orm-group">
                    <label class="form-label">Vehicle No</label>
                   <?= $form->field($model, 'VehicleNo')->textInput(['maxlength'=>10,'class'=>'form-control input-sm','style'=>'text-transform:uppercase;'])->label(false)?>

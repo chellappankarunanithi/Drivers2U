@@ -191,25 +191,31 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
       <div class="row">
           <div class="col-sm-12">
              
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 <div class="form-group">
                   <label class="form-label required">Vehicle Type</label><span style="color: red; font-size: 15px;">*</span>
                     <?= $form->field($model, 'VehicleType')->textInput(['class'=>'form-control input-sm','readOnly'=>true])->label(false)?>
                 </div>
               </div>
-             
-               <div class="col-sm-4"> 
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="form-label required">Gear Type</label>
+                    <?= $form->field($model, 'GearType')->dropDownList(array('Manual'=>'Manual', 'Automatic'=>'Automatic'),['class'=>'form-control input-sm'])->label(false)?>
+                </div>
+              </div>
+               <div class="col-sm-3"> 
             <div class="f orm-group"> 
              <label class="form-label">Vehicle Made</label>
                   <?= $form->field($model, 'VehicleMade')->textInput(['class'=>'form-control input-sm', 'readOnly'=>true])->label(false)?>
             </div>
           </div>  
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 <div class="f orm-group">
                    <label class="form-label">Vehicle No</label><span style="color: red; font-size: 15px;">*</span>
                   <?= $form->field($model, 'VehicleNo')->textInput(['class'=>'form-control input-sm', 'readOnly'=>true])->label(false)?>
                 </div>
               </div>
+
            
         </div>
       </div>    
