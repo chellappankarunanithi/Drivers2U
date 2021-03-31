@@ -142,6 +142,7 @@ return [
                 'change-trip/<id:\d+>' => 'trip-details/change-trip',
                 'trip-rating/<id:\d+>' => 'trip-details/trip-rating',
                 'dutyslip' => 'trip-details/tripsheet',
+                'customer-info' => 'trip-details/customer-info',
 
                 'card-list/<id:\d+>' => 'vehicle-master/index',
 
