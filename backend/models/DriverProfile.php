@@ -117,13 +117,13 @@ class DriverProfile extends \yii\db\ActiveRecord
 
              
 
-            ['PoliceVerificationLetterCopy', 'required', 'when' => function ($model) { 
+         /*   ['PoliceVerificationLetterCopy', 'required', 'when' => function ($model) { 
               return $model->PoliceVerificationLetterCopys == ""; 
                 }, 
               'whenClient' => "function (attribute, value) {   
                   return $('#driverprofile-policeverificationlettercopys').val() == ''; 
               }"
-            ],
+            ],*/
 
         ];
     }
