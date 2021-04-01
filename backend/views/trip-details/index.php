@@ -51,7 +51,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             },
           ],
-          'GuestName',
+          
+          'UserType',
+          "GuestName",
           'GuestContact',
           [ 'attribute'=>'CustomerName',
               'label'=>'Company Name'],

@@ -18,7 +18,7 @@ class TripDetailsSearch extends TripDetails
     {
         return [
             [['id'], 'integer'],
-            [['tripcode', 'CustomerId', 'CustomerName', 'GuestName', 'GuestContact', 'CustomerContactNo', 'DriverName', 'DriverContactNo', 'DriverId', 'VehicleId', 'VehicleType', 'VehicleMade', 'VehicleNo', 'TripType', 'TripScheduleType', 'ChangeTrip', 'ChangeReason', 'TripStartLoc', 'TripEndLoc', 'StartDateTime', 'EndDateTime', 'Review', 'CommissionId', 'CommissionType', 'CreatedDate', 'UpdatedDate', 'UpdatedIpaddress','TripStatus'], 'safe'],
+            [['tripcode', 'CustomerId', 'CustomerName', 'GuestName', 'GuestContact', 'CustomerContactNo', 'DriverName', 'DriverContactNo', 'DriverId', 'VehicleId', 'VehicleType', 'VehicleMade', 'VehicleNo', 'TripType', 'TripScheduleType', 'ChangeTrip', 'ChangeReason', 'TripStartLoc', 'TripEndLoc', 'StartDateTime', 'EndDateTime', 'Review', 'CommissionId', 'CommissionType', 'CreatedDate', 'UpdatedDate', 'UpdatedIpaddress','UserType','TripStatus'], 'safe'],
             [['TripCost', 'CommissionAmount'], 'number'],
         ];
     }
@@ -82,6 +82,7 @@ class TripDetailsSearch extends TripDetails
             ->andFilterWhere(['like', 'VehicleMade', $this->VehicleMade])
             ->andFilterWhere(['like', 'VehicleNo', $this->VehicleNo])
             ->andFilterWhere(['like', 'TripType', $this->TripType])
+            ->andFilterWhere(['like', 'UserType', $this->UserType])
             ->andFilterWhere(['like', 'TripScheduleType', $this->TripScheduleType])
             ->andFilterWhere(['like', 'ChangeTrip', $this->ChangeTrip])
             ->andFilterWhere(['like', 'ChangeReason', $this->ChangeReason])

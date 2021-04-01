@@ -95,6 +95,8 @@ class TripDetails extends \yii\db\ActiveRecord
             'CustomerId' => 'Company Name',
             'UserType' => 'Customer Type',
             'DriverId' => 'Driver Name',
+            'GuestContact' => 'Customer Contact',
+            'GuestName' => 'Customer Name',
             'VehicleId' => 'Vehicle ID',
             'VehicleType' => 'Vehicle Type',
             'VehicleMade' => 'Vehicle Brand',
