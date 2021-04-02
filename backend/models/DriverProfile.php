@@ -83,37 +83,37 @@ class DriverProfile extends \yii\db\ActiveRecord
               }"
             ],
 
-            ['profile_photo', 'required', 'when' => function ($model) { 
+           /* ['profile_photo', 'required', 'when' => function ($model) { 
               return $model->profile_photos == ""; 
             }, 
               'whenClient' => "function (attribute, value) {   
                   return $('#driverprofile-profile_photos').val() == ''; 
               }"
-            ],
+            ],*/
 
-            ['licence_copy', 'required', 'when' => function ($model) { 
+           /* ['licence_copy', 'required', 'when' => function ($model) { 
               return $model->licence_copys == ""; 
                 }, 
               'whenClient' => "function (attribute, value) {   
                   return $('#driverprofile-licence_copys').val() == ''; 
               }"
-            ],
-            ['aadhar_copy', 'required', 'when' => function ($model) { 
+            ],*/
+          /*  ['aadhar_copy', 'required', 'when' => function ($model) { 
               return $model->aadhar_copys == ""; 
                 }, 
               'whenClient' => "function (attribute, value) {   
                   return $('#driverprofile-aadhar_copys').val() == ''; 
               }"
-            ],
+            ],*/
 
 
-            ['RationcardCopy', 'required', 'when' => function ($model) { 
+           /* ['RationcardCopy', 'required', 'when' => function ($model) { 
               return $model->RationcardCopys == ""; 
                 }, 
               'whenClient' => "function (attribute, value) {   
                   return $('#driverprofile-rationcardcopys').val() == ''; 
               }"
-            ],
+            ],*/
 
              
 

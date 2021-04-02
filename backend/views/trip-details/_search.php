@@ -44,7 +44,7 @@ nav.nav-menu-tab a:hover{
             <nav class="nav nav-menu-tab"> 
               <a class="nav-link" href="trip-index"><?php echo 'All Trips ('.$all.')'; ?></a>
               <a class="nav-link" href="create-index"><?php echo 'Booked Trips ('.$Created.')'; ?></a>
-              <a class="nav-link" href="active-index"><?php echo 'Activated Trips ('.$Activated.')'; ?></a> 
+              <a class="nav-link" href="active-index"><?php echo 'On Trips ('.$Activated.')'; ?></a> 
               <a class="nav-link" href="cancel-index"><?php echo 'Cancelled Trips ('.$cancelled.')'; ?></a> 
               <a class="nav-link" href="complete-index"><?php echo 'Completed Trips ('.$completed.')'; ?></a> 
             </nav> 
