@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\DropdownManagement;
@@ -12,7 +13,8 @@ use backend\models\DropdownManagement;
     
     .box-header {
     color: #fff;
-    background-color: #ff0000;
+    background-color: #e67a02 !important;
+}
 </style>
 <section class="content">
 <!-- Info boxes -->
@@ -47,38 +49,33 @@ use backend\models\DropdownManagement;
 	<?= $form->field($model, 'mobile_number')->textInput(['maxlength' => true, 'placeholder' => 'Mobile Number']) ?>
 	</div>
 	</div>
-	<div class="col-md-12">
-	  <div class="form-group col-md-6">
-	 <?php $list1 = ArrayHelper::map(DropdownManagement::find()->where(['dropdown_key' => 'user_level'])->orderBy('dropdown_order')->all(), 'dropdown_id', 'dropdown_value'); ?>
-	<?= $form->field($model, 'user_level')->dropDownList($list1, ['prompt' => 'Select']) ?>
-		</div>
-	 <div class="form-group col-md-6">
-
-	<?= $form->field($model, 'city')->textInput(['maxlength' => true, 'placeholder' => 'City']) ?>
-	</div>
-	</div>
-	<div class="col-md-12">
-	</div>
 
 	 <div class="col-md-12">
 	    <div class="form-group col-md-6">
+             <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'placeholder' => 'Login Username']) ?>
+        </div>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'placeholder' => 'Login Username']) ?>
-    </div>
-  <!--  	    <div class="form-group col-md-4">
-
-    <?php //echo $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => 'Email id']) ?>
-    </div> -->
-
-    <div class="form-group col-md-6">
-    <?php echo $model->isNewRecord ?$form->field($model, 'password_hash')->passwordInput(['placeholder' => 'Password','value'=>'']) : ''; ?>
-    <?php //echo  $form->field($model, 'password_hash')->passwordInput(['placeholder' => 'Password','value'=>'']) ?>
-    </div>    
+        <div class="form-group col-md-6">
+        <?php echo $form->field($model, 'password_hash')->passwordInput(['placeholder' => 'Password','value'=>'']); ?>
+        </div>    
 	</div>
 
-   <div class="box-footer pull-right">
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+   <div class="box-footer ">
+     <div class="col-md-12">
+     <div class='col-sm-6 form-group' >
+   
+      <?php if(isset($_GET['id'])){ 
+               echo $form->field($model, 'profile_picture')->fileInput([ 'value'=>$model->profile_picture, 'class' => 'btn btn-primary']);  
+             }else{     ?>                          
+             <?= $form->field($model, 'profile_picture')->fileInput([ 'class' => 'btn btn-primary']) ?>
+           <?php } 
+           if($model->profile_picture!=''){ ?>
+            <img id="blah" class="profile-user-img img-responsive img-circle" src="<?php echo Url::base(true).'/uploads/'.$model->profile_picture;  ?>" />
+      <?php } ?>
+    </div>
+    <div class=" col-sm-6 form-group" style="margin-top: 15px;">
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success pull-right' : 'btn btn-primary pull-right']) ?>
+    </div>
     </div>
     </div>
     <?php ActiveForm::end(); ?>

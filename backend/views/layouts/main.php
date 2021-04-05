@@ -126,7 +126,11 @@ $service_center=$user_data->service_center_name;
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="<?php echo Url::base(true)?>/images/user2-160x160.jpg" class="img-circle" alt="User Image">
+                      <?php if(array_key_exists('profile_picture', $session) && $session['profile_picture']!=""){ ?> 
+                  <img class="img-circle" alt="User Image" src="<?php echo Url::base().'/uploads/'.$model->profile_picture; ?>" alt="User profile picture"> 
+                <?php }else{ ?>
+                  <img class="img-circle" alt="User Image" src="<?php echo Url::base(true)?>/images/user2-160x160.jpg" alt="User profile picture"> 
+                <?php } ?>
                     <p>
                      <?php echo  $session['user_name'];  ?>
                       
@@ -138,6 +142,7 @@ $service_center=$user_data->service_center_name;
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left"> 
+                      <a href='<?php echo Yii::$app->homeUrl."user-view/1"; ?>' class="btn btn-default btn-flat"><i class="fa fa-fw fa-user"></i> Profile</a>
                     </div>
                     <div class="pull-right">                  
 					<?php  if (Yii::$app->user->isGuest) {

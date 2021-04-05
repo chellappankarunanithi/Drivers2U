@@ -104,9 +104,27 @@ class UserdetailsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) { //echo "<pre>"; print_r($_POST); print_r($_FILES); die;
+            if ($_FILES['Userdetails']['error']['profile_picture']==0) {
+                  $file_name = preg_replace('/\s+/', '_', $_FILES['Userdetails']['name']['profile_picture']);
+                $rand = rand(0,9999);
+                $file_name = $rand.'_'.$file_name;
+                $aa6 = "uploads/".$file_name;
+                move_uploaded_file($_FILES['Userdetails']['tmp_name']['profile_picture'], $aa6);
+                $model->profile_picture=$file_name; 
+            }
+            $existpassword = $model->password_hash;
+            if(array_key_exists('password_hash', $_POST['Userdetails'])){
+                if($_POST['Userdetails']['password_hash']!=""){ 
+                     // $model->auth_key  = Yii::$app->security->generateRandomString();
+                      $model->password_hash  = Yii::$app->security->generatePasswordHash($_POST['Userdetails']['password_hash']);
+                }else{
+                    $model->password_hash = $existpassword;
+                }
+            }
+            $model->save();
             Yii::$app->getSession()->setFlash('success', 'User details has been updated successfully.');
-            return $this->redirect(['index']);
+            return $this->redirect(['user-view/'.$id]);
         } else {
             // Yii::$app->getSession()->setFlash('error', 'Something went wrong !');
         }

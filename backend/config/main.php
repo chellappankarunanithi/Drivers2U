@@ -91,7 +91,8 @@ return [
                 'commission-u/<id:\d+>' => 'commission-master/update',
                // 'customer-v/<id:\d+>' => 'commission-master/view',
               //  'customer-d/<id:\d+>' => 'commission-master/delete',
-
+                'user-view/<id:\d+>' => 'userdetails/view',
+                'user-update/<id:\d+>' => 'userdetails/update',
                 # Menu Management 
                 # Jana
                 # 04-03-2021 11:37 AM

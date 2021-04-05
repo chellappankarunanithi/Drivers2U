@@ -193,25 +193,25 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
            <div class="col-sm-12">
             <div class="col-sm-3"> 
             <div class="f orm-group"> 
-             <label class="form-label">Customer Email ID</label>
+             <label class="form-label">Email ID</label>
                   <input type="text" id="tripdetails-emailid" class="form-control input-sm" name="TripDetails[EmailId]" placeholder="Email ID" value="<?php echo $email_id; ?>" readonly aria-invalid="false">
             </div>
           </div> 
               <div class="col-sm-3">
                 <div class="f orm-group">
-                  <label class="form-label">Customer Landmark</label>
+                  <label class="form-label">Landmark</label>
                         <input type="text" id="tripdetails-landmark" class="form-control input-sm" name="TripDetails[Landmark]" maxlength="6" placeholder="Landmark" value="<?php echo $Landmark; ?>" readonly aria-invalid="false">
                 </div>
               </div>
               <div class="col-sm-3">
                 <div class="form-group">
-                  <label class="form-label required">Customer Address</label>
+                  <label class="form-label required">Address</label>
                      <textarea id="tripdetails-address" class="form-control input-sm" name="TripDetails[Address]" placeholder="Address" aria-invalid="false" value="<?php echo $address; ?>" readonly rows="3"><?php echo $address; ?></textarea>
                 </div>
               </div>
               <div class="col-sm-3">
                 <div class="f orm-group">
-                  <label class="form-label">Customer Pincode</label>
+                  <label class="form-label">Pincode</label>
                         <input type="text" id="tripdetails-pincode" class="form-control input-sm" name="TripDetails[Pincode]" maxlength="6" placeholder="Pincode" value="<?php echo $pincode; ?>" readonly aria-invalid="false">
                 </div>
               </div>

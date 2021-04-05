@@ -108,7 +108,7 @@ use yii\widgets\ActiveForm;
     </div>
   
   <div class='col-sm-2 form-group WorkingStatus' style="display: none;">
-    <?= $form->field($model, 'workend_time')->textInput()->label("Work Start Time");; ?>
+    <?= $form->field($model, 'workend_time')->textInput()->label("Work End Time");; ?>
   </div>
 </div>
   

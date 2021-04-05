@@ -72,6 +72,7 @@ class LoginForm extends Model
             $session['sure_name']  = $user_data->first_name.' '.$user_data->last_name;  
             $session['contact_number']  = $user_data->mobile_number;  
 			$session['user_logintype']  = 'T1';			
+            $session['profile_picture']  = $user_data->profile_picture;         
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
             }
 

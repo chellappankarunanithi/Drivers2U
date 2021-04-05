@@ -36,13 +36,13 @@ class Userdetails extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['first_name', 'last_name', 'username','mobile_number','user_level'], 'required'],
-            [['password_hash'], 'string', 'min' => 6, 'max' => 20,'on'=>'create'],
-            [['password_hash'], 'required'],
+            [['first_name', 'last_name', 'username','mobile_number'], 'required'],
+            [['password_hash'], 'string', 'min' => 6, 'max' => 20,'on'=>'create'], 
             [['username','first_name','last_name','city'], 'string', 'max' => 255],
             [['mobile_number'], 'number'],            
-       		[['designation'], 'string', 'max' => 100],
+       		  [['designation'], 'string', 'max' => 100],
             [['username'], 'unique'],
+            [['password_hash'],'required','on'=>['create']],
             //[['email'], 'unique'],
            
         ];

@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use backend\models\TripDetails;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\DriverProfileSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -49,6 +50,22 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['width' => '80px']);
                     },
                 ],
+            [
+                'attribute' => 'id',
+                'label' => 'Total Commission',
+                'format' => 'html',    
+                'filter' => false,    
+                'value' => function ($data) {
+                $tripdetails = TripDetails::find()->where(['DriverId'=>$data->id])->andWhere(['TripStatus'=>'Completed'])->asArray()->all();
+                    $totalfare=0;
+                    if (!empty($tripdetails)) { 
+                        foreach ($tripdetails as $key => $value) {
+                            $totalfare += $value['DriverCommission'];
+                        }
+                    }
+                    return $totalfare;
+                },
+            ],
             // 'profile_photo',
             // 'licence_copy',
              'aadhar_no',
