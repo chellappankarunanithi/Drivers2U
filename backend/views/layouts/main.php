@@ -120,14 +120,18 @@ $service_center=$user_data->service_center_name;
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="<?php echo Url::base(true)?>/images/user2-160x160.jpg" class="user-image" alt="User Image">
+                     <?php if($session['profile_picture']!=""){  ?>  
+                  <img src="<?php echo Url::base().'/uploads/'.$session['profile_picture']; ?>" class="user-image" alt="User Image">
+                <?php }else{ ?>
+                 <img src="<?php echo Url::base(true)?>/images/user2-160x160.jpg" class="user-image" alt="User Image">
+                <?php } ?> 
                   <span class="hidden-xs"><?php echo  $session['user_name'];  ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                      <?php if(array_key_exists('profile_picture', $session) && $session['profile_picture']!=""){ ?> 
-                  <img class="img-circle" alt="User Image" src="<?php echo Url::base().'/uploads/'.$model->profile_picture; ?>" alt="User profile picture"> 
+                      <?php if($session['profile_picture']!=""){  ?> 
+                  <img class="img-circle" alt="User Image" src="<?php echo Url::base().'/uploads/'.$session['profile_picture']; ?>" alt="User profile picture"> 
                 <?php }else{ ?>
                   <img class="img-circle" alt="User Image" src="<?php echo Url::base(true)?>/images/user2-160x160.jpg" alt="User profile picture"> 
                 <?php } ?>

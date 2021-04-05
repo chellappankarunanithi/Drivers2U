@@ -90,6 +90,12 @@ class DriverProfileController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+     public function actionCommissionView($id)
+    {
+        return $this->render('total-commission', [
+            'model' => $this->findModel($id),
+        ]);
+    }
 
     /**
      * Creates a new DriverProfile model.

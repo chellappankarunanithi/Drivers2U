@@ -733,7 +733,7 @@ class TripDetailsController extends Controller
                         $model->EndDateTime = date('Y-m-d H:i:s', strtotime($_POST['TripDetails']['EndDateTime']));
                     }
                 }
-
+               
                 $model->PreviousPending = $PreviousPending;
                 $model->TotalAmountPaid = $TotalAmountPaid;
                 $model->TripCost = $tripcost;
@@ -745,6 +745,8 @@ class TripDetailsController extends Controller
                 $model->DriverCommission = $drivercommisson;
                 $model->TripStatus = "Completed";
                 $model->TripCompleteDate = date('Y-m-d H:i:s');
+
+                 
                 if($model->save()){
                   ## Cancel Payment Pending Log Close
                   $cancellog = CancelTripLog::find()->where(['id'=>$model->CancelLogId])->one();
@@ -934,9 +936,12 @@ class TripDetailsController extends Controller
 
 
          }
-            if ($model->PaymentStatus=="Yes") { 
+            if (!empty($model)) {
+               if ($model->PaymentStatus=="Yes") { 
                  return "Cancelled Fees is Already Paid.";  
-            }else{
+                }
+            }
+            else{
                 return $this->renderAjax('_cancelpayview', [
                     'model' => $model,
                 ]);      

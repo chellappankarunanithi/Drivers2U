@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use backend\models\TripDetails;
@@ -53,6 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'id',
                 'label' => 'Total Commission',
+                'contentOptions'=>['style'=>"text-align:right;"],
                 'format' => 'html',    
                 'filter' => false,    
                 'value' => function ($data) {
@@ -77,13 +79,24 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn',
                'header'=> 'Action',
                  'headerOptions' => ['style' => 'width:150px;color:#337ab7;'],
-               'template'=>'{view}{update}{licence}{aadhar}{voterid}{rationcard}{policeverification}{profile}',
+               'template'=>'{commission-view}{view}{update}{licence}{aadhar}{voterid}{rationcard}{policeverification}{profile}',
                             'buttons'=>[
                               'view' => function ($url, $model, $key) {
                                
                                    // return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
                                    return Html::button('<i class="glyphicon glyphicon-eye-open"></i>', ['value' => $url, 'style'=>'margin-right:4px;','class' => 'btn btn-primary btn-xs view view gridbtncustom modalView', 'data-toggle'=>'tooltip', 'title' =>'View' ]);
                                 }, 
+                              'commission-view' => function ($url, $model, $key) {
+                                        $options = array_merge([
+                                            'class' => 'btn btn-info btn-xs update gridbtncustom',
+                                            'data-toggle'=>'tooltip',
+                                            'title' => Yii::t('yii', 'Commission Details'),
+                                            'aria-label' => Yii::t('yii', 'Commission Details'),
+                                            'data-pjax' => '0',
+                                        ]);
+                                        $url = Url::base().'/commission-view/'.$model->id;
+                                        return Html::a('<span class="fa fa-edit"></span> Commissions', $url, $options);
+                                    },
                              'update' => function ($url, $model, $key) {
                                         $options = array_merge([
                                             'class' => 'btn btn-warning btn-xs update gridbtncustom',
