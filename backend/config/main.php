@@ -117,6 +117,7 @@ return [
                 'rationcard/<id:\d+>' => 'driver-profile/rationcard',
                 'policeverification/<id:\d+>' => 'driver-profile/policeverification',
                 'profile/<id:\d+>' => 'driver-profile/profile',
+                'commission-view/<id:\d+>' => 'driver-profile/commission-view',
 
 
                 'trip-index'    => 'trip-details/trip-index',
