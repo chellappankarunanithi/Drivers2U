@@ -116,7 +116,7 @@ class UserdetailsController extends Controller
             $existpassword = $model->password_hash;
             if(array_key_exists('password_hash', $_POST['Userdetails'])){
                 if($_POST['Userdetails']['password_hash']!=""){ 
-                     // $model->auth_key  = Yii::$app->security->generateRandomString();
+                      $model->auth_key  = Yii::$app->security->generateRandomString();
                       $model->password_hash  = Yii::$app->security->generatePasswordHash($_POST['Userdetails']['password_hash']);
                 }else{
                     $model->password_hash = $existpassword;

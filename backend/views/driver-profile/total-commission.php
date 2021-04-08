@@ -54,6 +54,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 </tr>';
            $i++;
        }
+   }else{
+                echo '<tr> <th colspan="8" style="text-align:center;" scope="row">No trips found!</th></tr>';
    }
     ?>
      

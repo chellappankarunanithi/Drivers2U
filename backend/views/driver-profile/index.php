@@ -95,7 +95,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'data-pjax' => '0',
                                         ]);
                                         $url = Url::base().'/commission-view/'.$model->id;
-                                        return Html::a('<span class="fa fa-edit"></span> Commissions', $url, $options);
+                                        return Html::a('<span class="fa fa-rupee"></span> Commissions', $url, $options);
                                     },
                              'update' => function ($url, $model, $key) {
                                         $options = array_merge([
