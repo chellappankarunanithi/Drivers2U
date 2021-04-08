@@ -111,7 +111,7 @@ date_default_timezone_set('Asia/Kolkata');
             <span class="info-box-icon bg-blue"><i class="fa fa-clock-o"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Created Trips</span>
+              <span class="info-box-text">Booked Trips</span>
               <span class="info-box-number"><?php echo $createtrips; ?></span>
             </div>
             <!-- /.info-box-content -->
