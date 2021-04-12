@@ -368,9 +368,9 @@ class TripDetailsController extends Controller
                         $requestInput['customerId'] = $model->CustomerId;
                         $requestInput['driverId'] = $model->DriverId;
                         $requestInput['event'] = "Change Trip Customer SMS";
-                     
+                        ## Dear {#var#}, updated trip details for {#var#} is {#var#} Driver - {#var#}, {#var#}. Contact Drives2U at 9626423232 for any query.
                               $callFun = new SmsLog();
-                              $smscontent='Dear '.$customername.',  updated trip details - '.$model->tripcode.' on '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).', Driver - '.$drivermodel->name.' , '.$drivermodel->mobile_number.'. Contact Drives2U at 9626423232 for any query.';
+                              $smscontent='Dear '.$customername.',  updated trip details for '.$model->tripcode.' is '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).' Driver - '.$drivermodel->name.', '.$drivermodel->mobile_number.'. Contact Drives2U at 9626423232 for any query.';
                               if($customercontact!=""){ 
                                 $response = $callFun->smsfunction($customercontact,$smscontent,$requestInput);
                                  
@@ -378,8 +378,8 @@ class TripDetailsController extends Controller
                               $requestInput = array(); 
                               $requestInput['customerId'] = $id;
                               $requestInput['event'] = "Change Trip Driver SMS";
-                              
-                              $smscontent='Updated Trip Details for '.$model->tripcode.' is '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).', Location - '.ucfirst($model->TripStartLoc).', Customer Contact - '.$customername.' - '.$customercontact.'.';
+                              ## Updated Trip Details for {#var#} is - {#var#} Location - {#var#} Customer Contact - {#var#}, {#var#}.
+                              $smscontent='Updated Trip Details for '.$model->tripcode.' is - '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).' Location - '.ucfirst($model->TripStartLoc).' Customer Contact - '.$customername.', '.$customercontact.'.';
                               if($customercontact!=""){ 
                                 $response = $callFun->smsfunction($drivermodel->mobile_number,$smscontent,$requestInput);
                                  
@@ -544,7 +544,9 @@ class TripDetailsController extends Controller
                               $requestInput['customerId'] = $id;
                               $requestInput['event'] = "Register OTP";
                               $callFun = new SmsLog();
-                              $smscontent="Dear ".$customername.", your one time verification code for Drives2U is ".$model->otp_number;
+                              //Dear {#var#}, your one time verification code for Drives2U is {#var#}.
+
+                              $smscontent="Dear ".$customername.", your one time verification code for Drives2U is ".$model->otp_number.'.';
                               if($customercontact!=""){ 
                                 $response = $callFun->smsfunction($customercontact,$smscontent,$requestInput);
                                  
@@ -620,6 +622,8 @@ class TripDetailsController extends Controller
                               $requestInput['customerId'] = $id;
                               $requestInput['event'] = "Trip Booking";
                               $callFun = new SmsLog();
+                              ##Dear {#var#}, driver details for your trip {#var#} on {#var#} is {#var#} - {#var#}. Contact Drives2U at 9626423232 for any query.
+
                               $smscontent='Dear '.$customername.', driver details for your trip '.$model->tripcode.' on '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).' is '.$drivermodel->name.' - '.$drivermodel->mobile_number.'. Contact Drives2U at 9626423232 for any query.';
                               if($customercontact!=""){ 
                                 $response = $callFun->smsfunction($customercontact,$smscontent,$requestInput);
@@ -628,7 +632,8 @@ class TripDetailsController extends Controller
                               $requestInput = array(); 
                               $requestInput['customerId'] = $id;
                               $requestInput['event'] = "Trip Booking";
-                              $smscontent='Trip Details for '.$model->tripcode.' on '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).', Location - '.ucfirst($model->TripStartLoc).', Customer Contact - '.$customername.' - '.$customercontact.'.';
+                              ## Trip Details for {#var#} is - {#var#} Location - {#var#} Customer Contact - {#var#}, {#var#}.
+                              $smscontent='Trip Details for '.$model->tripcode.' is '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).', Location - '.ucfirst($model->TripStartLoc).', Customer Contact - '.$customername.' - '.$customercontact.'.';
                               if($customercontact!=""){ 
                                 $response = $callFun->smsfunction($drivermodel->mobile_number,$smscontent,$requestInput);
                                  
@@ -791,8 +796,11 @@ class TripDetailsController extends Controller
                         $requestInput['driverId'] = $model->DriverId;
                         $requestInput['event'] = "Complete Trip";
                         $callFun = new SmsLog();
-                        
-                        $smscontent = "Dear ".$customername.", Trip ".$model->tripcode." is completed successfully for ".$model->TripHours." Hours @ Rs. ".number_format($model->TripCost,2).". Thanks for your booking. Please book further trips only through us & Drives2U won't be responsible for bookings without our knowledge.";
+                      
+                        ## Dear {#var#}, Trip {#var#} completed successfully for {#var#} @ {#var#}Rs. Thanks for your booking. Please book further trips only through us & Drives2U won’t be responsible for bookings without our knowledge.
+
+
+                        $smscontent = "Dear ".$customername.", Trip ".$model->tripcode." completed successfully for ".$model->TripHours." @ Rs. ".number_format($model->TripCost,2).". Thanks for your booking. Please book further trips only through us & Drives2U won't be responsible for bookings without our knowledge.";
                         if($customercontact!=""){
                           $response = $callFun->smsfunction($customercontact,$smscontent,$requestInput);
                         }
