@@ -632,8 +632,9 @@ class TripDetailsController extends Controller
                               $requestInput = array(); 
                               $requestInput['customerId'] = $id;
                               $requestInput['event'] = "Trip Booking";
+                              ##Trip Details for TRIP-D2U-08 is 12-04-2021 06:58 PM, Location - Asdasd, Customer Contact - Sathyabama - 8610276850.
                               ## Trip Details for {#var#} is - {#var#} Location - {#var#} Customer Contact - {#var#}, {#var#}.
-                              $smscontent='Trip Details for '.$model->tripcode.' is '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).', Location - '.ucfirst($model->TripStartLoc).', Customer Contact - '.$customername.' - '.$customercontact.'.';
+                              $smscontent='Trip Details for '.$model->tripcode.' is - '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).' Location - '.ucfirst($model->TripStartLoc).' Customer Contact - '.$customername.', '.$customercontact.'.';
                               if($customercontact!=""){ 
                                 $response = $callFun->smsfunction($drivermodel->mobile_number,$smscontent,$requestInput);
                                  
