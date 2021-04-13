@@ -56,7 +56,7 @@ class TripDetails extends \yii\db\ActiveRecord
     {
         return [
             [['CustomerId', 'VehicleType', 'TripType','StartDateTime',], 'required'],
-            [['ChangeTrip', 'ChangeReason', 'TripStartLoc', 'TripEndLoc', 'Review', 'UpdatedIpaddress'], 'safe'],
+            [['ChangeTrip', 'ChangeReason', 'TripStartLoc1','TripStartLoc2', 'TripEndLoc1','TripEndLoc2', 'Review', 'UpdatedIpaddress'], 'safe'],
             [['StartDateTime', 'EndDateTime', 'CreatedDate', 'UpdatedDate'], 'safe'],
             [['TripCost', 'CommissionAmount'], 'number'],
             [['tripcode', 'VehicleType', 'VehicleMade', 'TripScheduleType'], 'safe'],
@@ -105,8 +105,10 @@ class TripDetails extends \yii\db\ActiveRecord
             'TripScheduleType' => 'Trip Schedule Type',
             'ChangeTrip' => 'Change Trip',
             'ChangeReason' => 'Change Reason',
-            'TripStartLoc' => 'Trip Start Location',
-            'TripEndLoc' => 'Trip End Location',
+            'TripStartLoc1' => 'Trip Start Location 1',
+            'TripStartLoc2' => 'Trip Start Location 2',
+            'TripEndLoc1' => 'Trip End Location 1',
+            'TripEndLoc2' => 'Trip End Location 2', 
             'StartDateTime' => 'Trip Starting Date Time',
             'EndDateTime' => 'Trip Closing Date Time',
             'TripCost' => 'Trip Cost',
@@ -182,8 +184,10 @@ class TripDetails extends \yii\db\ActiveRecord
             $DutyType ="";
             $VehicleType ="";
             $VehicleNo ="";
-            $pickupLoc ="";
-            $dropLoc ="";
+            $pickupLoc1 ="";
+            $pickupLoc2 ="";
+            $dropLoc1 ="";
+            $dropLoc2 ="";
             $StartDate ="";
             $StartTime ="";
             $CloseDate ="";
@@ -206,8 +210,10 @@ class TripDetails extends \yii\db\ActiveRecord
                 $DutyType = $model['TripType'];
                 $VehicleType = $model['VehicleType'];
                 $VehicleNo = $model['VehicleNo'];
-                $pickupLoc = $model['TripStartLoc'];
-                $dropLoc = $model['TripEndLoc'];
+                $pickupLoc1 = $model['TripStartLoc1'];
+                $pickupLoc2 = $model['TripStartLoc2'];
+                $dropLoc1 = $model['TripEndLoc1'];
+                $dropLoc2 = $model['TripEndLoc2'];
                
                  if (strpos($model['StartDateTime'], '0000') || strpos($model['StartDateTime'], '1970')) {
                     
@@ -347,8 +353,8 @@ class TripDetails extends \yii\db\ActiveRecord
         </tr>
         <tr class="ht-cs">
         <td width="32%" class="f-16">Duty Type:&nbsp;&nbsp;'.ucwords($DutyType).'</td> 
-        <td class="f-16" style="width:160px; word-wrap:break-word;">Pickup Location:&nbsp; &nbsp;'.$pickupLoc.'</td> 
-        <td class="f-16" style="width:130px; word-wrap:break-word;">Drop Location: &nbsp;&nbsp;'.$dropLoc.'</td> 
+        <td class="f-16" style="width:160px; word-wrap:break-word;">Pickup Location:&nbsp; &nbsp;'.$pickupLoc1.'.'.$pickupLoc2.'</td> 
+        <td class="f-16" style="width:130px; word-wrap:break-word;">Drop Location: &nbsp;&nbsp;'.$dropLoc1.'.'.$dropLoc2.'</td> 
         </tr>
         <tr class="ht-cs">
         <td width="32%" class="f-16">Start Date:&nbsp;&nbsp;'.$StartDate.'</td> 

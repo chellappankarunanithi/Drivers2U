@@ -18,7 +18,7 @@ class TripDetailsSearch extends TripDetails
     {
         return [
             [['id'], 'integer'],
-            [['tripcode', 'CustomerId', 'CustomerName', 'GuestName', 'GuestContact', 'CustomerContactNo', 'DriverName', 'DriverContactNo', 'DriverId', 'VehicleId', 'VehicleType', 'VehicleMade', 'VehicleNo', 'TripType', 'TripScheduleType', 'ChangeTrip', 'ChangeReason', 'TripStartLoc', 'TripEndLoc', 'StartDateTime', 'EndDateTime', 'Review', 'CommissionId', 'CommissionType', 'CreatedDate', 'UpdatedDate', 'UpdatedIpaddress','UserType','TripStatus'], 'safe'],
+            [['tripcode', 'CustomerId', 'CustomerName', 'GuestName', 'GuestContact', 'CustomerContactNo', 'DriverName', 'DriverContactNo', 'DriverId', 'VehicleId', 'VehicleType', 'VehicleMade', 'VehicleNo', 'TripType', 'TripScheduleType', 'ChangeTrip', 'ChangeReason', 'TripStartLoc1', 'TripEndLoc1','TripStartLoc2', 'TripEndLoc2', 'StartDateTime', 'EndDateTime', 'Review', 'CommissionId', 'CommissionType', 'CreatedDate', 'UpdatedDate', 'UpdatedIpaddress','UserType','TripStatus'], 'safe'],
             [['TripCost', 'CommissionAmount'], 'number'],
         ];
     }
@@ -86,8 +86,10 @@ class TripDetailsSearch extends TripDetails
             ->andFilterWhere(['like', 'TripScheduleType', $this->TripScheduleType])
             ->andFilterWhere(['like', 'ChangeTrip', $this->ChangeTrip])
             ->andFilterWhere(['like', 'ChangeReason', $this->ChangeReason])
-            ->andFilterWhere(['like', 'TripStartLoc', $this->TripStartLoc])
-            ->andFilterWhere(['like', 'TripEndLoc', $this->TripEndLoc])
+            ->andFilterWhere(['like', 'TripStartLoc1', $this->TripStartLoc1])
+            ->andFilterWhere(['like', 'TripStartLoc2', $this->TripStartLoc2])
+            ->andFilterWhere(['like', 'TripEndLoc1', $this->TripEndLoc1])
+            ->andFilterWhere(['like', 'TripEndLoc2', $this->TripEndLoc2])
             ->andFilterWhere(['like', 'GuestContact', $this->GuestContact])
             ->andFilterWhere(['like', 'GuestName', $this->GuestName])
             ->andFilterWhere(['like', 'Review', $this->Review])

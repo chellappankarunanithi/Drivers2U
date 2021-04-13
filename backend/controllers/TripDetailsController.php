@@ -128,7 +128,7 @@ class TripDetailsController extends Controller
             if ($confiq) {
                 $cust_id = $confiq->config_value;
             }
-            $model->tripcode = "TRIP-D2U-0".$cust_id;
+            $model->tripcode = "T".$cust_id;
 
             if($model->save()){
 
@@ -269,7 +269,7 @@ class TripDetailsController extends Controller
     public function actionChangeTrip($id,$data="")
     {    
         $model = $this->findModel($id); 
-        $model->scenario = "change-trip";
+        $model->scenario = "change-trip"; //echo date('d-m-y h:i a', strtotime($model->StartDateTime)); die;
         $isChange="no";
         if ($model->load(Yii::$app->request->post())) {  //echo "<pre>"; print_r($_POST); die;
              if (array_key_exists('StartDateTime', $_POST['TripDetails'])) {
@@ -280,7 +280,7 @@ class TripDetailsController extends Controller
                 }
             }
             $tripdetails = $_POST['TripDetails'];
-            if ($StartDateTime!=$model->StartDateTime || $tripdetails['CustomerId']!=$model->CustomerId || $tripdetails['TripStartLoc']!=$model->TripStartLoc || $tripdetails['TripType']!=$model->TripType || $tripdetails['TripLocationType']!=$model->TripLocationType || $tripdetails['TripEndLoc']!=$model->TripEndLoc || $tripdetails['DriverId']!=$model->DriverId) {
+            if ($StartDateTime!=$model->StartDateTime || $tripdetails['CustomerId']!=$model->CustomerId || $tripdetails['TripStartLoc1']!=$model->TripStartLoc1 || $tripdetails['TripStartLoc2']!=$model->TripStartLoc2 || $tripdetails['TripType']!=$model->TripType || $tripdetails['TripLocationType']!=$model->TripLocationType || $tripdetails['TripEndLoc1']!=$model->TripEndLoc1 || $tripdetails['TripEndLoc2']!=$model->TripEndLoc2 || $tripdetails['DriverId']!=$model->DriverId) {
                 $isChange = "yes";
             }
 
@@ -370,7 +370,7 @@ class TripDetailsController extends Controller
                         $requestInput['event'] = "Change Trip Customer SMS";
                         ## Dear {#var#}, updated trip details for {#var#} is {#var#} Driver - {#var#}, {#var#}. Contact Drives2U at 9626423232 for any query.
                               $callFun = new SmsLog();
-                              $smscontent='Dear '.$customername.',  updated trip details for '.$model->tripcode.' is '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).' Driver - '.$drivermodel->name.', '.$drivermodel->mobile_number.'. Contact Drives2U at 9626423232 for any query.';
+                              $smscontent='Dear '.$customername.',  updated trip details for '.$model->tripcode.' is '.date('d-m-y h:i a', strtotime($model->StartDateTime)).' Driver - '.$drivermodel->name.', '.$drivermodel->mobile_number.'. Contact Drives2U at 9626423232 for any query.';
                               if($customercontact!=""){ 
                                 $response = $callFun->smsfunction($customercontact,$smscontent,$requestInput);
                                  
@@ -379,7 +379,7 @@ class TripDetailsController extends Controller
                               $requestInput['customerId'] = $id;
                               $requestInput['event'] = "Change Trip Driver SMS";
                               ## Updated Trip Details for {#var#} is - {#var#} Location - {#var#} Customer Contact - {#var#}, {#var#}.
-                              $smscontent='Updated Trip Details for '.$model->tripcode.' is - '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).' Location - '.ucfirst($model->TripStartLoc).' Customer Contact - '.$customername.', '.$customercontact.'.';
+                              $smscontent='Updated Trip Info '.$model->tripcode.' is '.date('d-m-y h:i a', strtotime($model->StartDateTime)).' Place - '.ucfirst($model->TripStartLoc1).','.ucfirst($model->TripStartLoc2).', Customer - '.$customername.', '.$customercontact.'.';
                               if($customercontact!=""){ 
                                 $response = $callFun->smsfunction($drivermodel->mobile_number,$smscontent,$requestInput);
                                  
@@ -624,7 +624,7 @@ class TripDetailsController extends Controller
                               $callFun = new SmsLog();
                               ##Dear {#var#}, driver details for your trip {#var#} on {#var#} is {#var#} - {#var#}. Contact Drives2U at 9626423232 for any query.
 
-                              $smscontent='Dear '.$customername.', driver details for your trip '.$model->tripcode.' on '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).' is '.$drivermodel->name.' - '.$drivermodel->mobile_number.'. Contact Drives2U at 9626423232 for any query.';
+                              $smscontent='Dear '.$customername.', driver details for your trip '.$model->tripcode.' on '.date('d-m-y h:i a', strtotime($model->StartDateTime)).' is '.$drivermodel->name.' - '.$drivermodel->mobile_number.'. Contact Drives2U at 9626423232 for any query.';
                               if($customercontact!=""){ 
                                 $response = $callFun->smsfunction($customercontact,$smscontent,$requestInput);
                                  
@@ -634,7 +634,7 @@ class TripDetailsController extends Controller
                               $requestInput['event'] = "Trip Booking";
                               ##Trip Details for TRIP-D2U-08 is 12-04-2021 06:58 PM, Location - Asdasd, Customer Contact - Sathyabama - 8610276850.
                               ## Trip Details for {#var#} is - {#var#} Location - {#var#} Customer Contact - {#var#}, {#var#}.
-                              $smscontent='Trip Details for '.$model->tripcode.' is - '.date('d-m-Y h:i A', strtotime($model->StartDateTime)).' Location - '.ucfirst($model->TripStartLoc).' Customer Contact - '.$customername.', '.$customercontact.'.';
+                              $smscontent='Trip Details for '.$model->tripcode.' is - '.date('d-m-y h:i a', strtotime($model->StartDateTime)).' Location - '.ucfirst($model->TripStartLoc1).','.ucfirst($model->TripStartLoc2).', Customer Contact - '.$customername.', '.$customercontact.'.';
                               if($customercontact!=""){ 
                                 $response = $callFun->smsfunction($drivermodel->mobile_number,$smscontent,$requestInput);
                                  
@@ -919,7 +919,7 @@ class TripDetailsController extends Controller
      public function actionCancelPayment($id="")
     {
         $model = CancelTripLog::find()->where(['TripId'=>$id])->andWhere(['PaymentStatus'=>"No"])->one();
-        $model1 = $this->findModel($id); 
+        $model1 = $this->findModel($id);  //echo "<pre>"; print_r($model); die;
          if ($_POST) {    
               $model->CancelFees = $_POST['CancelTripLog']['CancelFees'];
               $model->PaymentStatus = $_POST['CancelTripLog']['PaymentStatus'];
@@ -948,7 +948,11 @@ class TripDetailsController extends Controller
             if (!empty($model)) {
                if ($model->PaymentStatus=="Yes") { 
                  return "Cancelled Fees is Already Paid.";  
-                }
+                }else{
+                return $this->renderAjax('_cancelpayview', [
+                    'model' => $model,
+                ]);      
+            }
             }
             else{
                 return $this->renderAjax('_cancelpayview', [

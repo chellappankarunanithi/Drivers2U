@@ -95,6 +95,7 @@ class SmsLog extends \yii\db\ActiveRecord
             // $url="http://bulksms.mysmsmantra.com:8080/WebSMS/SMSAPI.jsp?username=e34&password=2342&sendername=23423&mobileno=".$phone."&message=".$sms_message;
 
             $url="https://api.mylogin.co.in/api/v2/SendSMS?SenderId=DRIVEZ&Is_Unicode=false&Is_Flash=false&ApiKey=ZhKiBUBF1yZk1B8oNYhzkC9Adj4uNMnGFiXguKdJ2EA=&ClientId=c5cd9e5c-380c-4208-9c8f-d22965aecd98&MobileNumbers=".$phone."&Message=".$sms_message;
+             
             $curl = curl_init();
             curl_setopt_array($curl, array(
               CURLOPT_URL => $url,

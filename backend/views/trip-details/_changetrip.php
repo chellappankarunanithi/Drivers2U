@@ -313,21 +313,33 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
                     <?= $form->field($model, 'TripLocationType')->dropDownList(array('Local'=>'Local','Out Station'=>'Out Station'),['class'=>'form-control input-sm','prompt'=>"Select"])->label(false)?>
                 </div>
               </div>
-              <div class="col-sm-4"> 
+               <div class="col-sm-4"> 
                 <div class="f orm-group"> 
-                 <label class="form-label">Pickup Location</label>
-                       <?= $form->field($model, 'TripStartLoc')->textarea(['row'=>3,'class'=>'form-control input-sm'])->label(false)?>
+                 <label class="form-label">Pickup Location 1</label>
+                       <?= $form->field($model, 'TripStartLoc1')->textInput(['row'=>3, 'maxlength'=>'30', 'class'=>'form-control input-sm'])->label(false)?>
                 </div>
               </div>  
               <div class="col-sm-4"> 
                 <div class="f orm-group"> 
-                 <label class="form-label">Drop Location</label>
-                       <?= $form->field($model, 'TripEndLoc')->textarea(['row'=>3,'class'=>'form-control input-sm'])->label(false)?>
+                 <label class="form-label">Pickup Location 2</label>
+                       <?= $form->field($model, 'TripStartLoc2')->textInput(['row'=>3, 'maxlength'=>'30', 'class'=>'form-control input-sm'])->label(false)?>
                 </div>
-              </div> 
+              </div>  
           </div>
 
           <div class="col-sm-12">
+              <div class="col-sm-4"> 
+                <div class="f orm-group"> 
+                 <label class="form-label">Drop Location 1</label>
+                       <?= $form->field($model, 'TripEndLoc1')->textInput(['row'=>3, 'maxlength'=>'30','class'=>'form-control input-sm'])->label(false)?>
+                </div>
+              </div> 
+              <div class="col-sm-4"> 
+                <div class="f orm-group"> 
+                 <label class="form-label">Drop Location 2</label>
+                       <?= $form->field($model, 'TripEndLoc2')->textInput(['row'=>3, 'maxlength'=>'30','class'=>'form-control input-sm'])->label(false)?>
+                </div>
+              </div> 
               <div class="col-sm-4">
                 <div class="form-group">
                   <label class="form-label required">Trip Start Date & Time</label><span style="color: red; font-size: 15px;">*</span>
