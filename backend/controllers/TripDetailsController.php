@@ -370,6 +370,7 @@ class TripDetailsController extends Controller
                         $requestInput['event'] = "Change Trip Customer SMS";
                         ## Dear {#var#}, updated trip details for {#var#} is {#var#} Driver - {#var#}, {#var#}. Contact Drives2U at 9626423232 for any query.
                         ## Dear {#var#}, updated trip details for {#var#} is {#var#} Driver - {#var#}, {#var#}. Contact Drives2U at 9626423232 for any query.
+                         $customername = substr($customername,0,10);
                               $callFun = new SmsLog();
                               $smscontent='Dear '.$customername.',  updated trip details for '.$model->tripcode.' is '.date('d-m-y h:i a', strtotime($model->StartDateTime)).' Driver - '.$drivermodel->name.', '.$drivermodel->mobile_number.'. Contact Drives2U at 9626423232 for any query.';
                               if($customercontact!=""){ 
@@ -386,22 +387,20 @@ class TripDetailsController extends Controller
                                 $response = $callFun->smsfunction($drivermodel->mobile_number,$smscontent,$requestInput);
                                  
                               }
+                    } 
+
+                        return $this->redirect(['trip-index']); 
+                    }else{
+                        return $this->render('_changetrip', [
+                            'model' => $model,
+                        ]);
                     }
+                }else{ 
+                         return $this->render('_changetrip', [
+                            'model' => $model,
+                        ]);
 
-
-
-                return $this->redirect(['trip-index']); 
-            }else{
-                return $this->render('_changetrip', [
-                    'model' => $model,
-                ]);
-            }
-        }else{ 
-                 return $this->render('_changetrip', [
-                    'model' => $model,
-                ]);
-
-        }
+                }
     }
 
     /**
@@ -620,7 +619,7 @@ class TripDetailsController extends Controller
                               $requestInput['event'] = "Trip Booking";
                               $callFun = new SmsLog();
                               ##Dear {#var#}, driver details for your trip {#var#} on {#var#} is {#var#} - {#var#}. Contact Drives2U at 9626423232 for any query.
-
+                               $customername = substr($customername,0,10);
                               $smscontent='Dear '.$customername.', driver details for your trip '.$model->tripcode.' on '.date('d-m-y h:i a', strtotime($model->StartDateTime)).' is '.$drivermodel->name.' - '.$drivermodel->mobile_number.'. Contact Drives2U at 9626423232 for any query.';
                               if($customercontact!=""){ 
                                 $response = $callFun->smsfunction($customercontact,$smscontent,$requestInput);

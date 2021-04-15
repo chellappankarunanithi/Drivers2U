@@ -19,7 +19,7 @@ class VehicleMasterSearch extends VehicleMaster
     {
         return [
             [['id'], 'integer'],
-            [['vehicle_name', 'vehicle_uniqe_name', 'clientname', 'superviser_id', 'bunkagencyname', 'drivername','vehiclename', 'supervisorname', 'driver_name', 'client_name', 'reg_no', 'fc_expire_date', 'status', 'bunk_name','user_id', 'updated_ipaddress', 'created_at', 'modified_at', 'engine_number', 'frame_number'], 'safe'],
+            [['vehicle_name', 'vehicle_uniqe_name', 'clientname', 'superviser_id', 'bunkagencyname', 'drivername','vehiclename', 'supervisorname', 'driver_name', 'client_name', 'reg_no', 'status', 'bunk_name', 'updated_ipaddress', 'created_at', 'modified_at'], 'safe'],
         ];
     }
 
@@ -61,7 +61,6 @@ class VehicleMasterSearch extends VehicleMaster
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'fc_expire_date' => $this->fc_expire_date,
             'created_at' => $this->created_at,
             'modified_at' => $this->modified_at,
         ]);
@@ -70,10 +69,7 @@ class VehicleMasterSearch extends VehicleMaster
             ->andFilterWhere(['like', 'vehicle_uniqe_name', $this->vehicle_uniqe_name])
             ->andFilterWhere(['like', 'reg_no', $this->reg_no])
             ->andFilterWhere(['like', 'vehicle_master.status', $this->status])
-            ->andFilterWhere(['like', 'user_id', $this->user_id])
-            ->andFilterWhere(['like', 'updated_ipaddress', $this->updated_ipaddress])
-            ->andFilterWhere(['like', 'engine_number', $this->engine_number])
-            ->andFilterWhere(['like', 'frame_number', $this->frame_number]);
+            ->andFilterWhere(['like', 'updated_ipaddress', $this->updated_ipaddress]);
 
         return $dataProvider;
     }
@@ -107,7 +103,6 @@ class VehicleMasterSearch extends VehicleMaster
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'fc_expire_date' => $this->fc_expire_date,
             'vehicle_master.created_at' => $this->created_at,
             'modified_at' => $this->modified_at,
         ]);
@@ -116,12 +111,9 @@ class VehicleMasterSearch extends VehicleMaster
             ->andFilterWhere(['like', 'vehicle_uniqe_name', $this->vehicle_uniqe_name])
             ->andFilterWhere(['like', 'reg_no', $this->reg_no])
             ->andFilterWhere(['like', 'status', $this->status])
-            ->andFilterWhere(['like', 'user_id', $this->user_id])
             ->andFilterWhere(['like', 'updated_ipaddress', $this->updated_ipaddress])
-            ->andFilterWhere(['like', 'engine_number', $this->engine_number])
             ->andFilterWhere(['like', 'driver_profile.name', $this->driver_name])
-            ->andFilterWhere(['like', 'client_master.company_name', $this->client_name])
-            ->andFilterWhere(['like', 'frame_number', $this->frame_number]);
+            ->andFilterWhere(['like', 'client_master.company_name', $this->client_name]);
 
         return $dataProvider;
     }
@@ -151,7 +143,6 @@ class VehicleMasterSearch extends VehicleMaster
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'fc_expire_date' => $this->fc_expire_date,
             'created_at' => $this->created_at,
             'modified_at' => $this->modified_at,
         ]);
@@ -160,13 +151,10 @@ class VehicleMasterSearch extends VehicleMaster
             ->andFilterWhere(['like', 'vehicle_uniqe_name', $this->vehicle_uniqe_name])
             ->andFilterWhere(['like', 'reg_no', $this->reg_no])
             ->andFilterWhere(['like', 'vehicle_master.status', $this->status])
-            ->andFilterWhere(['like', 'user_id', $this->user_id])
             ->andFilterWhere(['like', 'updated_ipaddress', $this->updated_ipaddress])
-            ->andFilterWhere(['like', 'engine_number', $this->engine_number])
             ->andFilterWhere(['like', 'vehicle_master.reg_no', $this->vehiclename])
             ->andFilterWhere(['like', 'client_master.company_name', $this->clientname])
-            ->andFilterWhere(['like', 'superviser_master.name', $this->supervisorname])
-            ->andFilterWhere(['like', 'frame_number', $this->frame_number]);
+            ->andFilterWhere(['like', 'superviser_master.name', $this->supervisorname]);
 
         return $dataProvider;
     }
@@ -237,7 +225,6 @@ class VehicleMasterSearch extends VehicleMaster
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'fc_expire_date' => $this->fc_expire_date,
             'created_at' => $this->created_at,
             'modified_at' => $this->modified_at,
         ]);
@@ -245,16 +232,13 @@ class VehicleMasterSearch extends VehicleMaster
         $query//->andFilterWhere(['like', 'vehicle_master.vehicle_name', $this->vehicle_name])
             ->andFilterWhere(['like', 'vehicle_uniqe_name', $this->vehicle_uniqe_name])
             ->andFilterWhere(['like', 'reg_no', $this->reg_no])
-            ->andFilterWhere(['like', 'vehicle_master.status', $this->status])
-            ->andFilterWhere(['like', 'user_id', $this->user_id])
-            ->andFilterWhere(['like', 'updated_ipaddress', $this->updated_ipaddress])
-            ->andFilterWhere(['like', 'engine_number', $this->engine_number])
+            ->andFilterWhere(['like', 'vehicle_master.status', $this->status]) 
+            ->andFilterWhere(['like', 'updated_ipaddress', $this->updated_ipaddress]) 
             ->andFilterWhere(['like', 'vehicle_master.reg_no', $this->vehiclename])
             ->andFilterWhere(['like', 'client_master.company_name', $this->clientname])
             ->andFilterWhere(['like', 'superviser_master.name', $this->supervisorname])
             ->andFilterWhere(['like', 'driver_profile.name', $this->drivername])
-            ->andFilterWhere(['like', 'bunk_master.bunk_agency_name', $this->bunkagencyname])
-            ->andFilterWhere(['like', 'frame_number', $this->frame_number]);
+            ->andFilterWhere(['like', 'bunk_master.bunk_agency_name', $this->bunkagencyname]);
 
         return $dataProvider;
     }
