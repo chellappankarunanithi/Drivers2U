@@ -199,7 +199,7 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
               <div class="col-sm-3">
                 <div class="form-group">
                   <label class="form-label required">Gear Type</label>
-                    <?= $form->field($model, 'GearType')->dropDownList(array('Manual'=>'Manual', 'Automatic'=>'Automatic'),['class'=>'form-control input-sm', 'readOnly'=>true])->label(false)?>
+                      <?= $form->field($model, 'GearType')->textInput(['class'=>'form-control input-sm', 'value'=>$model->GearType, 'readOnly'=>true])->label(false)?>
                 </div>
               </div>
                <div class="col-sm-3"> 

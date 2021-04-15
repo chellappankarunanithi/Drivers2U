@@ -200,7 +200,7 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
               <div class="col-sm-3">
                 <div class="form-group">
                   <label class="form-label required">Gear Type</label>
-                    <?= $form->field($model, 'GearType')->dropDownList(array('Manual'=>'Manual', 'Automatic'=>'Automatic'),['class'=>'form-control input-sm'])->label(false)?>
+                      <?= $form->field($model, 'GearType')->textInput(['class'=>'form-control input-sm', 'value'=>$model->GearType, 'readOnly'=>true])->label(false)?>
                 </div>
               </div>
                <div class="col-sm-3"> 
@@ -468,7 +468,7 @@ if (array_key_exists('id', $_GET) && array_key_exists('data', $_GET)) { //echo "
   }
 
 });
- $('#tripdetails-enddatetime').datetimepicker({ format: 'DD-MM-YYYY hh:mm:ss A',minDate: new Date()});
+ $('#tripdetails-enddatetime').datetimepicker({ format: 'DD-MM-YYYY hh:mm:ss A'/*,minDate: new Date()*/});
   $('body').on('click','#addmore',function(){
              var PageUrl = '<?php echo Yii::$app->homeUrl;?>customer-trip-create';
              $('#operationalheader').html('<span> <i class="fa fa-fw fa-th-large"></i>Add New Customer</span>');
