@@ -88,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             $tempdate = date('Y-m-d H:i:s', strtotime('-1 day', $startdate));
                                             $temp = date('d-m-Y h:i A', strtotime('+1 day', $startdate));
                                            // echo $tempdate; die;
-                                            if ($todaydate>=$tempdate) {
+                                          //  if ($todaydate>=$tempdate) {
                                                     $options = array_merge([
                                                         'class' => 'btn btn-success btn-xs update gridbtncustom',
                                                         'data-toggle'=>'tooltip',
@@ -98,10 +98,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     ]); 
 
                                             return Html::a('<span class="fa fa-refresh"></span> Activate', $url, $options);
-                                            }else{
+                                           /* }else{
                                                  return Html::button('<span class="fa fa-refresh"></span> Activate', ['value' => $url, 'style'=>'margin-right:4px;','class' => 'btn btn-primary btn-xs view view gridbtncustom  ', 'data-toggle'=>'tooltip', 'title' =>'Trip activate before 24 Hours from trip start date. trip activate enable at '.$temp ]);
                                                 return '-';
-                                            }
+                                            }*/
                                         }else{ 
                                             return '-';
                                         }

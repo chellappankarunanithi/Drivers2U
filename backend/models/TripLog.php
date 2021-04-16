@@ -97,7 +97,7 @@ class TripLog extends \yii\db\ActiveRecord
                     $newLog->updatedAt = date('Y-m-d H:i:s');
                     $newLog->updatedIpAddress = $_SERVER['REMOTE_ADDR'];
                     if($newLog->save()){
-                        $list['stutus'] = 'success';
+                        $list['status'] = 'success';
                         $list['message'] = 'Log saved successfully';
                     }else{
                         echo "<pre>";print_r($newLog->getErrors());die;

@@ -120,7 +120,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'aria-label' => Yii::t('yii', 'Profile Image'),
                                             'data-pjax' => '0',
                                         ]);
-                                        return Html::a('<span class="fa fa-download"></span>', $url, $options);
+                                        if ($model->profile_photo!="") {
+                                          return Html::a('<span class="fa fa-download"></span>', $url, $options);
+                                        }
                                     },
 
 
@@ -132,7 +134,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'aria-label' => Yii::t('yii', 'Licence Copy'),
                                             'data-pjax' => '0',
                                         ]);
-                                        return Html::a('<span class="fa fa-download"></span>', $url, $options);
+                                        
+                                        if ($model->licence_copy!="") {
+                                          return Html::a('<span class="fa fa-download"></span>', $url, $options);
+                                        }
                                     },
 
 
@@ -155,7 +160,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'aria-label' => Yii::t('yii', 'Police Verification Copy'),
                                             'data-pjax' => '0',
                                         ]);
-                                        return Html::a('<span class="fa fa-download"></span>', $url, $options);
+                                        if ($model->PoliceVerificationLetterCopy!="") {
+                                          return Html::a('<span class="fa fa-download"></span>', $url, $options);
+                                        } 
                                     },
 
                                      'aadhar' => function ($url, $model, $key) {
@@ -166,7 +173,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'aria-label' => Yii::t('yii', 'Adhaar Copy'),
                                             'data-pjax' => '0',
                                         ]);
-                                        return Html::a('<span class="fa fa-download"></span>', $url, $options);
+                                         if ($model->aadhar_copy!="") {
+                                          return Html::a('<span class="fa fa-download"></span>', $url, $options);
+                                        }
                                     },
 
 
@@ -178,7 +187,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'aria-label' => Yii::t('yii', 'Ration Card / Voter ID Copy'),
                                             'data-pjax' => '0',
                                         ]);
-                                        return Html::a('<span class="fa fa-download"></span>', $url, $options);
+                                        if ($model->RationcardCopy!="") {
+                                          return Html::a('<span class="fa fa-download"></span>', $url, $options);
+                                        }
                                     },
                           ] ],
         ],

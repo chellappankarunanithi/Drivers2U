@@ -343,33 +343,34 @@ class TripDetailsController extends Controller
                     $requestInput['apiMethod'] = 'ChangeTrip';
 
                     $callFun = new TripLog();
-                    $response = $callFun->tripLog($requestInput);
+                    $response1 = $callFun->tripLog($requestInput);
 
 
                     ##Trip Change SMS  
                     if($isChange=="yes"){
-
+                             
                         $customercontact="";
                         $drivercontact="";
                         $customer = ClientMaster::findOne($model->CustomerId);
-                        if (!empty($customer)) { 
+                        if (!empty($customer)) {  
                                     $customercontact = $customer->mobile_no;
                                     $customername = $customer->client_name; 
-                                if($customer->UserType=="Company"){
+                                if($customer->UserType=="Company"){ 
                                     $customername =  $model->GuestName; 
                                     $customercontact =  $model->GuestContact;
                                 }
-                            }
+                            }  
                         if (!empty($drivermodel)) {
                           $drivercontact = $drivermodel->mobile_number;
-                        } 
+                        }  
                         $requestInput = array();
                         $requestInput['tripId'] = $model->id;
                         $requestInput['customerId'] = $model->CustomerId;
                         $requestInput['driverId'] = $model->DriverId;
                         $requestInput['event'] = "Change Trip Customer SMS";
                         ## Dear {#var#}, updated trip details for {#var#} is {#var#} Driver - {#var#}, {#var#}. Contact Drives2U at 9626423232 for any query.
-                        ## Dear {#var#}, updated trip details for {#var#} is {#var#} Driver - {#var#}, {#var#}. Contact Drives2U at 9626423232 for any query.
+                        ## Dear {#var#}, updated trip details for {#var#} is {#var#} Driver - {#var#}, {#var#}. Contact Drives2U at 9626423232 for any query. 
+                        
                          $customername = substr($customername,0,10);
                               $callFun = new SmsLog();
                               $smscontent='Dear '.$customername.',  updated trip details for '.$model->tripcode.' is '.date('d-m-y h:i a', strtotime($model->StartDateTime)).' Driver - '.$drivermodel->name.', '.$drivermodel->mobile_number.'. Contact Drives2U at 9626423232 for any query.';
@@ -797,6 +798,7 @@ class TripDetailsController extends Controller
                         $requestInput['event'] = "Complete Trip";
                         $callFun = new SmsLog();
                         $hrs = $model->TripHours."Hrs";
+                         $customername = substr($customername,0,10);
                         ## Dear {#var#}, Trip {#var#} completed successfully for {#var#} @ {#var#}Rs. Thanks for your booking. Please book further trips only through us & Drives2U won’t be responsible for bookings without our knowledge.
 
                         ## Hi {#var#}, Trip {#var#} completed - {#var#} @ Rs.{#var#}. Thank you. Please note, Drives2U is not responsible for the trips booking without our knowledge.  
