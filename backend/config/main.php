@@ -11,8 +11,8 @@ use yii\helpers\Url;
 
     
 $baseUrl = str_replace('/backend/web', '', (new Request)->getBaseUrl());
- $server = $_SERVER['SERVER_NAME']; 
-        if ($server=="192.168.1.114") {
+ $server = $_SERVER['SERVER_NAME'];  
+        if ($server=="192.168.1.54") {
             $url = '/2021/drives2u';
         }else{
             $url = '/drives2u';
