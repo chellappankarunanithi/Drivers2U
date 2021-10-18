@@ -246,7 +246,15 @@ class TripDetails extends \yii\db\ActiveRecord
        $baseUrl = Url::base(true);
         $files=$baseUrl.'/images/logo.png';
         $filetype = explode('.', $files);
-        $img = file_get_contents($files);
+       // $img = file_get_contents($files);
+        $stream_opts = [
+            "ssl" => [
+            "verify_peer"=>false,
+            "verify_peer_name"=>false,
+            ]
+        ];  
+
+    $img = file_get_contents($files, false, stream_context_create($stream_opts));
 
         $pdf->Image('@' . $img, 14, 16, 25, '', 'PNG', '', '', false, 500, '', false, false, 0, false, false, false);
       // $pdf->Image( $files, 14, 16, 25, '', 'PNG', '', '', false, 500, '', false, false, 0, false, false, false);
