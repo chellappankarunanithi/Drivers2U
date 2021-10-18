@@ -1,5 +1,5 @@
 <?php $server = $_SERVER['SERVER_NAME']; 
-if ($server=="192.168.1.114") {
+if ($server=="192.168.1.54") {
 return [
     'components' => [ 
             'db' => [ 
